@@ -1,0 +1,224 @@
+
+
+/* Html & Body */
+
+html { font-size: 16px; }
+
+/* Fonts */
+
+@font-face {
+  font-family: Didot;
+  src: url('assets/fonts/Didot.ttc');
+  src: local('assets/fonts/Didot.ttc'), url('../assets/fonts/Didot.ttc') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1 {
+	font-family: Didot;
+	font-size: 5em;
+	color: #ECF0F1;
+	letter-spacing: 0.7em;
+}	
+
+h3 {
+	font-family: Didot;
+	font-size: 1.9em;
+	color: #ECF0F1;
+}
+
+h3 a {
+	text-decoration: none;
+	color: #ECF0F1;
+}
+
+h3:hover { background: #4D4D4D; }
+
+p {
+	font-family: Didot;
+	font-size: 1em;
+	color: #ECF0F1;
+}
+
+/* Navigation */
+
+nav {
+	z-index: 3;
+	position: absolute;
+	left: 70%;
+
+}
+
+nav li {
+	font-family: Didot;
+	font-size: 1.3em;
+	color: #ECF0F1;
+	display: inline-block;
+	padding: 1em;
+	
+}
+
+
+nav a {
+	text-decoration: none;
+	color: #ECF0F1;
+}
+
+nav a:hover {
+	color: #4D4D4D;
+}
+
+nav ul {
+	list-style: none;
+	text-align: right;
+	padding: 0;
+	margin: 0;
+}
+
+
+/* Video */
+
+video {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	min-width: 100%;
+	min-height: 100%;
+}
+
+#video-frame {
+
+}
+
+/* Divs */
+
+#banner {
+	border: solid white;
+	height: 80vh;
+}
+
+.text {
+	font-family: Didot;
+	z-index: 2;
+	position: relative;
+	background: rgba(0, 0, 0, 0.4);
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	color: #ECF0F1;
+	text-align: center;
+	height: 100%;
+}
+
+#slide1 {
+	height: 100%;
+	background: orange;
+}
+
+#slide2 {
+	height: 100%;
+	background: blue;
+}
+
+#slide3 {
+	height: 100%;
+	background: white;
+}
+
+/* Buttons */
+
+.down_btn {
+	position: relative;
+	height: 40vh;
+}
+
+/* Storyline Navigation */
+
+#storyline {
+	font-family: Didot;
+	color: #ECF0F1;
+	z-index: 4;
+	width: 300px;
+	margin: 0;
+	 background-color:rgb(240,240,240);
+    border:solid 1px rgb(220,220,220);
+}
+
+.storyline-stick {
+	position: fixed;
+	height: 200px;
+	top: 0;
+	margin-top: 2em;
+
+}
+
+#storyline li {
+	display: block;
+}
+
+#storyline li a {
+	text-decoration: none;
+}
+
+.storyline a.nav-active {
+    color: red;
+}
+
+#storyline a:hover {
+	color: #4D4D4D;
+}
+
+#storyline ul {
+	list-style: none;
+	text-align: right;
+	padding: 0;
+	margin: 0;
+}
+
+
+
+/* Media Queries */
+
+/* Large Devices, Wide Screens */
+    @media only screen and (max-width : 1400px) {
+
+    	html { font-size: 14px; }
+    }
+
+    @media only screen and (max-width : 1200px) {
+
+    	html { font-size: 14px; }
+    	nav { left: 50%; right: 50%; transform: translate(-50%); }
+    	nav li { display: block; }
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (max-width : 992px) {
+    	html { font-size: 13px; }
+    	nav { left: 50%; right: 50%; transform: translate(-50%); }
+    	nav li { display: block; }
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+    	html { font-size: 12px; }
+    	nav { left: 50%; right: 50%; transform: translate(-50%); }
+    	nav li { display: block; }
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (max-width : 480px) {
+    	html { font-size: 11px; }
+    	nav { left: 50%; right: 50%; transform: translate(-50%); }
+    	nav li { display: block; }
+    }
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (max-width : 320px) {
+    	html { font-size: 10px; }
+    	nav { left: 50%; right: 50%; transform: translate(-50%); }
+    	nav li { display: block; }
+    }
+
