@@ -4,6 +4,8 @@
 
 html { font-size: 16px; }
 
+body {height: 100%}
+
 /* Fonts */
 
 @font-face {
@@ -21,18 +23,18 @@ h1 {
 	letter-spacing: 0.7em;
 }	
 
+h2 {
+	font-family: Didot;
+	font-size: 3em;
+	color: #ECF0F1;
+	letter-spacing: 0.7em;
+}
+
 h3 {
 	font-family: Didot;
 	font-size: 1.9em;
 	color: #ECF0F1;
 }
-
-h3 a {
-	text-decoration: none;
-	color: #ECF0F1;
-}
-
-h3:hover { background: #4D4D4D; }
 
 p {
 	font-family: Didot;
@@ -46,6 +48,7 @@ nav {
 	z-index: 3;
 	position: absolute;
 	left: 70%;
+	padding-top: 2em;
 
 }
 
@@ -93,28 +96,68 @@ video {
 
 /* Divs */
 
-#banner {
-	border: solid white;
-	height: 80vh;
+#wrapper-home {
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+	height: 100vh;
+	margin-bottom: 11vh;
+	z-index: 2;
+}
+
+#wrapper-data {
+	width: 100%;
+	margin: 0 auto;
+	height: 100vh;
+	position: relative;
+	z-index: 2;
+}
+
+.text-box {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.4);
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
 }
 
 .text {
 	font-family: Didot;
 	z-index: 2;
 	position: relative;
-	background: rgba(0, 0, 0, 0.4);
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
 	color: #ECF0F1;
+	top: 60vh;
+	width: 40vw;
+	left: 50%;
+	transform: translate(-50%);
 	text-align: center;
-	height: 100%;
+
 }
+
+.btn {
+	position: relative;
+	text-align: center;
+	top: 70vh;
+}
+
+.btn a {
+	text-decoration: none;
+	color: #ECF0F1;
+	border: solid white;
+	padding: 1em;
+	font-size: 1.3em;
+	background: rgba(0, 0, 0, 0.1);
+}
+
+.btn a:hover { background: rgba(0, 0, 0, 0.5); }
 
 #slide1 {
 	height: 100%;
+	margin: 0 auto;
 	background: orange;
+	z-index: 2;
 }
 
 #slide2 {
@@ -134,50 +177,24 @@ video {
 	height: 40vh;
 }
 
-/* Storyline Navigation */
+/* Footer */
 
-#storyline {
-	font-family: Didot;
-	color: #ECF0F1;
-	z-index: 4;
-	width: 300px;
+footer {
 	margin: 0;
-	 background-color:rgb(240,240,240);
-    border:solid 1px rgb(220,220,220);
-}
-
-.storyline-stick {
+	padding: 0.5em;
+	background: rgba(0, 0, 0, 1);
 	position: fixed;
-	height: 200px;
-	top: 0;
-	margin-top: 2em;
-
+	bottom: 0;
+	width: 100%;
+	z-index: 1;
 }
 
-#storyline li {
-	display: block;
-}
-
-#storyline li a {
+footer ul li a {
 	text-decoration: none;
+	color: #ECF0F1;
+	margin: 0 auto;
+
 }
-
-.storyline a.nav-active {
-    color: red;
-}
-
-#storyline a:hover {
-	color: #4D4D4D;
-}
-
-#storyline ul {
-	list-style: none;
-	text-align: right;
-	padding: 0;
-	margin: 0;
-}
-
-
 
 /* Media Queries */
 
