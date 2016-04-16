@@ -373,12 +373,41 @@ video {
 
 .flex-footer {
 	background: black;
+	z-index: -2;
+	position: relative;
+	padding: 3em;
 }
 
-.flex-footer a {
+.footer-credits {
+	color: white;
+	float: right;
+	left: 80vw;
+	position: fixed;
+	bottom: 0;
+	z-index: -1;
+	padding: 1em;
+}
+
+.footer-social {
+}
+
+.footer-social ul {
+	padding: 1em
+}
+
+.flex-footer ul {
+	position: fixed;
+	bottom: 0;
+	z-index: -1;
+}
+
+.footer-social a {
 	text-decoration: none;
 	color: white;
-	padding: 1em;
+}
+
+.reveal-wrapper {
+	z-index: 1;
 }
 
 
