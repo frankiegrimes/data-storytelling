@@ -252,6 +252,10 @@ video {
 	flex: none;
 }
 
+.flex-header-banner {
+	display: flex;
+}
+
 .flex-body {
 	display: flex;
 	flex: 1 0 auto;
@@ -313,13 +317,12 @@ video {
 /*------------------- FLEX STYLING ------------------------------------ */
 
 .header-titles {
-	float: left;
+	flex-grow: 1; 
 	background: black;
 
 }
 
 .header-nav {
-	float: right;
 	background: black;
 }
 
