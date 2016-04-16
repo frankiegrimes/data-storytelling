@@ -224,6 +224,11 @@ video {
 
     	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
     	.nav-bar li { display: block; }
+    	.header-titles {display: none;}
+    	.header-banner {background: black;}
+    	.header-nav {margin: auto; text-align: center; width: 100%;}
+    	.flex-nav {margin: auto; text-align: center; width: 100%;}
+    	.flex-content {padding: 4em;}
     }
 
     /* Extra Small Devices, Phones */ 
@@ -267,11 +272,11 @@ video {
 	flex: 1;
 }
 
+
 .flex-nav {
 	order: -1;
 	padding: 1em;
 	border-radius: 3px;
-	background: rgba(147, 128, 108, 0.1);
 }
 
 .flex-aside {
@@ -301,7 +306,6 @@ video {
 
 	.flex-content {
 		flex: 1;
-		padding: 0 700px;
 		margin: 0;
 	}
 
@@ -328,7 +332,7 @@ video {
 
 .header-nav li {
 	display: inline-block;
-	padding: 1em;
+	padding: 2em;
 }
 
 .header-nav li a {
@@ -336,20 +340,45 @@ video {
 	color: white;
 }
 
-.header-nav li a:hover { color: grey;}
+.header-nav li a:hover { color: whitesmoke;}
+
+.flex-nav {
+	background: white;
+}
 
 .flex-nav li {
-	padding: 1em;
-
-	
+	padding: 2em;
 }
 
 .flex-nav li a {
 	text-decoration: none;
-	color: white;
-
+	color: black;
 }
 
 .flex-nav li a:hover { color: grey;}
+
+.flex-aside {background: white;}
+
+.flex-content h2 {
+	color: black;
+}
+
+.flex-content p {
+	color: black;
+}
+
+.flex-content {
+	background: white;
+}
+
+.flex-footer {
+	background: black;
+}
+
+.flex-footer a {
+	text-decoration: none;
+	color: white;
+	padding: 1em;
+}
 
 
