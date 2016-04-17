@@ -209,6 +209,11 @@ label {
 	flex: 1;
 }
 
+.flex-content-fixed {
+	flex: 1;
+	padding-left: 13.5rem;
+}
+
 .flex-aside {
 	flex: 0 0 12em;
 	order: 2;
@@ -343,37 +348,43 @@ label {
 
 /* ------ SIDEBAR NAVIGATION ------------------- */
 
-.flex-nav {
+#flex-nav {
 	background: white;
 	order: -1;
 	border-radius: 3px;
 }
 
-.flex-nav ul {
+#flex-nav ul {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 
 }
 
-.flex-nav li {
+#flex-nav li {
 	padding: 2em;
 	text-decoration: none;
 
 }
 
-.flex-nav li:hover {
+#flex-nav li:hover {
 	background: grey;
 
 }
 
-.flex-nav li a {
+#flex-nav li a {
 	text-decoration: none;
 	color: black;
 }
 
-.flex-nav li a:hover { 
+#flex-nav li a:hover { 
 	color: grey;
+}
+
+.flex-nav-fixed {
+   top: 0;
+  position: fixed;
+  height: 100%;
 }
 
 .flex-aside { 
@@ -500,10 +511,12 @@ label {
     	.header-banner {background: black;}
     	.header-nav {margin: auto; text-align: center; width: 100%;}
     	.header-nav li {margin: auto; text-align: center; display: block;}
-    	.flex-nav {margin: auto; text-align: center; width: 100%; order: -1;}
+    	#flex-nav {margin: auto; text-align: center; width: 100%; order: -1;}
+    	.flex-nav-fixed {position: relative; margin: auto; text-align: center; width: 100%; order: -1;}
     	.flex-content {padding: 4em; flex: 1; margin: 0;}
     	.flex-wrapper { display: flex; height: 100%; flex-direction: column; }
 		.flex-body { flex-direction: column; flex: 1; }
+
     }
 
     /* Extra Small Devices, Phones */ 
