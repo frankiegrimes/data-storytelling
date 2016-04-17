@@ -35,6 +35,8 @@ h3 {
 	font-size: 2.4em;
 	color: #ECF0F1;
 	color: black;
+	margin: 0 auto;
+	line-height: 2.4em;
 }
 
 p {
@@ -55,7 +57,7 @@ p {
 }
 
 .video-frame-1 {
-	width: 400px;
+	width: 40rem;
 	position: relative;
 	flex: 1 auto;
 }
@@ -65,10 +67,10 @@ p {
 /* Graph 4 */
 
 #chart-1 {
-  height: 400px;
+  height: 30rem;
   margin: 0 auto;
   position: relative;
-  width: 400px;
+  width: 30rem;
   flex: 1 auto;
 }
 
@@ -104,10 +106,9 @@ rect.disabled {                              /* NEW */
 
 
 #chart-2 {
-  height: 10rem;
-  width: 10rem;
+  width: 35rem;
   margin: 0 auto;
-  flex: 1 auto;
+  flex: 2 auto;
 }
 
 #chart-2 svg {
@@ -133,18 +134,52 @@ rect.disabled {                              /* NEW */
 .legend {
      font-size: 10px;
     }
-    rect {
-      stroke-width: 1;
-  }
 
+.legend rect {stroke-width: 1;}
 
 rect {
   cursor: pointer;                           /* NEW */
   stroke-width: 1;
 }
+
 rect.disabled {                              /* NEW */
   fill: transparent !important;              /* NEW */
 }                                            /* NEW */
+
+/* Graph 5 */
+
+#chart-3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+}
+
+.axis text {
+  font: 2em; sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+  fill-opacity: .9;
+}
+
+.x.axis path {
+  display: none;
+}
+
+label {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+
 
 /*------------------- FLEX LAYOUT ------------------------------------ */
 
@@ -156,6 +191,7 @@ rect.disabled {                              /* NEW */
 
 .flex-header {
 	flex: none;
+	z-index: 3;
 }
 
 .flex-header-banner {
@@ -216,15 +252,17 @@ rect.disabled {                              /* NEW */
 }
 
 .slide-1 {
-	height: 100vh;
 	display: flex;
-	flex-flow: row wrap;
+	flex-wrap: wrap;
 	align-items: center;
+	padding: 1em;
 }
 
+
+
 .slide-2 {
-	height: 100vh;
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .slide-3 {
@@ -255,6 +293,7 @@ rect.disabled {                              /* NEW */
 	color: #ECF0F1;
 	display: inline-block;
 	padding: 1em;
+
 	
 }
 
