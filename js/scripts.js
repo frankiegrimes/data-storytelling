@@ -1,5 +1,10 @@
 //Graph 4 ------------------------------------------------------------------------------------------------------------  
 
+(function(d3) {
+  'use strict';
+
+
+
 var dataset = [
   { label: 'Newspapers', count: 60 }, 
   { label: 'TV', count: 20 },
@@ -33,7 +38,7 @@ var pie = d3.layout.pie()
   .value(function(d) { return d.count; })
   .sort(null);
 
-var tooltip = d3.select('#area4')            // NEW 
+var tooltip = d3.select('#chart-1')            // NEW 
   .append('div')                             // NEW
   .attr('class', 'tooltip');                 // NEW
 
@@ -132,6 +137,8 @@ legend.append('rect')
       .attr('x', legendRectSize + legendSpacing)
       .attr('y', legendRectSize - legendSpacing)
       .text(function(d) { return d; });
+
+})(window.d3)
 
 
 
@@ -285,4 +292,9 @@ d3.tsv("assets/data/data.tsv", function(error, data) {
         .delay(delay);
   }
 });
+
+
+// Graph 6
+
+
 
