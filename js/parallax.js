@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+
   
   $(window).scroll(function () {
       //if you hard code, then use console

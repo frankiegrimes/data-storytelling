@@ -199,12 +199,15 @@ label {
 	display: flex;
 	height: 100%; 
 	flex-direction: column;
+	position: relative;
 }
 
 .flex-header {
 	flex: none;
 	z-index: 3;
+	position: relative;
 }
+
 
 .flex-header-banner {
 	display: flex;
@@ -219,19 +222,18 @@ label {
 
 .flex-content {
 	flex: 1;
-	padding: 0em 10em;
+	padding: 0em 3em;
+
 }
 
 .flex-content-fixed {
 	flex: 1;
-	padding-left: 23.5rem;
+	padding-left: 25rem;
 }
 
 .flex-aside {
-	flex: 0 0 12em;
+	flex: 0 0 15em;
 	order: 2;
-	padding: 1em;
-	border-radius: 3px;
 	background: rgba(147, 128, 108, 0.1);
 }
 
@@ -253,7 +255,7 @@ label {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	height: 100%;
+	height: 100vh;
 }
 
 .text {
@@ -302,27 +304,8 @@ label {
 	position: absolute;
 	left: 70%;
 	padding-top: 2em;
-
 }
 
-.nav-bar li {
-	font-family: Didot;
-	font-size: 1.3em;
-	color: #ECF0F1;
-	display: inline-block;
-	padding: 1em;
-
-	
-}
-
-.nav-bar a {
-	text-decoration: none;
-	color: #ECF0F1;
-}
-
-.nav-bar a:hover {
-	color: #4D4D4D;
-}
 
 .nav-bar ul {
 	list-style: none;
@@ -333,13 +316,44 @@ label {
 
 .header-titles {
 	flex-grow: 1; 
-	background: black;
-	padding-left: 1em;
+	padding-left: 2em;
+}
 
+.header-titles h1 {
+	color: black;
+}
+
+.header-titles h1:hover {
+  color: #black;
+  animation: shake .5s ease-in-out;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-10px);
+  }
+
+  40% {
+    transform: translateX(10px);
+  }
+
+  60% {
+    transform: translateX(-10px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .header-nav {
-	background: black;
 }
 
 .header-nav ul {
@@ -354,35 +368,87 @@ label {
 
 .header-nav li a {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 
-.header-nav li a:hover { color: whitesmoke;}
+.header-nav ul li {
+  position: relative;
+  color: #E55D87;
+        
+}
+
+
+.header-nav ul li a:after {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 10px;
+  background-color: #5FC3E4;
+  content: "";
+  transition: width 0.2s;
+}
+.header-nav ul li a:hover {
+  color: #5FC3E4;
+}
+.header-nav ul li a:hover:after {
+  width: 100%;
+}
+
 
 /* ------ SIDEBAR NAVIGATION ------------------- */
 
 #flex-nav {
 	background: white;
 	order: -1;
-	border-radius: 3px;
+
+}
+
+#flex-nav-list {
+	border: 1.5rem solid transparent;
+	  -moz-border-image: -moz-linear-gradient(top left, #E55D87 0%, #5FC3E4 100%);
+	  -webkit-border-image: -webkit-linear-gradient(top left, #E55D87 0%, #5FC3E4 100%);
+	  border-image: linear-gradient(to bottom right, #E55D87 0%, #5FC3E4 100%);
+	border-image-slice: 1;
+	order: -1;
+	z-index: 0;
+	height: 100vh;
 }
 
 
+.flex-nav-fixed {
+  top: 0;
+  left: 0;
+  position: fixed;
+
+}
+
+.flex-nav-fixed ul {
+  text-align: center;
+}
+
+
+
 #flex-nav ul {
-	list-style: none;
-	padding: 0;
 	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 1.2em;
+	font-family: Didot;
+	text-align: center;
 
 }
 
 #flex-nav li {
-	padding: 2em;
+	padding: 3em;
+	margin: 0;
 	text-decoration: none;
 
 }
 
 #flex-nav li:hover {
-	background: grey;
+	background: #5FC3E4;
 
 }
 
@@ -392,14 +458,10 @@ label {
 }
 
 #flex-nav li a:hover { 
-	color: grey;
+	color: #steelblue;
 }
 
-.flex-nav-fixed {
-   top: 0;
-  position: fixed;
-  height: 100%;
-}
+
 
 .flex-aside { 
 	background: white;
@@ -419,6 +481,7 @@ label {
 
 .reveal-wrapper {
 	z-index: 1;
+	padding-bottom: -4em;
 }
 
 /* ------------------- Buttons ------------------- */
@@ -464,7 +527,7 @@ label {
 	background: black;
 	z-index: -2;
 	position: relative;
-	padding: 3em;
+	padding: 4em;
 }
 
 .flex-footer ul {
@@ -476,11 +539,13 @@ label {
 .footer-credits {
 	color: white;
 	float: right;
-	left: 80vw;
+	width: 30vw;
 	position: fixed;
+	right: 0;
 	bottom: 0;
 	z-index: -1;
 	padding: 1em;
+	text-align: center;
 }
 
 .footer-social ul {
@@ -502,14 +567,14 @@ label {
 
     @media only screen and (max-width : 1200px) {
 
-    	html { font-size: 14px; }
+    	html { font-size: 13px; }
     	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
     	.nav-bar li { display: block; }
     }
 
     /* Medium Devices, Desktops */
     @media only screen and (max-width : 992px) {
-    	html { font-size: 13px; }
+    	html { font-size: 12px; }
     	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
     	.nav-bar li { display: block; }
     	.header-nav li {font-size: 0.7em;}
@@ -517,8 +582,9 @@ label {
 
     /* Small Devices, Tablets */
     @media only screen and (max-width : 768px) {
-    	html { font-size: 12px; }
-
+    	html { font-size: 11px; }
+    	.flex-header {display: none;}
+    	#hamburger {visibility: visible;}
     	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
     	.nav-bar li { display: block; }
     	.header-titles {display: none;}
@@ -526,23 +592,24 @@ label {
     	.header-nav {margin: auto; text-align: center; width: 100%;}
     	.header-nav li {margin: auto; text-align: center; display: block;}
     	#flex-nav {margin: auto; text-align: center; width: 100%; order: -1;}
-    	.flex-nav-fixed {position: relative; margin: auto; text-align: center; width: 100%; order: -1;}
-    	.flex-content {padding: 4em; flex: 1; margin: 0;}
-    	.flex-wrapper { display: flex; height: 100%; flex-direction: column; }
-		.flex-body { flex-direction: column; flex: 1; }
+    	.flex-nav-fixed {position: relative; padding: 0; text-align: center; width: 100%; order: -1;}
+    	.flex-content {padding: 4em; flex: 1; margin: 0 auto; text-align: center; justify-content: center;}
+    	.flex-wrapper { display: flex; height: 100%; flex-direction: column;}
+		.flex-body { flex-direction: column; flex: 1;}
+		#flex-nav-list {height: auto;}
 
     }
 
     /* Extra Small Devices, Phones */ 
     @media only screen and (max-width : 480px) {
-    	html { font-size: 11px; }
+    	html { font-size: 10px; }
     	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
     	.nav-bar li { display: block; }
     }
 
     /* Custom, iPhone Retina */ 
     @media only screen and (max-width : 320px) {
-    	html { font-size: 10px; }
+    	html { font-size: 9px; }
     	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
     	.nav-bar li { display: block; }
     }
