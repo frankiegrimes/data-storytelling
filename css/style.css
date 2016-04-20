@@ -228,7 +228,7 @@ label {
 
 .flex-content-fixed {
 	flex: 1;
-	padding-left: 25rem;
+	padding-left: 22rem;
 }
 
 .flex-aside {
@@ -316,7 +316,7 @@ label {
 
 .header-titles {
 	flex-grow: 1; 
-	padding-left: 2em;
+	padding-left: 1.5em;
 }
 
 .header-titles h1 {
@@ -406,11 +406,7 @@ label {
 }
 
 #flex-nav-list {
-	border: 1.5rem solid transparent;
-	  -moz-border-image: -moz-linear-gradient(top left, #E55D87 0%, #5FC3E4 100%);
-	  -webkit-border-image: -webkit-linear-gradient(top left, #E55D87 0%, #5FC3E4 100%);
-	  border-image: linear-gradient(to bottom right, #E55D87 0%, #5FC3E4 100%);
-	border-image-slice: 1;
+	
 	order: -1;
 	z-index: 0;
 	height: 100vh;
@@ -421,11 +417,13 @@ label {
   top: 0;
   left: 0;
   position: fixed;
+  z-index: 2;
 
 }
 
 .flex-nav-fixed ul {
   text-align: center;
+
 }
 
 
@@ -479,9 +477,13 @@ label {
 	background: white;
 }
 
-.reveal-wrapper {
-	z-index: 1;
+.reveal-wrapper {	
 	padding-bottom: -4em;
+	border: 1.5rem solid transparent;
+	  -moz-border-image: -moz-linear-gradient(top left, #E55D87 0%, #5FC3E4 100%);
+	  -webkit-border-image: -webkit-linear-gradient(top left, #E55D87 0%, #5FC3E4 100%);
+	  border-image: linear-gradient(to bottom right, #E55D87 0%, #5FC3E4 100%);
+	border-image-slice: 1;
 }
 
 /* ------------------- Buttons ------------------- */
