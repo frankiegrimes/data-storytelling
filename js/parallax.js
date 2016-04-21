@@ -2,15 +2,19 @@ $(document).ready(function() {
 
   $('.flex-footer').addClass('hidden');
   
+  
   $(window).scroll(function () {
+
+    var wScroll = $(window).scrollTop;
+    window.console.log(wScroll);
       //stick nav-bar
-    if ($(window).scrollTop() > 74) {
+    if ($(window).scrollTop() > 95) {
       $('#flex-nav-list').addClass('flex-nav-fixed');
       $('.flex-content').addClass('flex-content-fixed');
       $('.flex-footer').removeClass('hidden');
       
     }
-    if ($(window).scrollTop() < 75) {
+    if ($(window).scrollTop() < 96) {
       $('#flex-nav-list').removeClass('flex-nav-fixed');
       $('.flex-content').removeClass('flex-content-fixed');
       
