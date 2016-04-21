@@ -1,199 +1,16 @@
 
 
 /* ------------------- Html & Body ------------------- */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
 
-html { font-size: 16px; }
+html { font-size: 16px;}
 
 body { height: 100% }
 
-/* ------------------- Fonts ------------------- */
-
-@font-face {
-  font-family: Didot;
-  src: url('assets/fonts/Didot.ttc');
-  src: local('assets/fonts/Didot.ttc'), url('../assets/fonts/Didot.ttc') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-h1 {
-	font-family: Didot;
-	font-size: 5em;
-	color: #ECF0F1;
-	letter-spacing: 0.7em;
-}	
-
-h2 {
-	font-family: Didot;
-	font-size: 3em;
-	color: #ECF0F1;
-	letter-spacing: 0.7em;
-}
-
-h3 {
-	font-family: Didot;
-	font-size: 2.4em;
-	color: #ECF0F1;
-	color: black;
-	margin: 0 auto;
-	line-height: 2.4em;
-}
-
-h4 {
-	font-family: Didot;
-	text-align: center;
-	font-size: 1.3em;
-	color: black;
-	transform: translate(-25%);
-}
-
-p {
-	font-family: Didot;
-	font-size: 1.1em;
-	color: #ECF0F1;
-}
-
-/* ------------------- Video ------------------- */
-
-.landing {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	min-width: 100%;
-	min-height: 100%;
-}
-
-.video-frame-1 {
-	width: 40rem;
-	position: relative;
-	flex: 1 auto;
-}
-
-/* -------------- Charts -------------------- */
-
-/* Graph 4 */
-
-#chart-1 {
-  height: 30rem;
-  margin: 0 auto;
-  position: relative;
-  width: 30rem;
-  flex: 1 auto;
-}
-
-.tooltip {
-  background: #eee;
-  box-shadow: 0 0 5px #999999;
-  color: #333;
-  display: none;
-  font-size: 12px;
-  left: 130px;
-  padding: 10px;
-  position: absolute;
-  text-align: center;
-  top: 95px;
-  width: 80px;
-  z-index: 10;
-}
-
-.legend {
-     font-size: 12px;
-}
-    
-rect {
-  cursor: pointer;                           /* NEW */
-  stroke-width: 2;
-}
-
-rect.disabled {                              /* NEW */
-  fill: transparent !important;              /* NEW */
-}    
-
-/* ------------------ Chart 2 ----------------------------- */
-
-
-#chart-2 {
-  width: 35rem;
-  margin: 0 auto;
-  flex: 2 auto;
-}
-
-#chart-2 svg {
-	width: 100%;
-	height: 100%;
-}
-
-.axis {
-  font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {
-  display: none;
-}
-
-.legend {
-     font-size: 10px;
-    }
-
-.legend rect {stroke-width: 1;}
-
-rect {
-  cursor: pointer;                           /* NEW */
-  stroke-width: 1;
-}
-
-rect.disabled {                              /* NEW */
-  fill: transparent !important;              /* NEW */
-}                                            /* NEW */
-
-/* Graph 5 */
-
-#chart-3 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  position: relative;
-}
-
-.axis text {
-  font: 2em; sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.bar {
-  fill: steelblue;
-  fill-opacity: .9;
-}
-
-.x.axis path {
-  display: none;
-}
-
-label {
-  position: absolute;
-  top: 1em;
-  right: 1em;
-}
-
-.chord path {
-  fill-opacity: .67;
-  stroke: #000;
-  stroke-width: .5px;
-}
+a {text-decoration: none; color: black;}
 
 /*------------------- FLEX LAYOUT ------------------------------------ */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
 
 .flex-wrapper {
 	display: flex;
@@ -201,6 +18,20 @@ label {
 	flex-direction: column;
 	position: relative;
 }
+
+.wrapper-home {
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+	height: 100vh;
+	z-index: 2;
+	overflow: hidden;
+}
+
+.flex-body {
+	flex: 1 0 auto;
+	flex-direction: row;
+}	
 
 .flex-header {
 	flex: none;
@@ -213,22 +44,16 @@ label {
 	display: flex;
 }
 
-.flex-body {
-	display: flex;
-	flex: 1 0 auto;
-	flex-direction: row;
-		background: black;
-}	
-
 .flex-content {
-	flex: 1;
+	display: flex;
+	flex-direction: column;
 	padding: 0em 3em;
 
 }
 
 .flex-content-fixed {
 	flex: 1;
-	padding-left: 22rem;
+	padding-left: 22em;
 }
 
 .flex-aside {
@@ -238,38 +63,36 @@ label {
 }
 
 /* Divs */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
 
-#wrapper-home {
-	width: 100%;
-	margin: 0 auto;
-	position: relative;
-	height: 100vh;
-	margin-bottom: 11vh;
-	z-index: 2;
-}
+
 
 .text-box {
+	margin: auto;
 	position: absolute;
 	background: rgba(0, 0, 0, 0.4);
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	height: 100vh;
+	height: 100%;
 }
 
 .text {
+	width: 50%;
+	  margin: auto;
+	  position: absolute;
+	  top: 60%; left: 50%;
+	  -webkit-transform: translate(-50%,-50%);
+	      -ms-transform: translate(-50%,-50%);
+	          transform: translate(-50%,-50%);
 	font-family: Didot;
-	z-index: 2;
-	position: relative;
 	color: #ECF0F1;
-	top: 60vh;
-	width: 40vw;
-	left: 50%;
-	transform: translate(-50%);
+	z-index: 2;
 	text-align: center;
-
 }
+
+
 
 .slide-1 {
 	display: flex;
@@ -277,8 +100,6 @@ label {
 	align-items: center;
 	padding: 1em;
 }
-
-
 
 .slide-2 {
 	display: flex;
@@ -297,7 +118,51 @@ label {
 	height: 100vh;
 }
 
+/* ------------------- Footer ------------------- */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
+
+.flex-footer {
+	flex: none;
+	background: #303333;
+	z-index: -2;
+	position: relative;
+	padding: 4em;
+}
+
+.flex-footer ul {
+	position: fixed;
+	bottom: 0;
+}
+
+.footer-credits {
+	color: #B3B3B3;
+	width: 100%;
+	right: 5em;
+	position: fixed;
+	bottom: 0;
+	z-index: -5;
+	padding: 2em;
+	text-align: right;
+
+}
+
+.footer-social ul {
+	padding: 1em;
+	left: 4em;
+	list-style: none;
+
+}
+
+.footer-social a {
+	color: #B3B3B3;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
 /* ---------- HEADER NAVIGATION ------------------- */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
 
 .nav-bar {
 	z-index: 3;
@@ -305,7 +170,6 @@ label {
 	left: 70%;
 	padding-top: 2em;
 }
-
 
 .nav-bar ul {
 	list-style: none;
@@ -353,22 +217,49 @@ label {
   }
 }
 
-.header-nav {
+.header-titles h5 {
+	color: white;
+	font-family: Didot;
+	font-size: 2em;
+	padding-left: 1em;
+	color: #ECF0F1;
+	letter-spacing: 0.7em;
 }
 
-.header-nav ul {
-	margin: 0;
-	padding: 0;
+.header-titles h5:hover {
+  color: #black;
+  animation: shake .5s ease-in-out;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-10px);
+  }
+
+  40% {
+    transform: translateX(10px);
+  }
+
+  60% {
+    transform: translateX(-10px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .header-nav li {
 	display: inline-block;
+	list-style: none;
 	padding: 2em;
-}
-
-.header-nav li a {
-	text-decoration: none;
-	color: black;
 }
 
 .header-nav ul li {
@@ -376,7 +267,6 @@ label {
   color: #E55D87;
         
 }
-
 
 .header-nav ul li a:after {
   display: block;
@@ -396,37 +286,68 @@ label {
   width: 100%;
 }
 
+.header-nav-white li {
+	display: inline-block;
+	list-style: none;
+	padding: 3em;
+}
+
+.header-nav-white ul li {
+  position: relative;
+
+        
+}
+
+.header-nav-white ul a {
+  color: white;
+
+        
+}
+
+.header-nav-white ul li a:after {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 10px;
+  background-color: #5FC3E4;
+  content: "";
+  transition: width 0.2s;
+}
+.header-nav-white ul li a:hover {
+  color: #5FC3E4;
+}
+.header-nav-white ul li a:hover:after {
+  width: 100%;
+}
+
+
+
 
 /* ------ SIDEBAR NAVIGATION ------------------- */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
 
 #flex-nav {
 	background: white;
-	order: -1;
-
+	float: left;
+	z-index: 2;
 }
-
-#flex-nav-list {
-	
-	order: -1;
-	z-index: 0;
-	height: 100vh;
-}
-
 
 .flex-nav-fixed {
   top: 0;
   left: 0;
   position: fixed;
+  padding-left: 1.4em;
   z-index: 2;
 
 }
 
 .flex-nav-fixed ul {
   text-align: center;
+  z-index: 2;
 
 }
-
-
 
 #flex-nav ul {
 	margin: 0;
@@ -435,6 +356,7 @@ label {
 	font-size: 1.2em;
 	font-family: Didot;
 	text-align: center;
+	display: inline-block;
 
 }
 
@@ -450,16 +372,9 @@ label {
 
 }
 
-#flex-nav li a {
-	text-decoration: none;
-	color: black;
-}
-
 #flex-nav li a:hover { 
 	color: #steelblue;
 }
-
-
 
 .flex-aside { 
 	background: white;
@@ -484,18 +399,100 @@ label {
 	  -webkit-border-image: -webkit-linear-gradient(top left, #E55D87 0%, #5FC3E4 100%);
 	  border-image: linear-gradient(to bottom right, #E55D87 0%, #5FC3E4 100%);
 	border-image-slice: 1;
+	z-index: 50;
+}
+
+/* ------------------- Fonts ------------------- */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: Didot;
+  src: url('assets/fonts/Didot.ttc');
+  src: local('assets/fonts/Didot.ttc'), url('../assets/fonts/Didot.ttc') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1 {
+	font-family: Didot;
+	font-size: 5em;
+	color: #ECF0F1;
+	letter-spacing: 0.7em;
+}	
+
+h2 {
+	font-family: Didot;
+	font-size: 3em;
+	color: #ECF0F1;
+	letter-spacing: 0.7em;
+}
+
+h3 {
+	font-family: Didot;
+	font-size: 2.4em;
+	color: #ECF0F1;
+	color: black;
+	margin: 0 auto;
+	line-height: 2.4em;
+}
+
+h4 {
+	font-family: Didot;
+	text-align: center;
+	font-size: 1.3em;
+	color: black;
+	transform: translate(-25%);
+}
+
+h5 {
+	font-family: Didot;
+	font-size: 5em;
+	color: #ECF0F1;
+	letter-spacing: 0.7em;
+}
+
+p {
+	font-family: Didot;
+	font-size: 1.1em;
+	color: #ECF0F1;
+}
+
+/* ------------------- Video ------------------- */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
+
+.landing {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.video-frame-1 {
+	width: 40rem;
+	position: relative;
+	flex: 1 auto;
 }
 
 /* ------------------- Buttons ------------------- */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
 
 .btn {
-	position: relative;
+	width: 50%;
+	  margin: auto;
+	  position: absolute;
+	  top: 80%; left: 50%;
+	  -webkit-transform: translate(-50%,-50%);
+	      -ms-transform: translate(-50%,-50%);
+	          transform: translate(-50%,-50%);
+	font-family: Didot;
+	color: #ECF0F1;
+	z-index: 2;
 	text-align: center;
-	top: 70vh;
 }
 
 .btn a {
-	text-decoration: none;
 	color: #ECF0F1;
 	border: solid white;
 	padding: 1em;
@@ -505,63 +502,139 @@ label {
 
 .btn a:hover { background: rgba(0, 0, 0, 0.5); }
 
-/* ------------------- Footer ------------------- */
 
-.revealed-footer {
-	margin: 0;
-	padding: 0.5em;
-	background: rgba(0, 0, 0, 1);
-	position: fixed;
-	bottom: 0;
+
+/* -------------- d3 Chart Styles -------------------- */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Graph 4 */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
+
+#chart-1 {
+  height: 30rem;
+  margin: 0 auto;
+  position: relative;
+  width: 30rem;
+  flex: 1 auto;
+}
+
+.tooltip {
+  background: #eee;
+  box-shadow: 0 0 5px #999999;
+  color: #333;
+  display: none;
+  font-size: 12px;
+  left: 130px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  top: 95px;
+  width: 80px;
+  z-index: 10;
+}
+
+.legend {
+     font-size: 12px;
+}
+    
+rect {
+  cursor: pointer;                           /* NEW */
+  stroke-width: 2;
+}
+
+rect.disabled {                              /* NEW */
+  fill: transparent !important;              /* NEW */
+}    
+
+/* ------------------ Chart 2 ----------------------------- */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
+
+
+#chart-2 {
+  width: 35rem;
+  margin: 0 auto;
+  flex: 2 auto;
+}
+
+#chart-2 svg {
 	width: 100%;
-	z-index: 1;
+	height: 100%;
 }
 
-.revealed-footer ul li a {
-	text-decoration: none;
-	color: #ECF0F1;
-	margin: 0 auto;
-
+.axis {
+  font: 10px sans-serif;
 }
 
-.flex-footer {
-	flex: none;
-	background: black;
-	z-index: -2;
-	position: relative;
-	padding: 4em;
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
 }
 
-.flex-footer ul {
-	position: fixed;
-	bottom: 0;
-	z-index: -1;
+.x.axis path {
+  display: none;
 }
 
-.footer-credits {
-	color: white;
-	float: right;
-	width: 30vw;
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	z-index: -1;
-	padding: 1em;
-	text-align: center;
+.legend {
+     font-size: 10px;
+    }
+
+.legend rect {stroke-width: 1;}
+
+rect {
+  cursor: pointer;                           /* NEW */
+  stroke-width: 1;
 }
 
-.footer-social ul {
-	padding: 1em
+rect.disabled {                              /* NEW */
+  fill: transparent !important;              /* NEW */
+}                                            /* NEW */
+
+/* Graph 5 */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
+
+#chart-3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
 }
 
-.footer-social a {
-	text-decoration: none;
-	color: white;
+.axis text {
+  font: 2em; sans-serif;
 }
 
-/* ------------------- Media Queries ------------------- */
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
 
-/* Large Devices, Wide Screens */
+.bar {
+  fill: steelblue;
+  fill-opacity: .9;
+}
+
+.x.axis path {
+  display: none;
+}
+
+label {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.chord path {
+  fill-opacity: .67;
+  stroke: #000;
+  stroke-width: .5px;
+}
+
+/* ------------------- Media Queries ----------------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Large Devices, Laptops, Wide Screens */
     @media only screen and (max-width : 1400px) {
 
     	html { font-size: 14px; }
@@ -570,23 +643,12 @@ label {
     @media only screen and (max-width : 1200px) {
 
     	html { font-size: 13px; }
-    	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
-    	.nav-bar li { display: block; }
     }
 
-    /* Medium Devices, Desktops */
+    /* Medium Devices */
     @media only screen and (max-width : 992px) {
     	html { font-size: 12px; }
-    	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
-    	.nav-bar li { display: block; }
-    	.header-nav li {font-size: 0.7em;}
-    }
-
-    /* Small Devices, Tablets */
-    @media only screen and (max-width : 768px) {
-    	html { font-size: 11px; }
     	.flex-header {display: none;}
-    	#hamburger {visibility: visible;}
     	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
     	.nav-bar li { display: block; }
     	.header-titles {display: none;}
@@ -594,10 +656,28 @@ label {
     	.header-nav {margin: auto; text-align: center; width: 100%;}
     	.header-nav li {margin: auto; text-align: center; display: block;}
     	#flex-nav {margin: auto; text-align: center; width: 100%; order: -1;}
-    	.flex-nav-fixed {position: relative; padding: 0; text-align: center; width: 100%; order: -1;}
+    	.flex-nav-fixed {margin: auto; text-align: center; width: 100%; order: -1;}
+    	.flex-nav-fixed li {visibility: hidden;}
     	.flex-content {padding: 4em; flex: 1; margin: 0 auto; text-align: center; justify-content: center;}
     	.flex-wrapper { display: flex; height: 100%; flex-direction: column;}
 		.flex-body { flex-direction: column; flex: 1;}
+		#flex-nav-list {height: auto;}
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+    	html { font-size: 11px; }
+    	.flex-header {display: none;}
+    	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
+    	.nav-bar li { display: block; }
+    	.header-titles {display: none;}
+    	.header-banner {background: black;}
+    	.header-nav {margin: auto; text-align: center; width: 100%;}
+    	.header-nav li {margin: auto; text-align: center; display: block;}
+    	#flex-nav {margin: auto; text-align: center; width: 100%; order: -1;}
+    	.flex-nav-fixed {margin: auto; text-align: center; width: 100%; order: -1;}
+    	.flex-nav-fixed li {visibility: hidden;}
+  
 		#flex-nav-list {height: auto;}
 
     }
@@ -605,19 +685,21 @@ label {
     /* Extra Small Devices, Phones */ 
     @media only screen and (max-width : 480px) {
     	html { font-size: 10px; }
-    	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
+    	.nav-bar { margin: auto; left: 50%; right: 50%; transform: translate(-50%); }
     	.nav-bar li { display: block; }
+    	.text h2 {letter-spacing: 0.5em; font-size: 3em;}
     }
 
     /* Custom, iPhone Retina */ 
     @media only screen and (max-width : 320px) {
-    	html { font-size: 9px; }
     	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
     	.nav-bar li { display: block; }
+    	.text h2 {letter-spacing: 0.5em; font-size: 2em;}
+    	.btn {width: 100%}
     }
 
     
 
-
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
