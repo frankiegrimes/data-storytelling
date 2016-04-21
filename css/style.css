@@ -25,7 +25,6 @@ a {text-decoration: none; color: black;}
 	position: relative;
 	height: 100vh;
 	z-index: 2;
-	overflow: hidden;
 }
 
 .flex-body {
