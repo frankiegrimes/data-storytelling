@@ -3,7 +3,7 @@
 /* ------------------- Html & Body ------------------- */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
 
-html { font-size: 16px;}
+html { font-size: 16px; height: 100%}
 
 body { height: 100% }
 
@@ -60,6 +60,7 @@ a {text-decoration: none; color: black;}
 	display: flex;
 	flex-direction: column;
 	padding: 0em 3em;
+	margin-top: 5em; 
 
 }
 
@@ -411,10 +412,11 @@ a {text-decoration: none; color: black;}
 	  border-image: linear-gradient(to bottom right, #E55D87 0%, #5FC3E4 100%);
 	border-image-slice: 1;
 	z-index: 50;
+	margin-top: 13.5em;
 }
 
 .active {
-  border-bottom: 2px solid #ecf0f1;
+   	color: grey;
 }
 
 /* ------------------- Fonts ------------------- */
@@ -694,7 +696,7 @@ label {
     	.flex-content {padding: 4em; flex: 1; margin: 0 auto; text-align: center; justify-content: center;}
     	.flex-wrapper { display: flex; height: 100%; flex-direction: column;}
 		.flex-body { flex-direction: column; flex: 1;}
-		#flex-nav-list {height: auto;}
+		.flex-nav-list {height: auto;}
     }
 
     /* Small Devices, Tablets */
@@ -711,7 +713,7 @@ label {
     	.flex-nav-fixed {margin: auto; text-align: center; width: 100%; order: -1;}
     	.flex-nav-fixed li {visibility: hidden;}
   
-		#flex-nav-list {height: auto;}
+		.flex-nav-list {height: auto;}
 
     }
 
