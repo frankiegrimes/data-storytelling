@@ -106,25 +106,24 @@ a {text-decoration: none; color: black;}
 
 
 
-.slide-1 {
+#slide-1 {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
 	padding: 1em;
 }
 
-.slide-2 {
+#slide-2 {
 	display: flex;
 	flex-wrap: wrap;
 }
 
-.slide-3 {
+#slide-3 {
 	height: 100%;
 	background: white;
 	height: 100vh;
 }
 
-.slide-4 {
+#slide-4 {
 	height: 100%;
 	background: white;
 	height: 100vh;
@@ -414,6 +413,10 @@ a {text-decoration: none; color: black;}
 	z-index: 50;
 }
 
+.active {
+  border-bottom: 2px solid #ecf0f1;
+}
+
 /* ------------------- Fonts ------------------- */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -449,11 +452,11 @@ h3 {
 }
 
 h4 {
-	font-family: Didot;
-	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	text-align: left;
 	font-size: 1.3em;
 	color: black;
-	transform: translate(-25%);
 }
 
 h5 {
@@ -464,7 +467,8 @@ h5 {
 }
 
 p {
-	font-family: Didot;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	font-size: 1.1em;
 	color: #ECF0F1;
 }
@@ -523,11 +527,15 @@ p {
 /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 #chart-1 {
-  height: 30rem;
   margin: 0 auto;
   position: relative;
-  width: 30rem;
   flex: 1 auto;
+
+}
+
+#chart-1 svg {
+  height: 100%;
+  width: 100%;
 }
 
 .tooltip {
@@ -546,7 +554,7 @@ p {
 }
 
 .legend {
-     font-size: 12px;
+     font-size: 1em;
 }
     
 rect {
@@ -563,7 +571,6 @@ rect.disabled {                              /* NEW */
 
 
 #chart-2 {
-  width: 35rem;
   margin: 0 auto;
   flex: 2 auto;
 }
@@ -611,6 +618,11 @@ rect.disabled {                              /* NEW */
   position: relative;
 }
 
+#chart-3 svg{
+  width: 100%;
+  height: 100%;
+}
+
 .axis text {
   font: 2em; sans-serif;
 }
@@ -623,7 +635,7 @@ rect.disabled {                              /* NEW */
 }
 
 .bar {
-  fill: steelblue;
+  fill: #3FA9F5;
   fill-opacity: .9;
 }
 
@@ -641,6 +653,15 @@ label {
   fill-opacity: .67;
   stroke: #000;
   stroke-width: .5px;
+}
+
+#chart-5 {
+	position: relative;
+}
+
+#chart-5 svg {
+	width: 100%;
+	height: 100%;
 }
 
 /* ------------------- Media Queries ----------------------------------------------------------------------------------------------- */

@@ -4,9 +4,6 @@ $(document).ready(function() {
   
   
   $(window).scroll(function () {
-
-    var wScroll = $(window).scrollTop;
-    window.console.log(wScroll);
       //stick nav-bar
     if ($(window).scrollTop() > 95) {
       $('#flex-nav-list').addClass('flex-nav-fixed');
@@ -33,4 +30,7 @@ $(document).ready(function() {
     
     
   });
+
 });
+
+

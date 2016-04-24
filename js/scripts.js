@@ -11,13 +11,13 @@ var dataset = [
   { label: 'Film', count: 1 }
 ];
 
-var width = 360;
-var height = 360;
+var width = ((parseInt(d3.select('#chart-1').style('width'))*1.5) );
+var height = width;
 
 var radius = Math.min(width, height) / 2; 
-var donutWidth = 75;
-var legendRectSize = 18;
-var legendSpacing = 4;
+var donutWidth = width / 5;
+var legendRectSize = width / 20;
+var legendSpacing = width / 100;
 
 var color = d3.scale.category20b();
 
@@ -146,9 +146,9 @@ legend.append('rect')
 function chart2() {
 
 //Width and Height
-var w = 500;
-var h = 100;
-var barPadding = 1;
+var w = ((parseInt(d3.select('#chart-2').style('width'))*1.2) );
+var h = w / 4;
+var barPadding = w / 100;
 
 var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
               11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
@@ -182,7 +182,7 @@ graph2.selectAll("rect")
             return d * 4;
          })
          .attr("fill", function(d) {
-          return "rgb(0, 0, " + (d * 10) + ")";
+          return "rgb(63, 169, " + (d * 10) + ")";
          });
 
       graph2.selectAll("text")
@@ -203,6 +203,8 @@ graph2.selectAll("rect")
          .attr("font-size", "11px")
          .attr("fill", "white");
 
+
+
 }
 
 chart2();
@@ -212,8 +214,8 @@ chart2();
 function graph3() {
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = ((parseInt(d3.select('#chart-3').style('width'))*2.5)  - margin.left - margin.right );
+    height = (width / 1.5) - margin.top - margin.bottom;
 
 var formatPercent = d3.format(".0%");
 
@@ -323,8 +325,8 @@ var chord = d3.layout.chord()
     .sortSubgroups(d3.descending)
     .matrix(matrix);
 
-var width = 960,
-    height = 500,
+var width = ((parseInt(d3.select('#chart-5').style('width'))) );
+var  height = width / 2,
     innerRadius = Math.min(width, height) * .41,
     outerRadius = innerRadius * 1.1;
 
@@ -409,9 +411,9 @@ graph5();
 // Graph 5 - Grouped Bar Chart with filter ----------------------------------
 
 function graph4() {
-  var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+  var margin = {top: 20, right: 20, bottom: 30, left: 40};
+var width = (parseInt(d3.select('#chart-4').style('width')) / 1.5);
+   var height = (width / 3) - margin.top - margin.bottom;
 
 var x0 = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
