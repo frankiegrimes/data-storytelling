@@ -6,14 +6,16 @@ $(document).ready(function() {
   
   
   $(window).scroll(function () {
+
+    var viewportHeight = $(window).height();
       //stick nav-bar
-    if ($(window).scrollTop() > 95) {
+    if ($(window).scrollTop() > viewportHeight) {
       $('.flex-nav-list').addClass('flex-nav-fixed');
       $('.flex-content').addClass('flex-content-fixed');
       $('.flex-footer').removeClass('hidden');
       
     }
-    if ($(window).scrollTop() < 96) {
+    if ($(window).scrollTop() < (viewportHeight + (viewportHeight/10))) {
       $('.flex-nav-list').removeClass('flex-nav-fixed');
       $('.flex-content').removeClass('flex-content-fixed');
       
