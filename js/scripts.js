@@ -146,12 +146,11 @@ legend.append('rect')
 function chart2() {
 
 //Width and Height
-var w = ((parseInt(d3.select('#chart-2').style('width'))*1.2) );
-var h = w / 4;
-var barPadding = w / 100;
+var w = ((parseInt(d3.select('#chart-2').style('width'))*1) );
+var h = w / 2;
+var barPadding = w / 50;
 
-var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
-              11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+var dataset = [ 70, 30];
 
 
 //Create empty SVG element and add to DOM
@@ -192,7 +191,7 @@ graph2.selectAll("rect")
          .text(function(d) {
             return d;
          })
-         .attr("text-anchor", "middle")
+         .attr("text-anchor", "bottom")
          .attr("x", function(d, i) {
             return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
          })

@@ -7,15 +7,15 @@ $(document).ready(function() {
   
   $(window).scroll(function () {
 
-    var viewportHeight = $(window).height();
+    var targetOffset3 = $("#slide-1").offset().top;
       //stick nav-bar
-    if ($(window).scrollTop() > viewportHeight) {
+    if ($(window).scrollTop() > targetOffset3) {
       $('.flex-nav-list').addClass('flex-nav-fixed');
       $('.flex-content').addClass('flex-content-fixed');
       $('.flex-footer').removeClass('hidden');
       
     }
-    if ($(window).scrollTop() < (viewportHeight + (viewportHeight/10))) {
+    if ($(window).scrollTop() < (targetOffset3)) {
       $('.flex-nav-list').removeClass('flex-nav-fixed');
       $('.flex-content').removeClass('flex-content-fixed');
       
@@ -31,6 +31,30 @@ $(document).ready(function() {
       $('.flex-nav-list').removeClass('flex-nav-fixed');
       $('.flex-content').removeClass('flex-content-fixed');
     }
+
+    // Change slide background colour
+
+    var targetOffset = $("#slide-3").offset().top;
+
+    var $w = $(window).scroll(function(){
+    if ( $w.scrollTop() > targetOffset ) {   
+        $('.flex-content').css({"background":"#5FC3E4"});
+         $('#slide-3').css({"background":"#5FC3E4"});
+    } else {
+      $('.flex-content').css({"background":"white"});
+    
+    }
+});
+
+        var targetOffset2 = $("#slide-4").offset().top;
+
+    var $w2 = $(window).scroll(function(){
+    if ( $w2.scrollTop() > targetOffset2 ) {   
+        $('.flex-content').css({"background":"#E3170A"});
+         $('#slide-4').css({"background":"#E3170A"});
+    } else {
+    }
+});
     
     
   });
