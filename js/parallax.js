@@ -1,7 +1,19 @@
+var terms = [
+"a label for those whose experiences of their own gender agree with the sex they were assigned at birth", 
+"a fridge magnet Consequat magnam tempor a! Ornare malesuada aliquet perferendis incididunt? Aliquet mi autem? Litora senectus at dolorum at eos error ex.", 
+"Tellus saepe ducimus torquent omnis magna? Cillum lobortis netus eaque debitis sollicitudin? Convallis harum tincidunt. Elementum posuere? Quam! Blandit duis."];
+
+function rotateTerm() {
+  var ct = $("#rotate").data("term") || 0;
+  $("#rotate").data("term", ct === terms.length -1 ? 0 : ct + 1).text(terms[ct]).fadeIn()
+              .delay(2000).fadeOut(200, rotateTerm);
+}
 
 
 $(document).ready(function() {
 
+  
+  $(rotateTerm);
   $('.flex-footer').addClass('hidden');
   
   

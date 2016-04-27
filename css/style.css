@@ -149,6 +149,11 @@ a {text-decoration: none; color: #342E37;}
 	text-align: center;
 }
 
+.text p {
+	margin: 0 auto;
+	padding: 0
+}
+
 
 
 #slide-1 {
@@ -411,19 +416,8 @@ a {text-decoration: none; color: #342E37;}
         
 }
 
-.header-nav-white ul li a:after {
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  width: 0;
-  height: 10px;
-  background-color: #5FC3E4;
-  content: "";
-  transition: width 0.2s;
-}
 .header-nav-white ul li a:hover {
-  color: #5FC3E4;
+  color: rgba(255,255,255,0.5);
 }
 .header-nav-white ul li a:hover:after {
   width: 100%;
