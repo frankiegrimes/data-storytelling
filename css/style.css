@@ -437,7 +437,7 @@ a {text-decoration: none; color: #342E37;}
 }
 
 .flex-nav-list {
-	background-color: rgba(48,51,51,0.5);
+	background-color: rgba(48,51,51,0.3);
 	height: 100%;
 }
 
@@ -446,7 +446,7 @@ a {text-decoration: none; color: #342E37;}
   left: 0.95rem;
   position: fixed;
   z-index: 2;
-  background-color: rgba(48,51,51,0.5);
+  background-color: rgba(48,51,51,0.3);
 
 }
 

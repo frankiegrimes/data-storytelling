@@ -9,8 +9,25 @@ function rotateTerm() {
               .delay(2000).fadeOut(200, rotateTerm);
 }
 
+var video_count = 1;
+var videoPlayer = document.getElementById("myVideo");        
+
+function NextVideo(){
+
+    video_count++;
+    if (video_count === 3) video_count = 1;
+    var nextVid = "assets/video/video"+video_count+".mp4"
+    videoPlayer.src = nextVid;
+    videoPlayer.play();
+
+}
+
 
 $(document).ready(function() {
+
+    $('#MyButton').click(function(){
+       NextVideo();
+    });
 
   
   $(rotateTerm);
@@ -66,6 +83,17 @@ $(document).ready(function() {
          $('#slide-4').css({"background":"#E3170A"});
     } else {
     }
+
+    });
+
+ var cisSlide = $("#slide-8").offset().top;
+
+    var $w3 = $(window).scroll(function(){
+    if ( $w3.scrollTop() > cisSlide ) {   
+        $('.flex-content').css({"background":"#F39237"});
+    } else {
+    }
+
 });
     
     
