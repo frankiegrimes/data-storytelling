@@ -15,7 +15,7 @@ var videoPlayer = document.getElementById("myVideo");
 function NextVideo(){
 
     video_count++;
-    if (video_count === 3) video_count = 1;
+    if (video_count === 4) video_count = 1;
     var nextVid = "assets/video/video"+video_count+".mp4"
     videoPlayer.src = nextVid;
     videoPlayer.play();
@@ -25,29 +25,34 @@ function NextVideo(){
 
 $(document).ready(function() {
 
-    $('#MyButton').click(function(){
-       NextVideo();
-    });
+
+  var mobile = document.createElement('div');
+mobile.className = 'nav-mobile';
+document.querySelector('.header-nav-white').appendChild(mobile);
 
   
   $(rotateTerm);
-  $('.flex-footer').addClass('hidden');
   
   
   $(window).scroll(function () {
 
-    var targetOffset3 = $("#slide-1").offset().top;
+    $('.MyButton').click(function(){
+       NextVideo();
+    });
+
+      var targetOffset3 = $("#slide-1").offset().top;
       //stick nav-bar
-    if ($(window).scrollTop() > targetOffset3) {
+    if ($(window).scrollTop() >= targetOffset3) {
       $('.flex-nav-list').addClass('flex-nav-fixed');
       $('.flex-content').addClass('flex-content-fixed');
       $('.flex-footer').removeClass('hidden');
+        $('.toggle').removeClass('hidden');
       
     }
     if ($(window).scrollTop() < (targetOffset3)) {
       $('.flex-nav-list').removeClass('flex-nav-fixed');
       $('.flex-content').removeClass('flex-content-fixed');
-      
+      $('.toggle').addClass('hidden');
       $('.flex-footer').addClass('hidden');
     }
 
@@ -61,7 +66,7 @@ $(document).ready(function() {
       $('.flex-content').removeClass('flex-content-fixed');
     }
 
-    // Change slide background colour
+    /* Change slide background colour
 
     var targetOffset = $("#slide-3").offset().top;
 
@@ -95,7 +100,7 @@ $(document).ready(function() {
     }
 
 });
-    
+    */
     
   });
 

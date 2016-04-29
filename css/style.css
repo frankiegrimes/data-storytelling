@@ -26,24 +26,31 @@ a {text-decoration: none; color: #342E37;}
     z-index: 5;
     cursor: pointer; }
 
+
 #sidebartoggler {
-      display: none; 
     }
-      #sidebartoggler:checked + .reveal-wrapper #flex-nav {
-      	visibility: visible;
-      }
 
+    #sidebartoggler:not(:checked) + .reveal-wrapper .toggle {
 
-      #sidebartoggler:checked ~ .reveal-wrapper .flex-content {
-      			padding-left: 13.7rem;
-      }
+    	height: 2rem;
+        width: 100%;
+        background-image: url("../assets/img/close.svg");
+        background-repeat: no-repeat;
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+
+    }
 
 
       #sidebartoggler:checked + .reveal-wrapper .toggle {
          
         height: 2rem;
         width: 100%;
-        background-image: url("../assets/img/close.svg");
+        background-image: url("../assets/img/bars-black.svg");
         background-repeat: no-repeat;
         position: fixed;
         top: 2rem;
@@ -98,6 +105,7 @@ a {text-decoration: none; color: #342E37;}
 
 .flex-header-banner {
 	display: flex;
+
 }
 
 .flex-content {
@@ -105,12 +113,13 @@ a {text-decoration: none; color: #342E37;}
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-right: 0;
+	padding: 0;
 
 }
 
 .flex-content-fixed {
 	flex: 1;
+	padding: 0;
 }
 
 .flex-aside {
@@ -132,14 +141,16 @@ a {text-decoration: none; color: #342E37;}
 	bottom: 0;
 	left: 0;
 	right: 0;
-	height: 100%;
+	height: 120vh;
+	width: 100%;
+	z-index: -1;
+
 }
 
 .text {
-
 	  margin: auto;
 	  position: absolute;
-	  top: 50%; left: 50%;
+	  top: 75%; left: 50%;
 	  -webkit-transform: translate(-50%,-50%);
 	      -ms-transform: translate(-50%,-50%);
 	          transform: translate(-50%,-50%);
@@ -160,17 +171,50 @@ a {text-decoration: none; color: #342E37;}
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	margin: 0;
+	padding: 0 20rem;
+	align-items: center;
+	justify-content: center;
+}
+
+#interactive-hook {
+	height: 40vh;
+	width: 50vw;
+	background-color: grey;
+	padding: 3rem;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-bottom: 5rem;
+	color: aquamarine;
+	font-size: 4rem;
+	text-transform: uppercase;
+}
+
+#yellow-box {
+	background-color: #FBAE17;
+	height: 50vh;
+	width: 120%;
+	 transform: rotate(-10deg);
+	 z-index: -5;
+	 position: absolute;
+	 left: 0;
+	 right: 0;
+	 margin-top: -20vh;
+	 overflow: hidden;
 }
 
 #slide-2 {
 	display: flex;
 	flex-direction: column;
+	background-color: #FBAE17;
+		padding: 0 20rem;
 }
 
 #slide-3 {
-	background: #5FC3E4;
-	height: 60vh;
+	background: white;
+	height: 100%;
+	padding: 0 20rem
 }
 
 #slide-4 {
@@ -203,15 +247,13 @@ a {text-decoration: none; color: #342E37;}
 #slide-8 {
 	background: #F39237;
 	height: 50vh;
+	width: 100%;
 	text-align: center;
 	margin: 0 auto;
 
 }
 
-#slide-8 h2 {
-	color: white;
-	padding: 5rem;
-}
+
 
 #slide-10 {
 	background: #E3170A;
@@ -221,10 +263,6 @@ a {text-decoration: none; color: #342E37;}
 
 }
 
-#slide-10 h2 {
-	color: white;
-	padding: 5rem;
-}
 
 #slide-9 {
 	background: white;
@@ -258,10 +296,13 @@ a {text-decoration: none; color: #342E37;}
 
 }
 
+
 .footer-social ul {
+	visibility: hidden;
 	padding: 1rem;
 	left: 4rem;
 	list-style: none;
+	z-index: -5;
 
 }
 
@@ -270,25 +311,27 @@ a {text-decoration: none; color: #342E37;}
 }
 
 .hidden {
-	visibility: hidden;
+	 visibility: hidden; 
 }
 
 /* ---------- HEADER NAVIGATION ------------------- */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
 
-.nav-bar {
-	z-index: 3;
-	position: absolute;
-	left: 70%;
-	padding-top: 2rem;
+.nav-mobile {
+	display:none; /* Hide from browsers that don't support media queries */
+  cursor:pointer;
+  position:fixed;
+  top: 0;
+  right: 0;
+  background: url(../assets/img/menu-white.svg) no-repeat;
+  height: 50%;
+  width: 60%;
+  transform: scale(0.2);
+
 }
 
-.nav-bar ul {
-	list-style: none;
-	text-align: right;
-	padding: 0;
-	margin: 0;
-}
+
+
 
 .header-titles {
 	flex-grow: 1; 
@@ -432,7 +475,7 @@ a {text-decoration: none; color: #342E37;}
 #flex-nav {
 	float: left;
 	z-index: 2;
-	visibility: hidden;
+	display: none;
 	
 }
 
@@ -447,6 +490,7 @@ a {text-decoration: none; color: #342E37;}
   position: fixed;
   z-index: 2;
   background-color: rgba(48,51,51,0.3);
+  display: none;
 
 }
 
@@ -488,9 +532,7 @@ a {text-decoration: none; color: #342E37;}
 	background: white;
 }
 
-.flex-content h2 {
-	color: #342E37;
-}
+
 
 .flex-content p {
 	color: #342E37;
@@ -505,11 +547,12 @@ a {text-decoration: none; color: #342E37;}
 
 .reveal-wrapper {	
 	padding-bottom: -4rem;
-	border: 1rem solid transparent;
+	/*border: 1rem solid transparent;
 	  -moz-border-image: -moz-linear-gradient(top left, #E55D87 0%, #5FC3E4 100%);
 	  -webkit-border-image: -webkit-linear-gradient(top left, #E55D87 0%, #5FC3E4 100%);
 	  border-image: linear-gradient(to bottom right, #E55D87 0%, #5FC3E4 100%);
 	border-image-slice: 1;
+	*/
 	z-index: 50;
 	margin-top: 20vh;
 }
@@ -529,6 +572,15 @@ a {text-decoration: none; color: #342E37;}
   font-style: normal;
 }
 
+@font-face {
+  font-family: Brandon;
+  src: url('assets/fonts/Didot.ttc');
+  src: local('assets/fonts/Brandon_reg.otf'), url('../assets/fonts/Brandon_reg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 h1 {
 	font-family: Didot;
 	font-size: 5rem;
@@ -538,17 +590,17 @@ h1 {
 
 h2 {
 	font-family: Didot;
-	font-size: 3rem;
-	color: #ECF0F1;
+	font-size: 3.5rem;
 	letter-spacing: 0.7rem;
+	color: white;
+	text-align: center;
 }
 
 h3 {
 	font-family: Didot;
-	font-size: 3rem;
+	font-size: 5rem;
 	color: #ECF0F1;
 	color: #342E37;
-	margin: 0 auto;
 	line-height: 3rem;
 	text-indent: 2rem;
 	text-align: center;
@@ -556,6 +608,8 @@ h3 {
 	letter-spacing: 1rem;
 	padding: 2rem;
 	margin-top: 2rem;
+	font-weight: 700;
+	line-height: 5rem;
 }
 
 h4 {
@@ -572,23 +626,36 @@ h5 {
 	color: #ECF0F1;
 	letter-spacing: 0.7rem;
 }
+/* Sources & Footnotes */
+
+h6 {
+	color: white;
+	text-align: right;
+	font-size: 0.8rem;
+	font-family: Brandon, 'Open Sans', sans-serif;
+
+}
+
+/* Body Text */
 
 p {
-	font-family: 'Open Sans', sans-serif;
+	font-family: Brandon, 'Open Sans', sans-serif;
 	font-weight: 400;
-	font-size: 1.1rem;
+	font-size: 2rem;
 	color: #ECF0F1;
 	text-indent: 3rem;
 	text-align: center;
-	width: 70%;
-	margin-left: 15rem;
+	letter-spacing: 0.1rem;
+
 }
 
 /* ------------------- Video ------------------- */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 #video-frame {
-
+max-height: 100%;
+max-width: 100%;
+position: relative;
 }
 
 .landing {
@@ -597,13 +664,23 @@ p {
 	left: 50%;
 	min-width: 100%;
 	min-height: 100%;
-	width: auto;
-	height: auto;
 	transform: translate(-50%, -50%);
+
 }
+
+
 
 .video-frame-1 {
 	width: 100%;
+	margin: 0 auto;
+}
+
+#myVideo {
+	width: 100%;
+	margin: 0 auto;
+	-webkit-box-shadow: 0px -1px 58px -6px rgba(0,0,0,0.77);
+-moz-box-shadow: 0px -1px 58px -6px rgba(0,0,0,0.77);
+box-shadow: 0px -1px 58px -6px rgba(0,0,0,0.77);fle
 }
 
 /* ------------------- Buttons ------------------- */
@@ -613,7 +690,7 @@ p {
 	width: 50%;
 	  margin: auto;
 	  position: absolute;
-	  top: 80%; left: 50%;
+	  top: 90%; left: 50%;
 	  -webkit-transform: translate(-50%,-50%);
 	      -ms-transform: translate(-50%,-50%);
 	          transform: translate(-50%,-50%);
@@ -626,12 +703,29 @@ p {
 .btn a {
 	color: #ECF0F1;
 	border: solid #FCFCFC;
-	padding: 1rem;
-	font-size: 1.3rem;
+	padding: 1rem 2rem;
+	font-size: 1.5rem;
 	background: rgba(0, 0, 0, 0.1);
 }
 
 .btn a:hover { background: rgba(0, 0, 0, 0.5); }
+
+.MyButton {
+	margin: 1rem;
+	padding: 1rem;
+	border: solid 1px black;
+	background: transparent;
+}
+
+.MyButton:hover {
+	background: rgba(0, 0, 0, 0.3);
+}
+
+.video-buttons {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
 
 /* ------------------- Forms ------------------- */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
@@ -865,30 +959,28 @@ label {
 
     /* Medium Devices */
     @media only screen and (max-width : 992px) {
-    	body {font-size: 1.5rrem}
-    	.flex-header {display: none;}
-    	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
-    	.nav-bar li { display: block; }
+    	body {font-size: 1.5rem}
+    	.nav-mobile {display: block;}
     	.header-titles {display: none;}
-    	.header-banner {background: #342E37;}
-    	.header-nav {margin: auto; text-align: center; width: 100%;}
-    	.header-nav li {margin: auto; text-align: center; display: block;}
+    	
+ 
+        .header-nav-white li {visibility: hidden;}
+
     	#flex-nav {margin: auto; text-align: center; width: 100%; order: -1;}
     	.flex-nav-fixed {margin: auto; text-align: center; width: 100%; order: -1;}
     	.flex-nav-fixed li {visibility: hidden;}
-    	.flex-content {padding: 4rem; flex: 1; margin: 0 auto; text-align: center; justify-content: center;}
+    	.flex-content {flex: 1; margin: 0 auto; text-align: center; justify-content: center;}
     	.flex-wrapper { display: flex; height: 100%; flex-direction: column;}
 		.flex-body { flex-direction: column; flex: 1;}
 		.flex-nav-list {height: auto;}
-		.header-nav-white {visibility: hidden;}
+	
     }
 
     /* Small Devices, Tablets */
     @media only screen and (max-width : 768px) {
     	body {font-size: 1.2rrem}
     	.flex-header {display: none;}
-    	.nav-bar { left: 50%; right: 50%; transform: translate(-50%); }
-    	.nav-bar li { display: block; }
+
     	.header-titles {display: none;}
     	.header-banner {background: #342E37;}
     	.header-nav {margin: auto; text-align: center; width: 100%;}
@@ -904,8 +996,7 @@ label {
     /* Extra Small Devices, Phones */ 
     @media only screen and (max-width : 480px) {
     	body {font-size: 1.1rrem}
-    	.nav-bar { margin: auto; left: 50%; right: 50%; transform: translate(-50%); }
-    	.nav-bar li { display: block; }
+
     	.text h2 {letter-spacing: 0.5rem; font-size: 2rem;}
     	.header-nav-white {visibility: hidden;}
     }
