@@ -25,10 +25,21 @@ function NextVideo(){
 
 $(document).ready(function() {
 
+    $('.data-link').click(function(){
+      $('.flex-header-home').css("visibility", "hidden");
+    $('.overlay').addClass('is-open');
+    return false;
+  });
+
+  $('.close-btn').click(function(){
+    $('.overlay').removeClass('is-open')
+     $('.flex-header-home').css("visibility", "visible");
+  });
+
 
   var mobile = document.createElement('div');
 mobile.className = 'nav-mobile';
-document.querySelector('.header-nav-white').appendChild(mobile);
+document.querySelector('.flex-wrapper').appendChild(mobile);
 
   
   //$(rotateTerm);
