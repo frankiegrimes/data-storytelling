@@ -31,7 +31,7 @@ mobile.className = 'nav-mobile';
 document.querySelector('.header-nav-white').appendChild(mobile);
 
   
-  $(rotateTerm);
+  //$(rotateTerm);
   
   
   $(window).scroll(function () {

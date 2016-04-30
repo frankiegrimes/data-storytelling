@@ -147,62 +147,73 @@ function chart2() {
 
 //Width and Height
 var w = ((parseInt(d3.select('#chart-2').style('width'))*1) );
-var h = w / 2;
+var h = w / 1.3;
 var barPadding = w / 50;
+
+// Data
 
 var dataset = [ 70, 30];
 
+// Scale
+
+var heightScale = d3.scale.linear()
+                    .domain([0, 70])
+                    .range([0, h]);
+
+var yScale = d3.scale.linear()
+                .domain([0, 100])
+                .range([h - barPadding, barPadding]);
+
+var color = d3.scale.linear()
+              .domain([0, 70])
+              .range(["lightblue", "blue"]);
+
+
+// Axis
+
+var yAxis = d3.svg.axis()
+              .orient("right")
+              .scale(yScale);
 
 //Create empty SVG element and add to DOM
 
 var graph2 = d3.select("#chart-2")
       .append("svg")
       .attr("width", w)
-      .attr("height", h);
+      .attr("height", h)
+      .append("g");
+
 
 
 
 //Generate rectangles and add them to SVG
 
-
-
 graph2.selectAll("rect")
          .data(dataset)
          .enter()
          .append("rect")
-         .attr("x", function(d, i) {
-            return i * (w / dataset.length);
-         })
-         .attr("y", function(d) {
-            return h - (d * 4);
-         })
-         .attr("width", w / dataset.length - barPadding)
-         .attr("height", function(d) {
-            return d * 4;
-         })
-         .attr("fill", function(d) {
-          return "rgb(63, 169, " + (d * 10) + ")";
-         });
+         .attr("x", function(d, i) { return i * (w / dataset.length); })
+         .attr("y", function(d) { return h - (heightScale(d)); })
+         .attr("width", ((w / dataset.length) - barPadding))
+         .attr("height", function(d) {  return heightScale(d); })
+         .attr("fill", function(d) { return color(d); });
 
       graph2.selectAll("text")
          .data(dataset)
          .enter()
          .append("text")
-         .text(function(d) {
-            return d;
-         })
+         .text(function(d) { return d+"%"; })
          .attr("text-anchor", "bottom")
-         .attr("x", function(d, i) {
-            return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
-         })
-         .attr("y", function(d) {
-            return h - (d * 4) + 14;
-         })
-         .attr("font-family", "sans-serif")
-         .attr("font-size", "11px")
+         .attr("x", function(d, i) { return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2; })
+         .attr("y", function(d) { return h - (d * 2); })
+         .attr("font-family", "'Open Sans'")
+         .attr("font-size", "1rem")
          .attr("fill", "white");
 
 
+        graph2.append("g")
+              .attr("transform", "translate("+barPadding+",0")
+              .call(yAxis);
 
 }
 
@@ -411,7 +422,7 @@ graph5();
 
 function graph4() {
   var margin = {top: 20, right: 20, bottom: 30, left: 40};
-var width = (parseInt(d3.select('#chart-4').style('width')) / 1.5);
+var width = (parseInt(d3.select('#chart-4').style('width')) / 4);
    var height = (width / 3) - margin.top - margin.bottom;
 
 var x0 = d3.scale.ordinal()
