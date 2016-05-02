@@ -98,14 +98,10 @@ a {text-decoration: none; color: #342E37;}
 	align-items: center;
 	padding: 0;
 	overflow: hidden;
-
-}
-
-.flex-content-fixed {
 	flex: 1;
-	padding: 0;
-	overflow: hidden;
+
 }
+
 
 
 /* Divs */
@@ -223,19 +219,23 @@ a {text-decoration: none; color: #342E37;}
 	display: flex;
 	flex-direction: column;
 	background-color: #FBAE17;
-		padding: 0 20rem;
-		min-height: 90vh;
+		padding: 5rem 10rem;
 }
 
 #slide-3 {
+	width: 100%;
+
 	display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	position: relative;
 }
 
+#slide-3 .video-frame,#slide-3 .video-buttons{
+		max-width: 75%;
+}
 
 
 #slide-4 {
@@ -276,7 +276,18 @@ a {text-decoration: none; color: #342E37;}
 	height: 100%;
 	padding: 0 20rem;
 	position: relative;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
+
+
+#slide-7 .video-frame,#slide-7 .video-buttons{
+		max-width: 75%;
+}
+
 
 #slide-8 {
 	background: #29ABE2;
@@ -304,8 +315,12 @@ a {text-decoration: none; color: #342E37;}
 	justify-content: center;
 	margin-top: 10rem;
 	position: relative;
+	width: 100%;
 }
 
+#slide-9 .video-frame,#slide-9 .video-buttons{
+		max-width: 75%;
+}
 
 
 
@@ -380,15 +395,36 @@ a {text-decoration: none; color: #342E37;}
   position:fixed;
   top: 0;
   right: 0;
-  margin: 0;
-  padding: 0;
+  margin: 1rem 2rem;
   background: url(../assets/img/menu-white.svg) no-repeat;
-  height: 70%;
-  width: 100%;
-  transform: scale(0.2);
-  border: green solid 5px;
+  background-size: cover;
+  height: 5rem;
+  width: 5rem;
   z-index: 99;
+}
 
+.nav-mobile svg {
+	width: 100%;
+	height: 100%;
+}
+
+.nav-mobile-close {
+	visibility: hidden;
+  cursor:pointer;
+  position:fixed;
+  top: 0;
+  right: 0;
+  margin: 3rem 2rem;
+  background: url(../assets/img/close-white.svg) no-repeat;
+  background-size: cover;
+  height: 1rem;
+  width: 1rem;
+  z-index: 99;
+}
+
+.nav-mobile svg {
+	width: 100%;
+	height: 100%;
 }
 
 
@@ -405,6 +441,7 @@ a {text-decoration: none; color: #342E37;}
 
 .header-titles h1 {
 	color: white;
+	padding-left: 1rem;
 
 }
 
@@ -477,8 +514,7 @@ a {text-decoration: none; color: #342E37;}
   }
 }
 
-.header-nav {
-}
+
 
 .header-nav {
 	margin: 0;
@@ -587,9 +623,6 @@ a {text-decoration: none; color: #342E37;}
 .flex-content {
 }
 
-.flex-content-fixed {
-
-}
 
 .reveal-wrapper {	
 	padding-bottom: -4rem;
@@ -1062,12 +1095,23 @@ label {
 
     /* Medium Devices */
     @media only screen and (max-width : 992px) {
-    	body {font-size: 1.5rem}
+    	body {font-size: 1.2rem}
     	.nav-mobile {display: block;}
-    	.header-titles {display: none;}
-    	
- 
-        .header-nav li {visibility: hidden;}
+    	.header-titles {visibility: hidden; line-height: 0.3rem}
+        .header-nav li {visibility: hidden; padding: 3rem 0rem;}
+        .header-nav li a {padding: 0rem 0rem; margin: 0rem 2rem; }
+  		.header-nav {visibility: hidden; padding-right: 7rem; 	display: flex;
+    	flex-wrap: nowrap;}
+  		.header-nav li a:hover {
+		  background-color: #ffffff;
+		  color: #EEA200;
+		  padding: 0rem 0rem;
+			}
+
+		.header-nav li:hover {
+		  background-color: #ffffff;
+		  color: #EEA200;
+			}
 
 
 	
@@ -1077,26 +1121,72 @@ label {
     @media only screen and (max-width : 790px) {
     	body {font-size: 1rem}
     	
-		.btn {
-			width: 100%;
-		}
+    	.btn {width: 100%;}
+		.text p {font-size: 1.5rem; text-indent: 0;}
+		.nav-mobile {transform: scale(0.7);}
 
-		.text p {
-			font-size: 1.5rem;
+		.header-nav{
+    	width: 100%;
+    	display: flex;
 
-			text-indent: 0;
-		}
+    	}
 
-
-
+		.header-nav li a {
+		display: block;
+		padding: 0rem 0rem;
+		font-size: 1rem;}
     }
 
 
     /* Custom, iPhone Retina */ 
-    @media only screen and (max-width : 400px) {
+    @media only screen and (max-width : 480px) {
     	body {font-size: 0.8rem}
 
+    	.nav-mobile {transform: scale(0.7);}
     	.btn {width: 100%}
+    	.btn a {font-size: 1rem;}
+
+    	.header-nav{
+
+    	margin: 0 auto;
+    	padding: 0;
+    	display: flex;
+    	flex-direction: column;
+    	width: 100%;
+    	justify-content: center;
+
+    	}
+    
+    	.header-titles {display: none;}
+
+    	.header-nav li {
+		background: rgba(0, 0, 0, 0.8);
+			padding: 1.5rem 0rem;
+			margin: 0;
+			width: 100%;
+
+
+    	}
+
+    	.header-nav li a {
+    		padding: 0;
+			margin: 0 auto;
+
+
+
+			}
+
+    	.header-nav li a:hover {
+		  background-color: #ffffff;
+		  color: #EEA200;
+			}
+
+		.header-nav li:hover {
+		  background-color: #ffffff;
+		  color: #EEA200;
+			}
+
+
 
     }
 
