@@ -63,50 +63,31 @@ a {text-decoration: none; color: #342E37;}
 
 
 
-.flex-wrapper {
-	display: flex;
-	height: 100%; 
-	flex-direction: column;
-	position: relative;
-}
-
-.wrapper-home {
-	width: 100%;
-	margin: 0 auto;
-	position: relative;
-	height: 100vh;
-	z-index: 2;
-}
-
 .flex-body {
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-direction: column;
-}	
+}
 
 .flex-header {
 	height: 80vh;
 	flex: none;
-	z-index: 3;
 	position: relative;
-	  background: url(../assets/img/bear.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
 
-.flex-header-home {
-	height: 80vh;
-	flex: none;
-	z-index: 60;
-	position: relative;
-}
 
 
 .flex-header-banner {
 	display: flex;
+	position: fixed;
+	width: 100%;
+	z-index: 99;
+	transition: 1s ease-in-out;
+
+}
+
+.flex-header-banner-fixed {
+	background: rgba(0, 0, 0, 0.8);
+
 
 }
 
@@ -126,11 +107,6 @@ a {text-decoration: none; color: #342E37;}
 	overflow: hidden;
 }
 
-.flex-aside {
-	flex: 0 0 15rem;
-	order: 0;
-	background: rgba(147, 128, 108, 0.1);
-}
 
 /* Divs */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
@@ -147,7 +123,6 @@ a {text-decoration: none; color: #342E37;}
 	right: 0;
 	height: 120vh;
 	width: 100%;
-	z-index: -1;
 
 }
 
@@ -422,10 +397,15 @@ a {text-decoration: none; color: #342E37;}
 .header-titles {
 	flex-grow: 1; 
 	padding-left: 1.5rem;
+	z-index: 5;
+	padding: 0;
+	margin: 0;
+	line-height: 0.5rem;
 }
 
 .header-titles h1 {
 	color: white;
+
 }
 
 .header-titles h1:hover {
@@ -497,60 +477,40 @@ a {text-decoration: none; color: #342E37;}
   }
 }
 
+.header-nav {
+}
+
+.header-nav {
+	margin: 0;
+	padding: 0 3rem;
+	line-height: 1rem;
+	text-align: center;
+}
+
 .header-nav li {
 	display: inline-block;
 	list-style: none;
-	padding: 2rem;
+	padding: 3rem 0rem;
+	margin: 0;
 }
 
-.header-nav ul li {
-  position: relative;
-  color: #E55D87;
-        
-}
-
-.header-nav ul li a:after {
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  width: 0;
-  height: 10px;
-  background-color: #5FC3E4;
-  content: "";
-  transition: width 0.2s;
-}
-.header-nav ul li a:hover {
-  color: #5FC3E4;
-}
-.header-nav ul li a:hover:after {
-  width: 100%;
-}
-
-.header-nav-white li {
-	display: inline-block;
-	list-style: none;
-	padding: 3rem;
-}
-
-.header-nav-white ul li {
-  position: relative;
-
-        
-}
-
-.header-nav-white ul a {
+.header-nav a {
   color: #FCFCFC;
-
-        
+  font-size: 1.2rem;
+  z-index: 6;
+  transition: 0.4s;
+  text-decoration: none;
+  	padding: 3rem 3rem;
+  margin: 0;
 }
 
-.header-nav-white ul li a:hover {
-  color: rgba(255,255,255,0.5);
+.header-nav li a:hover {
+   background-color: #ffffff;
+  color: #EEA200;
+  padding: 3rem 3rem;
 }
-.header-nav-white ul li a:hover:after {
-  width: 100%;
-}
+
+
 
 
 
@@ -742,14 +702,6 @@ p {
 /* ------------------- Video ------------------- */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
 
-#video-frame {
-max-height: 100%;
-max-width: 100%;
-position: relative;
-}
-
-
-
 
 .video-container{
   height: 100%;
@@ -761,24 +713,20 @@ position: relative;
 .landing {
 	  width: 100vw;
   height: 100vh;
-  position: relative;
+  position: absolute;
     object-fit : cover;
-    z-index: 99;
+
 
 }
 
 
-.video-frame-1 {
+.video-frame {
 	margin: 0 auto;
-	z-index: 5;
-}
-
-#myVideo {
 	width: 100%;
-	margin: 0 auto;
+	z-index: 5;
 	-webkit-box-shadow: 0px -1px 58px -6px rgba(0,0,0,0.77);
 -moz-box-shadow: 0px -1px 58px -6px rgba(0,0,0,0.77);
-box-shadow: 0px -1px 58px -6px rgba(0,0,0,0.77);fle
+box-shadow: 0px -1px 58px -6px rgba(0,0,0,0.77);
 }
 
 /* ------------------- Modal ------------------- */
@@ -1104,12 +1052,12 @@ label {
 /* Large Devices, Laptops, Wide Screens */
     @media only screen and (max-width : 1400px) {
 
-    	body {font-size: 2rrem}
+    	body {font-size: 1.6rem}
     }
 
     @media only screen and (max-width : 1200px) {
 
-    	body {font-size: 1.7rrem}
+    	body {font-size: 1.5rem}
     }
 
     /* Medium Devices */
@@ -1119,49 +1067,37 @@ label {
     	.header-titles {display: none;}
     	
  
-        .header-nav-white li {visibility: hidden;}
+        .header-nav li {visibility: hidden;}
 
-    	#flex-nav {margin: auto; text-align: center; width: 100%; order: -1;}
-    	.flex-nav-fixed {margin: auto; text-align: center; width: 100%; order: -1;}
-    	.flex-nav-fixed li {visibility: hidden;}
-    	.flex-content {flex: 1; margin: 0 auto; text-align: center; justify-content: center;}
-    	.flex-wrapper { display: flex; height: 100%; flex-direction: column;}
-		.flex-body { flex-direction: column; flex: 1;}
-		.flex-nav-list {height: auto;}
+
 	
     }
 
     /* Small Devices, Tablets */
-    @media only screen and (max-width : 768px) {
-    	body {font-size: 1.2rrem}
-    	.flex-header {display: none;}
+    @media only screen and (max-width : 790px) {
+    	body {font-size: 1rem}
+    	
+		.btn {
+			width: 100%;
+		}
 
-    	.header-titles {display: none;}
-    	.header-banner {background: #342E37;}
-    	.header-nav {margin: auto; text-align: center; width: 100%;}
-    	.header-nav li {margin: auto; text-align: center; display: block;}
-    	#flex-nav {margin: auto; text-align: center; width: 100%; order: -1;}
-    	.flex-nav-fixed {margin: auto; text-align: center; width: 100%; order: -1;}
-    	.flex-nav-fixed li {visibility: hidden;}
-		.flex-nav-list {height: auto;}
+		.text p {
+			font-size: 1.5rem;
+
+			text-indent: 0;
+		}
+
 
 
     }
 
-    /* Extra Small Devices, Phones */ 
-    @media only screen and (max-width : 480px) {
-    	body {font-size: 1.1rrem}
-
-    	.text h2 {letter-spacing: 0.5rem; font-size: 2rem;}
-    	.header-nav-white {visibility: hidden;}
-    }
 
     /* Custom, iPhone Retina */ 
-    @media only screen and (max-width : 320px) {
-    	body {font-size: 0.8rrem}
-    	.header-nav-white {visibility: hidden;}
-    	.text h2 {letter-spacing: 0.5rem;}
+    @media only screen and (max-width : 400px) {
+    	body {font-size: 0.8rem}
+
     	.btn {width: 100%}
+
     }
 
     

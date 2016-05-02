@@ -13,31 +13,29 @@
   </head>
 
 
-  <body class="flex-wrapper">
+  <body class="flex-body">
 
       <div class="video-container">
-          <video class="landing" muted="true" loop>
+          <video class="landing" muted="true" autoplay="true" loop>
           <source src="assets/video/interview.mp4" type="video/mp4">
           <!-- <source src="assets/ireland.webm" type="video/webm"> -->
           </video>
         </div>
-     <header class="flex-header-home">  
+
+     <header class="flex-header">  
           <div class="flex-header-banner">
             <div class="header-titles"><h5>Transcend</h5></div>
 
-            <div class="header-nav-white">
-              <ul>
+           
+              <ul class="header-nav">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="" class="data-link">Data</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
               </ul>
 
-           </div>
+           
           </div>
-
-              
-
 
         <div class="text-box">
           <div class="text">
@@ -52,45 +50,35 @@
       </header>
 
 
-      <input type="checkbox" id="sidebartoggler" name="" value="">
+    
 
  
     <div class="reveal-wrapper">
 
-          <label for="sidebartoggler" class="toggle"></label>
-
-      <main class="flex-body">
-
-
-    
-
-
-      
-
-        <article class="flex-content">
-
-            <nav id="flex-nav">
-        <div class="flex-nav-list">
-          <ul>
-            <li><a href="#slide-1">Intro</a></li>
-            <li><a href="#slide-2">Gender</a></li>
-            <li><a href="#slide-3">Cisgender</a></li>
-            <li><a href="#slide-4">Transgender</a></li>
-            <li><a href="#slide-5">Experience</a></li>
-            <li><a href="#slide-6">Media</a></li>
-            <li><a href="#slide-7">Global Forum</a></li>
-          </ul>
-          </div>
+    <nav id="flex-nav">
+     <div class="smartphone-menu-trigger"></div>
+            <ul class="flex-nav-list" >
+              <li><a href="#slide-1">Intro</a></li>
+              <li><a href="#slide-2">Gender</a></li>
+              <li><a href="#slide-3">Cisgender</a></li>
+              <li><a href="#slide-4">Transgender</a></li>
+              <li><a href="#slide-5">Experience</a></li>
+              <li><a href="#slide-6">Media</a></li>
+              <li><a href="#slide-7">Global Forum</a></li>
+            </ul>
         </nav>
 
+        
+
+      <main>
+        <article class="flex-content">
         
           <div id="slide-1">
               <h3>UNDERSTANDING</h3>
               <p>What is defined as an understanding of the transgender community? An understanding requires chllennging preconceptions and media stereotypes, knowledge of the issues facing the community, and an awareness of what it means to no be transgender - to be cisgender. This requires questing what gender is itself. </p>
               <div id="interactive-hook">Interactive Hook</div>
        
-               <video id="myVideo" class="video-frame-1" controls="true">   
-
+               <video class="video-frame" controls="true">   
                   <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
               </video>
               <div class="video-buttons">
@@ -98,8 +86,6 @@
                    <button class="MyButton">Toryn | ITSA</button>
                    <button class="MyButton">Jean-Phillipe | France</button>
               </div>
-        
-          
               <div id="yellow-box"></div>
           </div>
 
@@ -110,18 +96,17 @@
              <h6>Source: Survey 2016</h6>
   
              
-             </div>
+          </div>
 
-           <div id="slide-3">
+          <div id="slide-3">
            
-            <div id="chart-2"><h4>Percentage of people who understand the term “cisgender”</h4></div>
-            <span>Source: Survey 2016</span>
+              <div id="chart-2"><h4>Percentage of people who understand the term “cisgender”</h4></div>
+              <span>Source: Survey 2016</span>
 
-            
-        
-          <video id="myVideo" class="video-frame-1" controls="true">   
-
-                  <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
+              
+          
+              <video class="video-frame" controls="true">   
+                 <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
               </video>
               <div class="video-buttons">
                    <button class="MyButton">Gordon Gekko | NYC</button>
@@ -140,16 +125,13 @@
                <h3>Media</h3>
               <p>How do different news sources affect perceptions of trans people Nibh aliquip, dolorum numquam iaculis dolor sed, congue pellentesque cupiditate facilisi quis. Itaque explicabo sapien? Perspiciatis optio aliquam! Eum sem.
               </p>
-
-             
-
-
+            
            </div>
 
            <div id="slide-5">
-             <div id="chart-3"><h4>How many people in Ireland know a trans person?</h4> <input type="checkbox"> Sort values</label></div>
+               <div id="chart-3"><h4>How many people in Ireland know a trans person?</h4> <input type="checkbox"> Sort values</label></div>
 
-              <div id="chart-1"><h4>Share of Media</h4></div>
+                <div id="chart-1"><h4>Share of Media</h4></div>
 
             </div>
 
@@ -167,65 +149,60 @@
             </div>
 
              <div id="slide-7">
-             <video id="myVideo" class="video-frame-1" controls="true">   
+                 <video class="video-frame" controls="true">   
 
-                  <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
-              </video>
-              <div class="video-buttons">
-                   <button class="MyButton">Gordon Gekko | NYC</button>
-                   <button class="MyButton">Toryn | ITSA</button>
-                   <button class="MyButton">Jean-Phillipe | France</button>
-              </div>
-              <div id="blue-box"></div>
-              </div>
+                      <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
+                  </video>
+                  <div class="video-buttons">
+                       <button class="MyButton">Gordon Gekko | NYC</button>
+                       <button class="MyButton">Toryn | ITSA</button>
+                       <button class="MyButton">Jean-Phillipe | France</button>
+                  </div>
+                  <div id="blue-box"></div>
+             </div>
              
 
-               <div id="slide-8">
+            <div id="slide-8">
                <h3>Impact of the Internet</h3>
-            <p>What impact has the Internet had within the transgender community?Vestibulum. Accusamus incidunt taciti sit hac occaecati, feugiat dapibus fames? Eget nascetur, dolor laoreet sociosqu volutpat! Eius, quae duis. Penatibus.
-              </p>
+                <p>What impact has the Internet had within the transgender community?Vestibulum. Accusamus incidunt taciti sit hac occaecati, feugiat dapibus fames? Eget nascetur, dolor laoreet sociosqu volutpat! Eius, quae duis. Penatibus.
+                </p>
                       
            </div>
              
             
 
-             <div id="slide-9">
-             <video id="myVideo" class="video-frame-1" controls="true">   
+            <div id="slide-9">
+               <video class="video-frame" controls="true">   
 
-                  <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
-              </video>
-              <div class="video-buttons">
-                   <button class="MyButton">Gordon Gekko | NYC</button>
-                   <button class="MyButton">Toryn | ITSA</button>
-                   <button class="MyButton">Jean-Phillipe | France</button>
-              </div>
+                    <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
+                </video>
+                <div class="video-buttons">
+                     <button class="MyButton">Gordon Gekko | NYC</button>
+                     <button class="MyButton">Toryn | ITSA</button>
+                     <button class="MyButton">Jean-Phillipe | France</button>
+                </div>
 
 
-            <div id="pink-box"></div>
+              <div id="pink-box"></div>
               
-             </div>
+            </div>
 
-             <div id="slide-10">
-             <h3>Generational Disparity</h3>
-             <p>Has the internet created a generational disparity? Dictumst mauris beatae aliquid. Sociis magnis explicabo non cillum posuere placeat dapibus! Conubia corporis? Iure impedit hendrerit. Viverra, cras, aliquip.</p>
-             <video id="myVideo" class="video-frame-1" controls="true">   
+            <div id="slide-10">
+                 <h3>Generational Disparity</h3>
+                 <p>Has the internet created a generational disparity? Dictumst mauris beatae aliquid. Sociis magnis explicabo non cillum posuere placeat dapibus! Conubia corporis? Iure impedit hendrerit. Viverra, cras, aliquip.</p>
+                 <video class="video-frame" controls="true">   
 
-                  <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
-              </video>
-              <div class="video-buttons">
-                   <button class="MyButton">Gordon Gekko | NYC</button>
-                   <button class="MyButton">Toryn | ITSA</button>
-                   <button class="MyButton">Jean-Phillipe | France</button>
-              </div>
-             </div>
+                      <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
+                  </video>
+                  <div class="video-buttons">
+                       <button class="MyButton">Gordon Gekko | NYC</button>
+                       <button class="MyButton">Toryn | ITSA</button>
+                       <button class="MyButton">Jean-Phillipe | France</button>
+                  </div>
+            </div>
 
 
         </article>
-
-        
-
-        <aside class="flex-aside">
-        </aside>
 
       </main>
       </div>
@@ -243,12 +220,12 @@
           </footer>
 
       <div class="overlay">
-      <div class="modal">
-        <div class="close-btn"><i class="ion-close"></i></div>
-        <div class="data-box">
-          <p class="lead">Appendix of data for reference </p>
-          <p>Survey conducted in 2016. 200 participants. Esse autem! Adipiscing, auctor, hac consectetur sociis sodales velit quidem fusce atque diamlorem cillum! Semper! Quidem quas accumsan? Veniam sit.</p>
-        </div>
+        <div class="modal">
+          <div class="close-btn"><i class="ion-close"></i></div>
+          <div class="data-box">
+            <p class="lead">Appendix of data for reference </p>
+            <p>Survey conducted in 2016. 200 participants. Esse autem! Adipiscing, auctor, hac consectetur sociis sodales velit quidem fusce atque diamlorem cillum! Semper! Quidem quas accumsan? Veniam sit.</p>
+          </div>
 
 
       </div>
