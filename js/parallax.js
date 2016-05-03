@@ -53,7 +53,7 @@ $(document).ready(function() {
 
 
   
-  $(rotateTerm);
+  //$(rotateTerm);
   
   
   $(window).scroll(function () {

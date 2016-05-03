@@ -5,10 +5,13 @@
 
 
 var dataset = [
-  { label: 'Newspapers', count: 60 }, 
-  { label: 'TV', count: 20 },
-  { label: 'Social Media', count: 15 },
-  { label: 'Film', count: 1 }
+  { label: 'Newspapers', count: 77 }, 
+  { label: 'Television', count: 140 },
+  { label: 'Magazines', count: 71 },
+  { label: 'Film', count: 114 },
+  { label: 'Books', count: 38 },
+  { label: 'Radio', count: 38 },
+  { label: 'Internet', count: 136 }
 ];
 
 var width = ((parseInt(d3.select('#chart-1').style('width'))*1.5) );
@@ -152,12 +155,26 @@ var barPadding = w / 50;
 
 // Data
 
-var dataset = [ 70, 30];
+d3.csv("../assets/data/cisgender-int.csv", function(d) {
 
+return { 
+
+  answer: d.Answer,
+  post: d.Post,
+  pre: d.Pre
+
+};
+
+}, function(error, rows) {
+
+  var dataset = rows[0]['pre'];
+  console.log(rows[1]['post']);
 // Scale
 
+var max = d3.max(d3.values(dataset)); 
+
 var heightScale = d3.scale.linear()
-                    .domain([0, 70])
+                    .domain([0, max])
                     .range([0, h]);
 
 var yScale = d3.scale.linear()
@@ -165,7 +182,7 @@ var yScale = d3.scale.linear()
                 .range([h - barPadding, barPadding]);
 
 var color = d3.scale.linear()
-              .domain([0, 70])
+              .domain([0, max ])
               .range(["lightblue", "blue"]);
 
 
@@ -215,6 +232,13 @@ graph2.selectAll("rect")
               .attr("transform", "translate("+barPadding+",0")
               .call(yAxis);
 
+
+
+
+
+});
+
+
 }
 
 chart2();
@@ -250,14 +274,14 @@ var svg = d3.select("#chart-3").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("assets/data/data.tsv", function(error, data) {
+d3.tsv("assets/data/organisations-int.csv", function(error, data) {
 
   data.forEach(function(d) {
-    d.frequency = +d.frequency;
+    d.post = +d.post;
   });
 
-  x.domain(data.map(function(d) { return d.letter; }));
-  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+  x.domain(data.map(function(d) { return d.organisation; }));
+  y.domain([0, d3.max(data, function(d) { return d.post; })]);
 
   svg.append("g")
       .attr("class", "x axis")
@@ -272,16 +296,16 @@ d3.tsv("assets/data/data.tsv", function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Frequency");
+      .text("Post-Internet");
 
   svg.selectAll(".bar")
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.letter); })
+      .attr("x", function(d) { return x(d.organisation); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.frequency); })
-      .attr("height", function(d) { return height - y(d.frequency); });
+      .attr("y", function(d) { return y(d.post); })
+      .attr("height", function(d) { return height - y(d.post); });
 
   d3.select("input").on("change", change);
 
@@ -293,20 +317,20 @@ d3.tsv("assets/data/data.tsv", function(error, data) {
     clearTimeout(sortTimeout);
 
     // Copy-on-write since tweens are evaluated after a delay.
-    var x0 = x.domain(data.sort(this.checked ? function(a, b) { return b.frequency - a.frequency; }
-        : function(a, b) { return d3.ascending(a.letter, b.letter); })
-        .map(function(d) { return d.letter; }))
+    var x0 = x.domain(data.sort(this.checked ? function(a, b) { return b.post - a.post }
+        : function(a, b) { return d3.ascending(a.organisation, b.organisation); })
+        .map(function(d) { return d.organisation; }))
         .copy();
 
     svg.selectAll(".bar")
-        .sort(function(a, b) { return x0(a.letter) - x0(b.letter); });
+        .sort(function(a, b) { return x0(a.organisation) - x0(b.organisation); });
 
     var transition = svg.transition().duration(750),
         delay = function(d, i) { return i * 50; };
 
     transition.selectAll(".bar")
         .delay(delay)
-        .attr("x", function(d) { return x0(d.letter); });
+        .attr("x", function(d) { return x0(d.organisation); });
 
     transition.select(".x.axis")
         .call(xAxis)
@@ -420,7 +444,8 @@ graph5();
 
 // Graph 5 - Grouped Bar Chart with filter ----------------------------------
 
-function graph4() {
+
+ {
   var margin = {top: 20, right: 20, bottom: 30, left: 40};
 var width = (parseInt(d3.select('#chart-4').style('width')) / 4);
    var height = (width / 3) - margin.top - margin.bottom;
@@ -518,5 +543,59 @@ d3.csv("../assets/data/data.csv", function(error, data) {
 
 graph4();
 
+
+// ---------------------------------------------------------------------------------
+
+var browsers = [];
+
+    var w = 500;
+    var h = 100;
+    var barPadding = 3;
+    d3.csv("../assets/data/choice-age.csv",
+            function(error, rows) {
+                rows.forEach(function(r) {
+                    browsers.push({
+                        reply: r.answer,
+                        values: [r['18'], r['25'], r['35']]
+                    })
+                });
+                browsers.forEach(function(b){
+                    render(b);
+                });
+            });
+
+    function render(browser) {
+        var svg = d3.select("#slide-8").append("svg")
+                .attr("width", w)
+                .attr("height", h);
+
+        svg.selectAll("rect")
+                .data(browser.values)
+                .enter()
+                .append("rect")
+                .attr("x", function(d, i) {
+                    return i * (w / browser.values.length);
+                })
+                .attr("y", function(d) {
+                    return parseInt(h - d);
+                })
+                .attr("width", (w / browser.values.length) - barPadding)
+                .attr("height", function(d) {
+                    return parseInt(d);
+                })
+                .attr("fill", function(d, i) {
+                    var rgbColor = "rgb(" + Math.round((Math.random()*255)) +
+                            ", " + Math.round((Math.random()*255)) + ", "  +
+                            Math.round((Math.random()*255)) + ")";
+                    return rgbColor;
+                });
+
+        // Add a label to each SVG.
+        svg.append("text").text(browser.name).attr({"x": 0, "y": 30});
+
+        // NOTE THIS RENDER FUNCTION IS MISSING THE UPDATE AND EXIT PHASES. WE
+        // ARE DOING EVERYTHING IN THE ENTER PHASE - WHICH MEANS IT WILL ONLY
+        // WORK ON STATIC DATA.
+    }
 
 
