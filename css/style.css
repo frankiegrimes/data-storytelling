@@ -298,13 +298,9 @@ a {text-decoration: none; color: #342E37;}
 	align-items: center;
 	justify-content: center;
 	position: relative;
+	z-index: -1;
 
 }
-
-
-
-
-
 #slide-9 {
 
 	display: flex;
@@ -322,9 +318,6 @@ a {text-decoration: none; color: #342E37;}
 		max-width: 75%;
 }
 
-
-
-
 #slide-10 {
 	
 	background: pink;
@@ -336,9 +329,6 @@ a {text-decoration: none; color: #342E37;}
 	justify-content: center;
 
 }
-
-
-
 
 /* ------------------- Footer ------------------- */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
@@ -365,9 +355,7 @@ a {text-decoration: none; color: #342E37;}
 	z-index: -5;
 	padding: 2rem;
 	text-align: right;
-
 }
-
 
 .footer-social ul {
 	visibility: hidden;
@@ -375,7 +363,6 @@ a {text-decoration: none; color: #342E37;}
 	left: 4rem;
 	list-style: none;
 	z-index: -5;
-
 }
 
 .footer-social a {
@@ -432,9 +419,10 @@ a {text-decoration: none; color: #342E37;}
 
 .header-titles {
 	flex-grow: 1; 
-	padding-left: 2rem;
+	padding-left: 1rem;
 	z-index: 5;
 	line-height: 0.5rem;
+
 }
 
 .header-titles h1 {
@@ -545,7 +533,9 @@ a {text-decoration: none; color: #342E37;}
 }
 
 
-
+.header-nav-up {
+	top: -5rem;
+}
 
 
 
@@ -554,7 +544,7 @@ a {text-decoration: none; color: #342E37;}
 
 .smartphone-menu-trigger {
 
-
+  display: none;
   cursor:pointer;
   top: 10rem;
   left: 0;
@@ -569,7 +559,7 @@ a {text-decoration: none; color: #342E37;}
 
 .smartphone-menu-trigger-close {
 
-	display: none;	
+  display: none;	
   cursor:pointer;
   top: 10rem;
   left: 0;

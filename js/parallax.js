@@ -1,21 +1,38 @@
+// --------------- Animated Survey Quotes ---------------
+
+// Cisgender Survey Quotes Array
+
 var terms = [
 "a label for those whose experiences of their own gender agree with the sex they were assigned at birth", 
 "a fridge magnet Consequat magnam tempor a! Ornare malesuada aliquet perferendis incididunt? Aliquet mi autem? Litora senectus at dolorum at eos error ex.", 
 "Tellus saepe ducimus torquent omnis magna? Cillum lobortis netus eaque debitis sollicitudin? Convallis harum tincidunt. Elementum posuere? Quam! Blandit duis."];
 
+// Rotate Quotes Function
+
+var rotater = $('#rotate');
+
 function rotateTerm() {
-  var ct = $("#rotate").data("term") || 0;
-  $("#rotate").data("term", ct === terms.length -1 ? 0 : ct + 1).text(terms[ct]).fadeIn()
+  var ct = rotater.data("term") || 0;
+  rotater.data("term", ct === terms.length -1 ? 0 : ct + 1).text(terms[ct]).fadeIn()
               .delay(2000).fadeOut(200, rotateTerm);
 }
 
-var video_count = 1;
-var videoPlayer = document.getElementById("myVideo");        
+// --------------- Interactive Video Players ---------------
 
-function NextVideo(){
+// Variables
+
+var videoPlayer = $("myVideo"); 
+var video_count = 1;
+   
+
+// On Click Video Function
+
+function NextVideo() {
 
     video_count++;
-    if (video_count === 4) video_count = 1;
+    if (video_count === 4) {
+      video_count = 1;
+    }
     var nextVid = "assets/video/video"+video_count+".mp4";
     videoPlayer.src = nextVid;
     videoPlayer.play();
@@ -23,121 +40,154 @@ function NextVideo(){
 }
 
 
+
+// --------------- Document Ready Function ---------------
+
 $(document).ready(function() {
 
-    $('.data-link').click(function(){
-      $('.flex-header-home').css("visibility", "hidden");
-    $('.overlay').addClass('is-open');
-    return false;
-  });
+    // DOM IS READY
 
-    $('.smartphone-menu-trigger').click(function(){
-      $('.smartphone-menu-trigger').hide();
-      $('.smartphone-menu-trigger-close').show();
-      $('.flex-nav-list').addClass('flex-nav-is-open');
-
-    return false;
-  });
-
-      $('.smartphone-menu-trigger-close').click(function(){
-      $('.smartphone-menu-trigger-close').hide();
-      $('.smartphone-menu-trigger').show();
-      $('.flex-nav-list').removeClass('flex-nav-is-open');
-    return false;
-  });
-
-  $('.close-btn').click(function(){
-    $('.overlay').removeClass('is-open');
-     $('.flex-header-home').css("visibility", "visible");
-  });
-
-   $('.nav-mobile').click(function(){
-    $('.header-nav li').css("visibility", "visible");
-    $('.nav-mobile-close').css("visibility", "visible");
-     $('.nav-mobile').css("visibility", "hidden");
-  });
-
-   $('.nav-mobile-close').click(function(){
-      $('.header-nav li').css("visibility", "hidden");
-    $('.nav-mobile').css("visibility", "visible");
+    // Trigger Rotating Quotes
   
-    $('.nav-mobile-close').css("visibility", "hidden");
-     
-  });
+    $(rotateTerm);
+
+    // ------------------- Set DOM Variables to only query the DOM once
+
+    var dataBtn = $('.data-link');
+    var dataCloseBtn = $('.close-btn');
+    var overlay = $('.overlay');
+    var headerNav = $('flex-header-banner');
+    var headerList = $('.header-nav li');
+    var headerNavBtn = $('.nav-mobile');
+    var headNavCloseBtn = $('.nav-mobile-close');
+    var sideNav = $('.flex-nav-list');
+    var sideNavBtn = $('.smartphone-menu-trigger');
+    var sideNavCloseBtn = $('.smartphone-menu-trigger-close');
+
+    var videoBtn = $('.MyButton');
+
+    var contentTop = (($(".reveal-wrapper").offset().top) - 50);
+
+    // ----------------------------- Button Functions 
+
+    // -------------- Data Modal Page Click Functions
+
+     dataBtn.click(function(){
+
+        overlay.addClass('is-open');
+        headerNav.css("visibility", "hidden");
+        return false;
+     });
+
+     dataCloseBtn.click(function(){
+
+         overlay.removeClass('is-open');
+         headerNav.css("visibility", "visible");
+         return false;
+     });
+
+     // -------------- Sidebar Navigation Click Functions
+
+     sideNavBtn.click(function(){
+
+        sideNavBtn.hide();
+        sideNavCloseBtn.show();
+        sideNav.addClass('flex-nav-is-open');
+        return false;
+     });
+
+     sideNavCloseBtn.click(function(){
+
+        sideNavCloseBtn.hide();
+        sideNavBtn.show();
+        sideNav.removeClass('flex-nav-is-open');
+        return false;
+     });
+
+     // -------------- Header Navigation Click Functions
+
+     headerNavBtn.click(function(){
+ 
+        headerList.css("visibility", "visible");
+        headNavCloseBtn.css("visibility", "visible");
+        headerNavBtn.css("visibility", "hidden");
+        return false;
+      });
+
+     headNavCloseBtn.click(function(){
+
+        headerList.css("visibility", "hidden");
+        headerNavBtn.css("visibility", "visible");
+        headNavCloseBtn.css("visibility", "hidden");
+        return false;
+      });
 
 
+      // ------------------ Video Player Click Function
 
-  
-  $(rotateTerm);
-  
-  
+     videoBtn.click(function(){
+
+         NextVideo();
+         return false;
+
+      });
+
+       // ------------------- Device Specific Functions
+
+      if (window.matchMedia('(max-width: 768px)').matches) {
+      
+        // Remove header opacity for smaller devices
+         headerNav.removeClass('flex-header-banner-fixed');
+
+      }
+
+      if (window.matchMedia('(max-width: 992px)').matches) {
+    
+      }
+
+  // --------------- Window Scroll Function ---------------  
+
   $(window).scroll(function () {
 
+  // Checks and runs everytime the window is scrolled -> load intensive
+   
+        // Header Opacity & Sidebar Button Appear if window is below landing video
 
+        if ($(window).scrollTop() >= contentTop) {
 
-    $('.MyButton').click(function(){
-       NextVideo();
+              headerNav.addClass('flex-header-banner-fixed');
+              sideNavBtn.css('display', 'block');
+        }
+
+        // Header Opacity & Sidebar Button Disappear if window is above landing video
+
+        if ($(window).scrollTop() < (contentTop)) {
+          
+              headerNav.removeClass('flex-header-banner-fixed');
+              sideNavBtn.css("display", "none");
+        }
+    
+  }); // ------------- End of Window Scroll Function -------------------
+
+  // Auto Scroll Sidebar Navigation Click
+
+  function onScroll(event){
+
+    var scrollPos = $(document).scrollTop();
+    $('#flex-nav a').each(function () {
+        var currLink = $(this);
+        var refElement = $(currLink.attr("href"));
+        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+            $('#flex-nav a').removeClass("active");
+            currLink.addClass("active");
+        }
+        else{
+            currLink.removeClass("active");
+        }
     });
+}
 
-      var targetOffset3 = (($(".reveal-wrapper").offset().top) - 50);
-      //stick nav-bar
-    if ($(window).scrollTop() >= targetOffset3) {
-
-          $('.flex-header-banner').addClass('flex-header-banner-fixed');
-
-      
-    }
-    if ($(window).scrollTop() < (targetOffset3)) {
-      
-        $('.flex-header-banner').removeClass('flex-header-banner-fixed');
-    }
-
-    // remove for smaller devices
-    if (window.matchMedia('(max-width: 768px)').matches) {
-    
-       $('.flex-header-banner').removeClass('flex-header-banner-fixed');
-    }
-    if (window.matchMedia('(max-width: 992px)').matches) {
-  
-    }
-
-    /* Change slide background colour
-
-    var targetOffset = $("#slide-3").offset().top;
-
-    var $w = $(window).scroll(function(){
-    if ( $w.scrollTop() > targetOffset ) {   
-        $('.flex-content').css({"background":"#5FC3E4"});
-         $('#slide-3').css({"background":"#5FC3E4"});
-    } else {
-      $('.flex-content').css({"background":"white"});
-    
-    }
-});
-
-        var targetOffset2 = $("#slide-4").offset().top;
-
-    var $w2 = $(window).scroll(function(){
-    if ( $w2.scrollTop() > targetOffset2 ) {   
-        $('.flex-content').css({"background":"#E3170A"});
-         $('#slide-4').css({"background":"#E3170A"});
-    } else {
-    }
-
-    });
-
- var cisSlide = $("#slide-8").offset().top;
-
-    var $w3 = $(window).scroll(function(){
-    if ( $w3.scrollTop() > cisSlide ) {   
-        $('.flex-content').css({"background":"#F39237"});
-    } else {
-    }
-
-});
-    */
-    
-  });
+// Smooth Scrolling
 
 $(document).on("scroll", onScroll);
     
@@ -164,17 +214,6 @@ $(document).on("scroll", onScroll);
 
 });
 
-function onScroll(event){
-    var scrollPos = $(document).scrollTop();
-    $('#flex-nav a').each(function () {
-        var currLink = $(this);
-        var refElement = $(currLink.attr("href"));
-        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-            $('#flex-nav a').removeClass("active");
-            currLink.addClass("active");
-        }
-        else{
-            currLink.removeClass("active");
-        }
-    });
-}
+
+
+
