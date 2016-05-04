@@ -1,3 +1,5 @@
+(function($){ 
+
 // --------------- Animated Survey Quotes ---------------
 
 // Cisgender Survey Quotes Array
@@ -27,7 +29,7 @@ var video_count = 1;
 
 // On Click Video Function
 
-function NextVideo() {
+function nextVideo() {
 
     video_count++;
     if (video_count === 4) {
@@ -39,7 +41,29 @@ function NextVideo() {
 
 }
 
+// ------------------- Set DOM Variables to only query the DOM once
 
+var dataBtn = $('.data-link');
+var dataCloseBtn = $('.close-btn');
+var overlay = $('.overlay');
+var headerNav = $('.flex-header-banner');
+var headerList = $('.header-nav li');
+var headerNavBtn = $('.nav-mobile');
+var headNavCloseBtn = $('.nav-mobile-close');
+var sideNav = $('.flex-nav-list');
+var sideNavBtn = $('.smartphone-menu-trigger');
+var sideNavCloseBtn = $('.smartphone-menu-trigger-close');
+
+var videoBtn = $('.MyButton');
+
+//var contentTop = (($(".reveal-wrapper").offset().top) - 50);
+
+// --------------- Show/Hide Header on Scroll Variables ---------------
+
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = headerNav.outerHeight();
 
 // --------------- Document Ready Function ---------------
 
@@ -50,23 +74,6 @@ $(document).ready(function() {
     // Trigger Rotating Quotes
   
     $(rotateTerm);
-
-    // ------------------- Set DOM Variables to only query the DOM once
-
-    var dataBtn = $('.data-link');
-    var dataCloseBtn = $('.close-btn');
-    var overlay = $('.overlay');
-    var headerNav = $('flex-header-banner');
-    var headerList = $('.header-nav li');
-    var headerNavBtn = $('.nav-mobile');
-    var headNavCloseBtn = $('.nav-mobile-close');
-    var sideNav = $('.flex-nav-list');
-    var sideNavBtn = $('.smartphone-menu-trigger');
-    var sideNavCloseBtn = $('.smartphone-menu-trigger-close');
-
-    var videoBtn = $('.MyButton');
-
-    var contentTop = (($(".reveal-wrapper").offset().top) - 50);
 
     // ----------------------------- Button Functions 
 
@@ -104,6 +111,10 @@ $(document).ready(function() {
         return false;
      });
 
+     if (sideNav.hasClass('flex-nav-is-open')) {
+        sideNavBtn.hide();
+     } 
+
      // -------------- Header Navigation Click Functions
 
      headerNavBtn.click(function(){
@@ -127,7 +138,7 @@ $(document).ready(function() {
 
      videoBtn.click(function(){
 
-         NextVideo();
+         nextVideo();
          return false;
 
       });
@@ -147,16 +158,17 @@ $(document).ready(function() {
 
   // --------------- Window Scroll Function ---------------  
 
-  $(window).scroll(function () {
+  $(window).scroll(function() {
 
-  // Checks and runs everytime the window is scrolled -> load intensive
+  /* Checks and runs everytime the window is scrolled -> load intensive
    
         // Header Opacity & Sidebar Button Appear if window is below landing video
 
-        if ($(window).scrollTop() >= contentTop) {
+        if ($(window).scrollTop() >= (contentTop)) {
 
               headerNav.addClass('flex-header-banner-fixed');
               sideNavBtn.css('display', 'block');
+              sideNavBtn.removeClass('smartphone-menu-trigger-black');
         }
 
         // Header Opacity & Sidebar Button Disappear if window is above landing video
@@ -164,10 +176,52 @@ $(document).ready(function() {
         if ($(window).scrollTop() < (contentTop)) {
           
               headerNav.removeClass('flex-header-banner-fixed');
-              sideNavBtn.css("display", "none");
+              sideNavBtn.addClass('smartphone-menu-trigger-black');
+             sideNavBtn.css("display", "none");
         }
+
+        if (!headerNav.hasClass('flex-header-banner-fixed')) {
+
+                
+        }
+
+        */
+
+        didScroll = true;
     
   }); // ------------- End of Window Scroll Function -------------------
+
+  // Show/Hide Header Nav Functions
+
+  setInterval(function() {
+      if (didScroll) {
+          hasScrolled();
+          didScroll = false;
+      }
+  }, 250);
+
+  function hasScrolled() {
+      var st = $(this).scrollTop();
+      
+      // Make sure they scroll more than delta
+      if(Math.abs(lastScrollTop - st) <= delta) {
+          return;
+       }
+      // If they scrolled down and are past the navbar, add class .nav-up.
+      // This is necessary so you never see what is "behind" the navbar.
+      if (st > lastScrollTop && st > navbarHeight){
+          // Scroll Down
+          headerNav.removeClass('flex-header-banner-fixed').addClass('nav-up');
+      } else {
+          // Scroll Up
+          if(st + $(window).height() < $(document).height()) {
+              headerNav.removeClass('nav-up').addClass('flex-header-banner-fixed');
+
+          }
+      }
+      
+      lastScrollTop = st;
+  }
 
   // Auto Scroll Sidebar Navigation Click
 
@@ -201,9 +255,8 @@ $(document).on("scroll", onScroll);
         });
         $(this).addClass('active');
       
-        var target = this.hash,
-            menu = target;
-        $target = $(target);
+        var target = this.hash;
+        var $target = $(target);
         $('html, body').stop().animate({
             'scrollTop': $target.offset().top+2
         }, 500, 'swing', function () {
@@ -216,4 +269,4 @@ $(document).on("scroll", onScroll);
 
 
 
-
+})(jQuery);

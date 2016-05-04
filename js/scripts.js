@@ -1,6 +1,6 @@
 //Graph 1 - Interactive Pie Chart with Tooltips -----------------------------------------------------------------------------------------------------------  
 
-(function(d3) {
+function chart1() {
 
 
 
@@ -14,7 +14,7 @@ var dataset = [
   { label: 'Internet', count: 136 }
 ];
 
-var width = ((parseInt(d3.select('#chart-1').style('width'))*1.5) );
+var width = 1000;
 var height = width;
 
 var radius = Math.min(width, height) / 2; 
@@ -112,14 +112,18 @@ legend.append('rect')
     if (rect.attr('class') === 'disabled') {                // NEW
                     rect.attr('class', '');                               // NEW
     } else {                                                // NEW
-      if (totalEnabled < 2) return;                         // NEW
+      if (totalEnabled < 2) {
+      return;         
+      }                // NEW
       rect.attr('class', 'disabled');                       // NEW
       enabled = false;                                      // NEW
     }                                                       // NEW
 
     pie.value(function(d) {                                 // NEW
-      if (d.label === label) d.enabled = enabled;           // NEW
-      return (d.enabled) ? d.count : 0;                     // NEW
+      if (d.label === label) {
+      d.enabled = enabled;           // NEW
+      return (d.enabled) ? d.count : 0;   
+      }                  // NEW
     });                                                     // NEW
 
     path = path.data(pie(dataset));                         // NEW
@@ -140,14 +144,15 @@ legend.append('rect')
       .attr('y', legendRectSize - legendSpacing)
       .text(function(d) { return d; });
 
-})(window.d3);
 
 
+}
+
+chart1();
 
 //Graph 2 - Interactive Colour Based Bar Chart with axis -----------------------------------------------------------------------------------------------------------  
 
-function chart2() {
-
+/*
 //Width and Height
 var w = ((parseInt(d3.select('#chart-2').style('width'))*1) );
 var h = w / 1.3;
@@ -167,8 +172,7 @@ return {
 
 }, function(error, rows) {
 
-  var dataset = rows[0]['pre'];
-  console.log(rows[1]['post']);
+  var dataset = rows.pre;
 // Scale
 
 var max = d3.max(d3.values(dataset)); 
@@ -243,14 +247,15 @@ graph2.selectAll("rect")
 
 chart2();
 
+*/
+
 // Graph 5 ------------------------------------------------------
 
 function graph3() {
 
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = ((parseInt(d3.select('#chart-3').style('width'))*2.5)  - margin.left - margin.right );
-    height = (width / 1.5) - margin.top - margin.bottom;
-
+var margin = {top: 20, right: 20, bottom: 30, left: 40};
+var width = 1000;
+var height = (width / 1.5) - margin.top - margin.bottom;
 var formatPercent = d3.format(".0%");
 
 var x = d3.scale.ordinal()
@@ -359,7 +364,7 @@ var chord = d3.layout.chord()
     .sortSubgroups(d3.descending)
     .matrix(matrix);
 
-var width = ((parseInt(d3.select('#chart-5').style('width'))) );
+var width = 1000;
 var  height = width / 2,
     innerRadius = Math.min(width, height) * .41,
     outerRadius = innerRadius * 1.1;
@@ -389,8 +394,7 @@ var ticks = svg.append("g").selectAll("g")
     .data(groupTicks)
   .enter().append("g")
     .attr("transform", function(d) {
-      return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
-          + "translate(" + outerRadius + ",0)";
+      return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")" + "translate(" + outerRadius + ",0)";
     });
 
 ticks.append("line")
@@ -431,7 +435,7 @@ function groupTicks(d) {
 function fade(opacity) {
   return function(g, i) {
     svg.selectAll(".chord path")
-        .filter(function(d) { return d.source.index != i && d.target.index != i; })
+        .filter(function(d) { return d.source.index !== i && d.target.index !== i; })
       .transition()
         .style("opacity", opacity);
   };
@@ -439,15 +443,15 @@ function fade(opacity) {
 
 }
 
-graph5();
 
 
 // Graph 5 - Grouped Bar Chart with filter ----------------------------------
 
 
- {
+ function graph4() {
+
   var margin = {top: 20, right: 20, bottom: 30, left: 40};
-var width = (parseInt(d3.select('#chart-4').style('width')) / 4);
+var width = 1000;
    var height = (width / 3) - margin.top - margin.bottom;
 
 var x0 = d3.scale.ordinal()
@@ -477,7 +481,7 @@ var svg = d3.select("#chart-4").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 d3.csv("../assets/data/data.csv", function(error, data) {
-  if (error) throw error;
+  if (error) {throw error;}
 
   var ageNames = d3.keys(data[0]).filter(function(key) { return key !== "State"; });
 
@@ -545,57 +549,5 @@ graph4();
 
 
 // ---------------------------------------------------------------------------------
-
-var browsers = [];
-
-    var w = 500;
-    var h = 100;
-    var barPadding = 3;
-    d3.csv("../assets/data/choice-age.csv",
-            function(error, rows) {
-                rows.forEach(function(r) {
-                    browsers.push({
-                        reply: r.answer,
-                        values: [r['18'], r['25'], r['35']]
-                    })
-                });
-                browsers.forEach(function(b){
-                    render(b);
-                });
-            });
-
-    function render(browser) {
-        var svg = d3.select("#slide-8").append("svg")
-                .attr("width", w)
-                .attr("height", h);
-
-        svg.selectAll("rect")
-                .data(browser.values)
-                .enter()
-                .append("rect")
-                .attr("x", function(d, i) {
-                    return i * (w / browser.values.length);
-                })
-                .attr("y", function(d) {
-                    return parseInt(h - d);
-                })
-                .attr("width", (w / browser.values.length) - barPadding)
-                .attr("height", function(d) {
-                    return parseInt(d);
-                })
-                .attr("fill", function(d, i) {
-                    var rgbColor = "rgb(" + Math.round((Math.random()*255)) +
-                            ", " + Math.round((Math.random()*255)) + ", "  +
-                            Math.round((Math.random()*255)) + ")";
-                    return rgbColor;
-                });
-
-        // Add a label to each SVG.
-        svg.append("text").text(browser.name).attr({"x": 0, "y": 30});
-
-        // NOTE THIS RENDER FUNCTION IS MISSING THE UPDATE AND EXIT PHASES. WE
-        // ARE DOING EVERYTHING IN THE ENTER PHASE - WHICH MEANS IT WILL ONLY
-        // WORK ON STATIC DATA.
-    }
 
 
