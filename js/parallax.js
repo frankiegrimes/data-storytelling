@@ -1,22 +1,30 @@
 (function($){ 
 
+
 // --------------- Animated Survey Quotes ---------------
 
-// Cisgender Survey Quotes Array
+function parseTxt() {
 
-var terms = [
-"a label for those whose experiences of their own gender agree with the sex they were assigned at birth", 
-"a fridge magnet Consequat magnam tempor a! Ornare malesuada aliquet perferendis incididunt? Aliquet mi autem? Litora senectus at dolorum at eos error ex.", 
-"Tellus saepe ducimus torquent omnis magna? Cillum lobortis netus eaque debitis sollicitudin? Convallis harum tincidunt. Elementum posuere? Quam! Blandit duis."];
+      return $.get("../assets/data/cisgender-text.txt", function(data) {});
+}
+// Survey Quotes Array
+
+var termsArray = parseTxt();
 
 // Rotate Quotes Function
 
 var rotater = $('#rotate');
 
-function rotateTerm() {
-  var ct = rotater.data("term") || 0;
-  rotater.data("term", ct === terms.length -1 ? 0 : ct + 1).text(terms[ct]).fadeIn()
+function rotateTerm() { 
+  termsArray.success(function(terms) {
+
+    var items = terms.split(/","/);
+
+    var currentTerm = rotater.data("term") || 0;
+  rotater.data("term", currentTerm === items.length -1 ? 0 : currentTerm + 1).text(items[currentTerm]).fadeIn()
               .delay(2000).fadeOut(200, rotateTerm);
+});
+
 }
 
 // --------------- Interactive Video Players ---------------
@@ -51,6 +59,7 @@ var headerList = $('.header-nav li');
 var headerNavBtn = $('.nav-mobile');
 var headNavCloseBtn = $('.nav-mobile-close');
 var sideNav = $('.flex-nav-list');
+var flexNav = $('#flexNav');
 var sideNavBtn = $('.smartphone-menu-trigger');
 var sideNavCloseBtn = $('.smartphone-menu-trigger-close');
 
@@ -81,6 +90,7 @@ $(document).ready(function() {
 
      dataBtn.click(function(){
 
+        window.scrollTo(0,0);
         overlay.addClass('is-open');
         headerNav.css("visibility", "hidden");
         return false;
@@ -191,6 +201,20 @@ $(document).ready(function() {
     
   }); // ------------- End of Window Scroll Function -------------------
 
+
+  // Hide sidenav on click outside
+
+  $(document).mouseup(function (e)
+{
+// if the target of the click isn't the container... // ... nor a descendant of the container
+    if ((sideNav.hasClass('flex-nav-is-open')) && (!sideNav.is(e.target) && (sideNav.has(e.target).length === 0))) 
+    {
+        sideNav.removeClass('flex-nav-is-open');
+        sideNavCloseBtn.hide();
+        sideNavBtn.show();
+    }
+});
+
   // Show/Hide Header Nav Functions
 
   setInterval(function() {
@@ -225,7 +249,7 @@ $(document).ready(function() {
 
   // Auto Scroll Sidebar Navigation Click
 
-  function onScroll(event){
+  function onScroll(){
 
     var scrollPos = $(document).scrollTop();
     $('#flex-nav a').each(function () {
