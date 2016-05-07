@@ -157,6 +157,7 @@ a {text-decoration: none; color: #342E37;}
 	align-items: center;
 	justify-content: center;
 	position: relative;
+	width: 100%;
 }
 
 #interactive-hook {
@@ -226,9 +227,9 @@ a {text-decoration: none; color: #342E37;}
 	display: flex;
 	flex-direction: column;
 	background-color: #FBAE17;
-	padding: 10rem 40rem;
-	height: 70vh;
+	padding: 0rem 20rem;
 	width: 100%;
+	height: 70vh;
 	justify-content: center;
 	align-items: center;
 }
@@ -262,6 +263,7 @@ a {text-decoration: none; color: #342E37;}
 	background: #7F47DD;
 	padding: 0 20rem;
 	min-height: 50vh;
+	width: 100%;
 }
 
 #slide-5 {
@@ -280,6 +282,7 @@ a {text-decoration: none; color: #342E37;}
 	min-width: 100vw;
 	position: relative;
 	background: cover;
+	width: 100%;
 
 }
 
@@ -325,6 +328,8 @@ a {text-decoration: none; color: #342E37;}
 	justify-content: center;
 	position: relative;
 	z-index: -1;
+	height: 60vh;
+	width: 100%;
 
 }
 #slide-9 {
@@ -353,6 +358,7 @@ a {text-decoration: none; color: #342E37;}
 	padding: 0 20rem;
 	align-items: center;
 	justify-content: center;
+	width: 100%;
 
 }
 
@@ -623,6 +629,7 @@ a {text-decoration: none; color: #342E37;}
 
 
 
+
 .flex-nav-list {
 	position: fixed;
 	top: 0;
@@ -690,6 +697,31 @@ a {text-decoration: none; color: #342E37;}
   color: #EEA200;
 
 }
+
+/* Desktop Sidebar Navigation */
+
+.desktop {
+	position: absolute;
+	top: 100vh;
+
+	justify-content: flex-start;
+	padding-top: 5rem;
+	background-color: white;
+	opacity: 0;
+	-webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.0);
+	-moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.0);
+	box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.0);
+}
+
+.desktop-fixed {
+	position: fixed;
+	top: 0;
+	opacity: 0.9;
+
+
+}
+
+
 
 /* ------------------- Fonts ------------------- */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
@@ -1060,6 +1092,7 @@ p {
 }
 
 #chart-4 {
+	  font: 1rem 'Brandon';
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -1076,6 +1109,7 @@ p {
 	text-align: right;
 	font-size: 0.9rem;
 	padding: 2rem;
+	margin-left: 20rem;
 }
 
 #chart-4 .tooltip {
@@ -1097,14 +1131,44 @@ font-size: 12px;
 }
 
 #chart-4 rect {
-cursor: pointer;                                              /* NEW */
+cursor: pointer;                                             
 stroke-width: 2;
 }
 
-#chart-4 rect.disabled {                                                 /* NEW */
-fill: transparent !important;                                 /* NEW */
+#chart-4 rect.disabled {                                           
+fill: transparent !important;                               
 }           
-                                                    /* NEW */                 
+       
+#chart-5 {
+	padding: 4rem;
+	display: flex;
+	flex-direction: column;
+}
+
+#chart-5 span {
+	order: 1;
+	text-align: right;
+	font-size: 0.9rem;
+	padding: 2rem;
+	margin-left: 20rem;
+}
+
+#chart-5 .axis path, #chart-5
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+#chart-5 .bar {
+  fill: steelblue;
+}
+
+#chart-5 .x.axis path {
+  display: none;
+}
+
+
 
 
 
@@ -1112,6 +1176,11 @@ fill: transparent !important;                                 /* NEW */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 /* Large Devices, Laptops, Wide Screens */
+	@media only screen and (min-width: 1800px) {
+    	body {font-size: 1.8rem}
+    	.flex-content {padding: 0rem 20rem; }
+    }
+
     @media only screen and (max-width : 1400px) {
 
     	body {font-size: 1.6rem}
@@ -1119,7 +1188,7 @@ fill: transparent !important;                                 /* NEW */
 
     @media only screen and (max-width : 1200px) {
 
-    	body {font-size: 1.5rem}
+	    	body {font-size: 1.5rem}
 
     	.header-nav li a {font-size: 1.2rem; margin: 1rem; padding: 1rem;}
     }
