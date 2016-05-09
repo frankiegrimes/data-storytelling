@@ -153,11 +153,15 @@ a {text-decoration: none; color: #342E37;}
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	padding: 0 20rem;
 	align-items: center;
 	justify-content: center;
 	position: relative;
 	width: 100%;
+	padding: 0rem 20rem;
+}
+
+#slide-1 .video-frame, #slide-1 .video-buttons{
+	width: 75%;
 }
 
 #interactive-hook {
@@ -247,6 +251,7 @@ a {text-decoration: none; color: #342E37;}
 #slide-3 {
 	width: 100%;
 	display: flex;
+	padding: 0rem 20rem;
 	flex-direction: column;
 	flex-wrap: wrap;
 	align-items: center;
@@ -585,6 +590,10 @@ a {text-decoration: none; color: #342E37;}
   transform: scale(0.5);
 }
 
+.smartphone-menu-trigger:hover {
+  transform: scale(0.6);
+}
+
 .smartphone-menu-trigger-black {
 
   display: none;
@@ -601,18 +610,20 @@ a {text-decoration: none; color: #342E37;}
 }
 
 .smartphone-menu-trigger-close {
-
   display: none;	
   cursor:pointer;
   top: 10rem;
-  left: 0;
-  margin: 1rem 2rem;
-  background: url(../assets/img/close-white.svg) no-repeat;
+  margin: 0 auto;
+  background: url(../assets/img/close-black.svg) no-repeat;
   background-size: cover;
   height: 5rem;
   width: 5rem;
   z-index: 99;
   transform: scale(0.4);
+}
+
+.smartphone-menu-trigger-close:hover {
+  transform: scale(0.5);
 }
 
 }
@@ -927,16 +938,78 @@ p {
 
 .btn a:hover { background: rgba(0, 0, 0, 0.5); }
 
-.MyButton {
-	margin: 1rem;
-	padding: 1rem;
-	border: solid 1px black;
+.videoBtn-1 {
+	border: 1px white solid;
+	font-family: 'Open Sans', sans-serif;
 	background: transparent;
+	margin-top: 1.5rem;
+	padding: 1rem 1.6rem;
+	color: white;
+	font-size: 1rem;
 }
 
-.MyButton:hover {
-	background: rgba(0, 0, 0, 0.3);
+.videoBtn-1:focus {
+	outline: none;
 }
+
+.videoBtn-1:hover { background: rgba(0, 0, 0, 0.5); }
+
+/* 3D Video Player Buttons using pseudoclasses 
+
+.videoBtn-1 {
+	background-color: #1774FB; 
+	font-family: 'Open Sans', sans-serif;
+	font-size: 0.8rem;
+	text-decoration:none;
+	color:#fff; 
+	position:relative;
+	padding:10px 20px;
+	margin-top: 2rem;
+	margin-left:2rem;
+	background-image: linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	box-shadow: inset 0px 1px 0px #1774FB, 0px 5px 0px 0px #032b3a, 0px 10px 5px #999;
+}
+
+.videoBtn-1:active {
+	top:3px;
+	background-image: linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	box-shadow: inset 0px 1px 0px #1774FB, 0px 2px 0px 0px #1774FB, 0px 5px 3px #999;
+
+}
+
+.videoBtn-1::before {
+	content:"►";
+	width:35px;
+	max-height:29px;
+	height:100%;
+	position:absolute;
+	display:block;
+	padding-top:8px;
+	top:0px;
+	left:-36px;
+	font-size:16px;
+	font-weight:bold;
+	color: white;
+	background-color: #1774FB;
+	text-shadow:1px 1px 0px #07526e;
+	border-right:solid 1px #07526e;
+	background-image: linear-gradient(bottom, rgb(10,94,125) 0%, rgb(14,139,184) 100%);
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	box-shadow:inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #032b3a, 0px 10px 5px #999 ;
+}
+
+.videoBtn-1:active::before {
+	top:-3px;
+	box-shadow:inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #032b3a, 1px 1px 0px 0px #044a64, 2px 2px 0px 0px #044a64, 2px 5px 0px 0px #044a64, 6px 4px 2px #0b698b, 0px 10px 5px #999 ;
+}
+
+.videoBtn-1:focus {
+	outline: none;
+}
+*/
 
 .video-buttons {
 	width: 100%;
@@ -944,10 +1017,46 @@ p {
 	justify-content: space-between;
 }
 
+#tweet-button {
+	background-color: transparent;
+	border: none;
+	color: #4099FF;
+	font-size: 3rem;
+	position: absolute;
+	display: none;
+	z-index: 99;
+}
+
+#tweet-button span {
+	
+	font-size: 1rem;
+	position: absolute;
+	text-align: center;
+	top: 1rem;
+	padding: 0rem 0.5rem;
+}
+
+
+#tweet-button:hover {
+	color: rgba(0, 132, 180, 0.9);
+
+}
+
+#teni-cta {
+	padding: 1rem 2rem;
+	margin: 1rem;
+	margin-bottom: 5rem;
+	background: url(../assets/img/teni.svg) pink;
+	color: white;
+	text-transform: uppercase;
+	font-size: 2rem;
+	font-family: Brandon;
+}
+
 /* ------------------- Forms ------------------- */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
 /* ###### White / Pink #########*/
-.cis-form {
+#cis-form {
     margin: 0 auto;
     max-width: 100%
     background: #FFF;
@@ -956,7 +1065,7 @@ p {
     color: #666;
 }
 
-.cis-form input[type="text"]{
+#cis-form input[type="text"]{
     color: #555;
     width: 70%;
     padding: 0.5rem 3rem;
@@ -964,7 +1073,7 @@ p {
     border: 1px solid #e5e5e5;
 }
 
-.cis-form .button {
+#cis-form .button {
     -moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
     -webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;
     box-shadow:inset 0px 1px 0px 0px #fbafe3;
@@ -991,17 +1100,17 @@ p {
     float: right;
     margin-top: -3.7rem;
 }
-.cis-form .button:hover {
+#cis-form .button:hover {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ef027d), color-stop(1, #ff5bb0) );
     background:-moz-linear-gradient( center top, #ef027d 5%, #ff5bb0 100% );
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ef027d', endColorstr='#ff5bb0');
     background-color:#ef027d;
 }
-.cis-form .button:active {
+#cis-form .button:active {
     position:relative;
     top:1px;
 }
-.cis-form select {
+#cis-form select {
     background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%);
     background: url('down-arrow.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#E9E9E9));
    appearance:none;
@@ -1056,7 +1165,7 @@ p {
   display: none;
 }
 
-#chart-1 .tooltip, #chart-3 .tooltip {
+#chart-1 .tooltip, #chart-3 .tooltip{
   background: #eee;
   box-shadow: 0 0 5px #999999;
   color: #333;
@@ -1091,7 +1200,7 @@ p {
 	padding: 2rem;
 }
 
-#chart-4 {
+#chart-4, #chart-5 {
 	  font: 1rem 'Brandon';
 	display: flex;
 	flex-direction: column;
@@ -1104,7 +1213,7 @@ p {
 
 
 
-#chart-4 span {
+#chart-4 span, #chart-5 span {
 	order: 1;
 	text-align: right;
 	font-size: 0.9rem;
@@ -1112,7 +1221,7 @@ p {
 	margin-left: 20rem;
 }
 
-#chart-4 .tooltip {
+#chart-4 .tooltip, #chart-5 .tooltip {
         background: #eee;
         box-shadow: 0 0 5px #999999;
         color: #333;
@@ -1126,16 +1235,16 @@ p {
         width: 80px;
         z-index: 10;
 }
-#chart-4 .legend {
+#chart-4 .legend, #chart-5 .legend {
 font-size: 12px;
 }
 
-#chart-4 rect {
+#chart-4 rect, #chart-5 rect {
 cursor: pointer;                                             
 stroke-width: 2;
 }
 
-#chart-4 rect.disabled {                                           
+#chart-4 rect.disabled, #chart-5 rect.disabled {                                           
 fill: transparent !important;                               
 }           
        
@@ -1153,8 +1262,7 @@ fill: transparent !important;
 	margin-left: 20rem;
 }
 
-#chart-5 .axis path, #chart-5
-.axis line {
+#chart-5 .axis path{
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
@@ -1168,7 +1276,39 @@ fill: transparent !important;
   display: none;
 }
 
+#chart-6, #chart-7 {
+	padding: 4rem;
+	display: flex;
+	flex-direction: column;
+	font-size: 1rem;
+}
 
+#chart-7 span {
+	order: 1;
+	text-align: right;
+	font-size: 0.9rem;
+	padding: 2rem;
+	margin-left: 20rem;
+
+}
+
+#chart-6 {
+	order: -1;
+}
+
+#chart-6 span {
+	order: 1;
+	text-align: right;
+	font-size: 0.9rem;
+	padding: 2rem;
+	margin-left: 20rem;
+}
+
+#chart-6 .axis path, #chart-7 .axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
 
 
 

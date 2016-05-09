@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------------------------
 
 // DOM Variables
-
+var body = $("body");
 var rotater = $('#rotate');
 var contentTop = (($(".reveal-wrapper").offset().top) - 50);
 var articleTop = ($("#slide-1").offset().top);
@@ -14,8 +14,8 @@ var headerList = $('.header-nav li');
 var sideNav = $('.flex-nav-list');
 //var flexNav = $('#flexNav');
 var overlay = $('.overlay');
-var videoPlayer = $("myVideo"); 
-var videoBtn = $('.MyButton');
+
+
 var headerNavBtn = $('.nav-mobile');
 var headNavCloseBtn = $('.nav-mobile-close');
 var dataBtn = $('.data-link');
@@ -24,7 +24,8 @@ var sideNavBtn = $('.smartphone-menu-trigger');
 var sideNavCloseBtn = $('.smartphone-menu-trigger-close');
 
 // Interactive Video Players 
-
+var videoPlayer = $("#video-slide1")[0];
+var videoBtn = $('.videoBtn-1');
 var video_count = 1;
 
 // Header Scroll Variables
@@ -33,6 +34,9 @@ var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
 var navbarHeight = headerNav.outerHeight();
+
+var mouseX;
+var mouseY;
 
 // ------------------------------------------------------------------------------------------
 // ------------------------------ WINDOW FUNCTIONS ------------------------------------------
@@ -67,7 +71,7 @@ var navbarHeight = headerNav.outerHeight();
 
               headerNav.addClass('flex-header-banner-fixed');
               sideNavBtn.css('display', 'block');
-              sideNavBtn.removeClass('smartphone-menu-trigger-black');
+  
         }
 
         // Header Opacity & Sidebar Button Disappear if window is above landing video
@@ -75,7 +79,7 @@ var navbarHeight = headerNav.outerHeight();
         if ($(window).scrollTop() < (contentTop)) {
           
               headerNav.removeClass('flex-header-banner-fixed');
-              sideNavBtn.addClass('smartphone-menu-trigger-black');
+      
         }
 
         // Desktop Only Sticky Sidenav - When Scroll is above content
@@ -148,13 +152,31 @@ var navbarHeight = headerNav.outerHeight();
 
   $(document).mouseup(function (e) {
     // if the target of the click isn't the container... // ... nor a descendant of the container
-    if ((sideNav.hasClass('flex-nav-is-open')) && ($("body").css("font-size") <= "26px") && (!sideNav.is(e.target) && (sideNav.has(e.target).length === 0))) 
+    if ((sideNav.hasClass('flex-nav-is-open')) && (body.css("font-size") <= "26px") && (!sideNav.is(e.target) && (sideNav.has(e.target).length === 0))) 
     {
         sideNav.removeClass('flex-nav-is-open');
         sideNavCloseBtn.hide();
         sideNavBtn.show();
     }
   });
+
+  // Tweet Highlighted Text
+
+  $('p').mouseup(function(e) {
+    if (getSelectionText() !== "") {
+       mouseX = e.pageX; 
+      mouseY = e.pageY;
+      $('#tweet-button').css({'top':mouseY-150, 'left':mouseX}).fadeIn('slow');
+    }
+  });
+
+  $('#tweet-button').mouseup(function() {
+    window.open('https://twitter.com/intent/tweet?text='+encodeURI(getSelectionText()) + '&url=' + encodeURI(document.URL), '_blank', 'toolbar=0,location=0,menubar=0');
+  });
+
+  $('#tweet-button').mouseout(function(){
+  $('#tweet-button').fadeOut('slow');
+});
 
 // ------------------------------------------------------------------------------------------
 // ------------------------------ FUNCTIONS -------------------------------------------------
@@ -216,7 +238,7 @@ var navbarHeight = headerNav.outerHeight();
 
  sideNavBtn.click(function(){
 
-    sideNavBtn.hide();
+    sideNavBtn.css("visibility", "hidden");
     sideNavCloseBtn.show();
     sideNav.addClass('flex-nav-is-open');
     return false;
@@ -225,7 +247,7 @@ var navbarHeight = headerNav.outerHeight();
  sideNavCloseBtn.click(function(){
 
     sideNavCloseBtn.hide();
-    sideNavBtn.show();
+    sideNavBtn.css("visibility", "visible");
     sideNav.removeClass('flex-nav-is-open');
     return false;
  });
@@ -266,7 +288,11 @@ var navbarHeight = headerNav.outerHeight();
 
 function nextVideo() {
 
+
+
     video_count++;
+    window.console.log(video_count);
+    window.console.log(videoPlayer);
     if (video_count === 4) {
       video_count = 1;
     }
@@ -287,7 +313,7 @@ function nextVideo() {
 
   var termsArray = parseTxt();
 
- // --------------------- Rotate Quotes Function
+ // --------------------- Auto Rotate Quotes Function
 
  function rotateTerm() { 
   termsArray.success(function(terms) {
@@ -302,20 +328,29 @@ function nextVideo() {
 }
 
   function checkSize() {
-    window.console.log($("body").css("font-size"));
-    if ($("body").css("font-size") > "26px") {
+
+    if (body.css("font-size") > "26px") {
       sideNav.addClass("flex-nav-is-open");
-      sideNavBtn.css("display", "none");
-      sideNavCloseBtn.css("display", "none");
       sideNav.addClass("desktop");
-    } if ($("body").css("font-size") < "26px") {
+    } if (body.css("font-size") < "26px") {
       sideNav.removeClass("flex-nav-is-open");
-      sideNavBtn.css("display", "block");
-      sideNavCloseBtn.css("display", "block");
       sideNav.removeClass("desktop");
     }
   }
 
+// Tweet Highlighted Text  
+
+function getSelectionText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+        window.console.log(text);
+    } else if (document.selection && document.selection.type !== "Control") {
+        text = document.selection.createRange().text;
+    }
+    return text;
+
+}
 
 
 

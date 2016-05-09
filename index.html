@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="assets/img/favicon.ico">
-    <link rel="stylesheet" href="css/style.css" />
-      <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="css/normalize.css" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
-  </head>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    </head>
 
 
   <body class="flex-body">
@@ -25,7 +25,7 @@
      <header class="flex-header">  
           <div class="flex-header-banner">
                <div class="smartphone-menu-trigger"></div>
-               <div class="smartphone-menu-trigger-close"></div>
+               
             <div class="header-titles"><h5>Transcend</h5></div>
 
            
@@ -62,6 +62,7 @@
     <nav id="flex-nav">
 
             <ul class="flex-nav-list" >
+            <div class="smartphone-menu-trigger-close" class="ion-ios-close-empty"></div>
               <li><a href="#slide-1">Intro</a></li>
               <li><a href="#slide-2">Gender</a></li>
               <li><a href="#slide-3">Cisgender</a></li>
@@ -76,24 +77,37 @@
 
       <main>
         <article class="flex-content">
+        <button id="tweet-button" class="ion-social-twitter"><span>Tweet!</span></button>
         
           <div id="slide-1">
               <h3>UNDERSTANDING</h3>
+
               <p>What is defined as an understanding of the transgender community? An understanding requires chllennging preconceptions and media stereotypes, knowledge of the issues facing the community, and an awareness of what it means to no be transgender - to be cisgender. This requires questing what gender is itself. </p>
-              <div id="interactive-hook">Interactive Hook</div>
+              
        
-               <video class="video-frame" controls="true">   
+               <video id="video-slide1" class="video-frame" controls="true">   
                   <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
               </video>
               <div class="video-buttons">
-                   <button class="MyButton">Gordon Gekko | NYC</button>
-                   <button class="MyButton">Toryn | ITSA</button>
-                   <button class="MyButton">Jean-Phillipe | France</button>
+                <button class="videoBtn-1">Gordon Gekko | NYC</button>
+                   <button class="videoBtn-1">Toryn | ITSA</button>
+                   <button class="videoBtn-1">Jean-Phillipe | France</button>
               </div>
               <div id="yellow-box"></div>
           </div>
 
           <div id="slide-2">
+
+            <form id="cis-form" action="#" method="post">
+              <div>
+                <label for="cisDefinition"></label>
+                <input type="text" name="definition" id="definition" value="" placeholder="What does 'cisgender' mean to you"></input>
+                <div>
+                <input type="submit" value="Submit">
+                </div>
+              </div>
+            </form>
+
           <h4>What 'cisgender' means to Irish people</h4>
              <h2>"<span id="rotate"></span>"</h2>
             
@@ -113,16 +127,16 @@
                     <span>Source: Survey 2016. Question asked: "Have you heard of the term Cisgender", sample size 175. </span>
                   </div>
             
-
+                  <div id="chart-7"><h4>Irish perceptions of transgender?</h4><span>Source: Survey 2016. Question asked: "Do you believe being transgender is a choice?", sample size 175. </span></div>
               
           
               <video class="video-frame" controls="true">   
                  <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
               </video>
               <div class="video-buttons">
-                   <button class="MyButton">Gordon Gekko | NYC</button>
-                   <button class="MyButton">Toryn | ITSA</button>
-                   <button class="MyButton">Jean-Phillipe | France</button>
+                   <button class="videoBtn-1">Gordon Gekko | NYC</button>
+                   <button class="videoBtn-1">Toryn | ITSA</button>
+                   <button class="videoBtn-1">Jean-Phillipe | France</button>
               </div>
 
                <div id="purple-box"></div>
@@ -142,7 +156,10 @@
            <div id="slide-5">
                <div id="chart-3"><h4>How many people in Ireland know a trans person?</h4><span>Source: Survey 2016. Question asked: "Do you know anyone who is Trans?", sample size 175. </span></div>
 
+               <div id="chart-5"><h4>Media Consumption Habits</h4><span>Source: Survey 2016. Question asked: "Which is your first choice for getting news?", sample size 175. </span></div>
+
                 <div id="chart-4"><h4>Transgender Representations in the Media</h4><span>Source: Survey 2016. Question asked: "Do you recall Transgender repesentation?", sample size 175. </span></div>
+
 
             </div>
 
@@ -165,9 +182,9 @@
                       <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
                   </video>
                   <div class="video-buttons">
-                       <button class="MyButton">Gordon Gekko | NYC</button>
-                       <button class="MyButton">Toryn | ITSA</button>
-                       <button class="MyButton">Jean-Phillipe | France</button>
+                       <button class="videoBtn-1">Gordon Gekko | NYC</button>
+                       <button class="videoBtn-1">Toryn | ITSA</button>
+                       <button class="videoBtn-1">Jean-Phillipe | France</button>
                   </div>
                   <div id="blue-box"></div>
              </div>
@@ -183,15 +200,18 @@
             
 
             <div id="slide-9">
-            <div id="chart-5"><h4>Transgender Resource Awareness</h4><span>Source: Survey 2016. Question asked: "Do you know any of these organisations?", sample size 175. </span></div>     
+            <div id="chart-6"><h4>Transgender Resource Awareness</h4><span>Source: Survey 2016. Question asked: "Do you know any of these organisations?", sample size 175. </span></div>    
+
+            <a href="http://www.teni.ie/" id="teni-cta">Contact TENI!</button></a>
+
                <video class="video-frame" controls="true">   
 
                     <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
                 </video>
                 <div class="video-buttons">
-                     <button class="MyButton">Gordon Gekko | NYC</button>
-                     <button class="MyButton">Toryn | ITSA</button>
-                     <button class="MyButton">Jean-Phillipe | France</button>
+                     <button class="videoBtn-1">Gordon Gekko | NYC</button>
+                     <button class="videoBtn-1">Toryn | ITSA</button>
+                     <button class="videoBtn-1">Jean-Phillipe | France</button>
                 </div>
 
 
@@ -202,17 +222,8 @@
             <div id="slide-10">
                  <h3>Generational Disparity</h3>
                  <p>Has the internet created a generational disparity? Dictumst mauris beatae aliquid. Sociis magnis explicabo non cillum posuere placeat dapibus! Conubia corporis? Iure impedit hendrerit. Viverra, cras, aliquip.</p>
-                 <video class="video-frame" controls="true">   
-
-                      <source id="ss"  src="assets/video/video1.mp4" type='video/mp4'>
-                  </video>
-                  <div class="video-buttons">
-                       <button class="MyButton">Gordon Gekko | NYC</button>
-                       <button class="MyButton">Toryn | ITSA</button>
-                       <button class="MyButton">Jean-Phillipe | France</button>
-                  </div>
+             
             </div>
-
 
         </article>
 
@@ -248,12 +259,10 @@
 
 
     
-      <script src="js/jquery.min.js" type="text/javascript"></script>
-      <script src="js/jquery.waypoints.min.js"></script>
-      <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+      <script src="js/jquery.min.js"></script>
+      <script src="https://d3js.org/d3.v3.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>
-    
-      <script src="js/parallax.js" type="text/javascript"></script>
-        <script src="js/charts.js" type="text/javascript"></script>
+      <script src="js/parallax.js"></script>
+      <script src="js/charts.js"></script>
   </body>
 </html>
