@@ -12,57 +12,6 @@ a {text-decoration: none; color: #342E37;}
 /*------------------- FLEX LAYOUT ------------------------------------ */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
 
- .toggle {
-    font-family: "Ubuntu", sans-serif;
-    text-decoration: none;
-    font-size: 2rem;
-    color: black;
-    -webkit-transition: all 0.15s ease-out 0;
-    -moz-transition: all 0.15s ease-out 0;
-    transition: all 0.15s ease-out 0;
-    position: fixed;
-    top: 2rem;
-    left: 2rem;
-    z-index: 5;
-    cursor: pointer; }
-
-
-#sidebartoggler {
-    }
-
-    #sidebartoggler:not(:checked) + .reveal-wrapper .toggle {
-
-    	height: 2rem;
-        width: 100%;
-        background-image: url("../assets/img/close.svg");
-        background-repeat: no-repeat;
-        position: fixed;
-        top: 2rem;
-        left: 2rem;
-        text-indent: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-
-    }
-
-
-      #sidebartoggler:checked + .reveal-wrapper .toggle {
-         
-        height: 2rem;
-        width: 100%;
-        background-image: url("../assets/img/bars-black.svg");
-        background-repeat: no-repeat;
-        position: fixed;
-        top: 2rem;
-        left: 2rem;
-        text-indent: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        
-      }
-
-
-
 .flex-body {
 	display: flex;
 	flex-direction: column;
@@ -233,7 +182,7 @@ a {text-decoration: none; color: #342E37;}
 	background-color: #FBAE17;
 	padding: 0rem 20rem;
 	width: 100%;
-	height: 70vh;
+	min-height: 80vh;
 	justify-content: center;
 	align-items: center;
 }
@@ -900,15 +849,12 @@ p {
     transition: all 100ms ease-in-out; }
     .modal .close-btn:hover {
       transform: scale(1.2); }
-  .modal .data-box {
-    max-width: 50%; }
+
     .modal .data-box .lead {
       color: black;
       font-size: 30px;
       line-height: 1.3; }
-    .modal .data-box p {
-      color: #999;
-      font-size: 18px; }
+  
 
 
 /* ------------------- Buttons ------------------- */
@@ -939,13 +885,14 @@ p {
 .btn a:hover { background: rgba(0, 0, 0, 0.5); }
 
 .videoBtn-1 {
-	border: 1px white solid;
+	border: 0.2rem white solid;
 	font-family: 'Open Sans', sans-serif;
 	background: transparent;
 	margin-top: 1.5rem;
 	padding: 1rem 1.6rem;
 	color: white;
 	font-size: 1rem;
+	line-height: 1rem;
 }
 
 .videoBtn-1:focus {
@@ -1053,25 +1000,39 @@ p {
 	font-family: Brandon;
 }
 
+#swipe {
+	content: url(../assets/img/swipe.svg);
+	max-width: 20%;
+	height: auto;
+	display: none;
+}
+
 /* ------------------- Forms ------------------- */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
 /* ###### White / Pink #########*/
 #cis-form {
-    margin: 0 auto;
-    max-width: 100%
-    background: #FFF;
+    margin: 1rem;
     padding: 5rem;
-    font: 1rem Didot;
-    color: #666;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+ 
 }
 
 #cis-form input[type="text"]{
-    color: #555;
-    width: 70%;
-    padding: 0.5rem 3rem;
+    width: 100%;
+    padding: 1rem 3rem;
     margin: 1rem;
     border: 1px solid #e5e5e5;
+    font-size: 1.3rem;
 }
+
+#cis-form input[type="text"]:focus {
+    border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+
+
 
 #cis-form .button {
     -moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
@@ -1085,7 +1046,6 @@ p {
     -webkit-border-radius:9px;
     -moz-border-border-radius:9px;
     border:1px solid #ee1eb5;
-    display:inline-block;
     color:#ffffff;
     font-family:Arial;
     font-size:15px;
@@ -1095,10 +1055,12 @@ p {
     line-height: 30px;
     width: 6rem;
     text-decoration:none;
-    text-align:center;
     text-shadow:1px 1px 0px #c70067;
     float: right;
-    margin-top: -3.7rem;
+    position: relative;
+
+
+  
 }
 #cis-form .button:hover {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ef027d), color-stop(1, #ff5bb0) );
@@ -1380,30 +1342,32 @@ fill: transparent !important;
 
     /* Custom, iPhone Retina */ 
     @media only screen and (max-width : 480px) {
-    	body {font-size: 0.8rem}
+    	body {font-size: 1rem}
 
-    	.nav-mobile {transform: scale(0.7);}
-    	.btn {width: 100%}
+  	.flex-content {overflow: hidden;}
+    
     	.btn a {font-size: 1rem;}
 
     	.header-nav{
-
     	margin: 0 auto;
     	padding: 0;
     	display: flex;
-    	flex-direction: column;
+    	flex-direction: row;
     	width: 100%;
     	justify-content: center;
 
     	}
+
+
     
     	.header-titles {display: none;}
 
     	.header-nav li {
 		background: rgba(0, 0, 0, 0.8);
-			padding: 1.5rem 0rem;
+			padding: 3rem 1rem;
 			margin: 0;
 			width: 100%;
+
 
 
     	}

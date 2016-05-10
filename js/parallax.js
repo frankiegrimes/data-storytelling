@@ -14,7 +14,7 @@ var headerList = $('.header-nav li');
 var sideNav = $('.flex-nav-list');
 //var flexNav = $('#flexNav');
 var overlay = $('.overlay');
-
+var swipeIcon = $('#swipe');
 
 var headerNavBtn = $('.nav-mobile');
 var headNavCloseBtn = $('.nav-mobile-close');
@@ -37,7 +37,9 @@ var navbarHeight = headerNav.outerHeight();
 
 var mouseX;
 var mouseY;
+var currentTerm;
 
+var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch;
 // ------------------------------------------------------------------------------------------
 // ------------------------------ WINDOW FUNCTIONS ------------------------------------------
 // ------------------------------------------------------------------------------------------
@@ -47,7 +49,8 @@ var mouseY;
   $(document).ready(function() {
     // DOM IS READY
     // Trigger Rotating Quotes
-    $(rotateTerm);
+
+    
 
     // Run media query on page load
 
@@ -56,6 +59,15 @@ var mouseY;
     // and if window is resized
 
     $(window).resize(checkSize);
+
+    if (hasTouch) {
+      swipeIcon.css("display", "block");
+      swipeTerm();
+
+
+    } else {
+    rotateTerm();
+    }
 
   });
 
@@ -316,16 +328,41 @@ function nextVideo() {
  // --------------------- Auto Rotate Quotes Function
 
  function rotateTerm() { 
-  termsArray.success(function(terms) {
+    termsArray.success(function(terms) {
 
-    var items = terms.split(/","/);
+      var items = terms.split(/","/);
 
-    var currentTerm = rotater.data("term") || 0;
-  rotater.data("term", currentTerm === items.length -1 ? 0 : currentTerm + 1).text(items[currentTerm]).fadeIn()
-              .delay(2000).fadeOut(200, rotateTerm);
-});
+      var currentTerm = rotater.data("term") || 0;
+    rotater.data("term", currentTerm === items.length -1 ? 0 : currentTerm + 1).text(items[currentTerm]).fadeIn()
+                .delay(2000).fadeOut(200, rotateTerm);
+    });
 
-}
+  }
+
+  function swipeTerm() {
+    termsArray.success(function(terms) {
+      var items = terms.split(/","/);
+
+      var currentTerm = rotater.data("term") || 0;
+
+      rotater.data("term", currentTerm).text(items[currentTerm]);
+
+      $(document).on('swipeleft', rotater, function() {
+
+        window.console.log('swipe left');
+        currentTerm -= 1;
+        rotater.data("term", currentTerm).text(items[currentTerm]);
+      });
+
+       $(document).on('swiperight', function() {
+
+        window.console.log('swipe right');
+        currentTerm += 1;
+        rotater.data("term", currentTerm).text(items[currentTerm]);
+      });
+
+     });  
+  }
 
   function checkSize() {
 
