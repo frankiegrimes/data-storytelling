@@ -1,31 +1,57 @@
+/**
+ * Transcend 
+ * DCU Multimedia 2016
+ * Frankie Grimes
+ *
+ * JQuery file to control DOM manipulation
+ */
+
+// Wrap JQuery in IIFE to locally scope $ - See http://benalman.com/news/2010/11/immediately-invoked-function-expression/
 (function($){ 
 
+
+
 // ------------------------------------------------------------------------------------------
-// ------------------------------ VRIABLES --------------------------------------------------
+// ------------------------------ VARIABLES --------------------------------------------------
 // ------------------------------------------------------------------------------------------
 
-// DOM Variables
+// I should have made this variable ages ago instead of forgetting window and hitting an error 100 times
+
+var console = window.console;
+
+// ---------------- DOM Variables - Set as variables to only query server once
+
+// Content
+
 var body = $("body");
 var rotater = $('#rotate');
 var contentTop = (($(".reveal-wrapper").offset().top) - 50);
 var articleTop = ($("#slide-1").offset().top);
-var headerNav = $('.flex-header-banner');
+var headerNav = $('.banner');
 var headerList = $('.header-nav li');
-var sideNav = $('.flex-nav-list');
-//var flexNav = $('#flexNav');
+var sideNav = $('#sideNav ul');
 var overlay = $('.overlay');
 var swipeIcon = $('#swipe');
+var form = $("cis-form");
+var videoPlayer = $("#video-slide1")[0];
+var logo = $('#logo');
+var stamp = $('#stamp');
+
+// Buttons
 
 var headerNavBtn = $('.nav-mobile');
-var headNavCloseBtn = $('.nav-mobile-close');
+var headerNavCloseBtn = $('.nav-mobile-close');
 var dataBtn = $('.data-link');
 var dataCloseBtn = $('.close-btn');
 var sideNavBtn = $('.smartphone-menu-trigger');
 var sideNavCloseBtn = $('.smartphone-menu-trigger-close');
+var submitBtn = $("cis-submit");
+var videoBtn = $('.videoBtn-1');
+
+// ---------------- Logic Variables
 
 // Interactive Video Players 
-var videoPlayer = $("#video-slide1")[0];
-var videoBtn = $('.videoBtn-1');
+
 var video_count = 1;
 
 // Header Scroll Variables
@@ -35,62 +61,70 @@ var lastScrollTop = 0;
 var delta = 5;
 var navbarHeight = headerNav.outerHeight();
 
+// Twitter Integration
+
 var mouseX;
 var mouseY;
-var currentTerm;
 
+// Rotating/Swipe Quotes
+var currentTerm;
+var cisInput;
 var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch;
+
 // ------------------------------------------------------------------------------------------
 // ------------------------------ WINDOW FUNCTIONS ------------------------------------------
 // ------------------------------------------------------------------------------------------
 
-//  Document Ready Function 
+//  ---------------- Document Ready Function 
 
   $(document).ready(function() {
     // DOM IS READY
-    // Trigger Rotating Quotes
-
-    
-
+  
     // Run media query on page load
 
     checkSize();
 
-    // and if window is resized
+    // and update if window is resized
 
     $(window).resize(checkSize);
+
+    // Change Rotating/Swipe Quotes if touch capability
 
     if (hasTouch) {
       swipeIcon.css("display", "block");
       swipeTerm();
-
-
     } else {
     rotateTerm();
     }
 
-  });
+    // Cisgender Form Input
 
- // Window Scroll Function
+
+});
+
+ //  ----------------  Window Scroll Function
 
   $(window).scroll(function() {
-
+    console.log(body.css("font-size"));
     // Checks and runs everytime the window is scrolled -> load intensive
-   
+     didScroll = true;
+
+
+   // WRAP ALL THIS SHIT IN A FUNCTION AND JUST MAKE WINDOW SCROLL RETURN A BOOLEAN ---------------- ---------------- ---------------- ---------------- ---------------- 
+
         // Header Opacity & Sidebar Button Appear if window is below landing video
 
         if ($(window).scrollTop() >= (contentTop)) {
 
-              headerNav.addClass('flex-header-banner-fixed');
+              headerNav.addClass('black-bg');
               sideNavBtn.css('display', 'block');
-  
         }
 
         // Header Opacity & Sidebar Button Disappear if window is above landing video
 
         if ($(window).scrollTop() < (contentTop)) {
           
-              headerNav.removeClass('flex-header-banner-fixed');
+              headerNav.removeClass('black-bg');
       
         }
 
@@ -98,8 +132,6 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
 
         if (($(window).scrollTop() < (articleTop)) && (sideNav.hasClass('desktop'))) {
           sideNav.removeClass('desktop-fixed'); 
-             
-
         }
 
         // Desktop Only Sticky Sidenav - When Scroll is below content
@@ -107,11 +139,6 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
         if (($(window).scrollTop() > (articleTop)) && (sideNav.hasClass('desktop'))) {
           sideNav.addClass('desktop-fixed');             
         }
-
-
-
-
-        didScroll = true;
     
   });
 
@@ -119,12 +146,14 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
 
   function onScroll(){
 
+
+
     var scrollPos = $(document).scrollTop();
-    $('#flex-nav a').each(function () {
+    $('nav a').each(function () {
         var currLink = $(this);
         var refElement = $(currLink.attr("href"));
         if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-            $('#flex-nav a').removeClass("active");
+            $('nav a').removeClass("active");
             currLink.addClass("active");
             currLink.addClass("ion-arrow-right-b");
         }
@@ -164,9 +193,9 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
 
   $(document).mouseup(function (e) {
     // if the target of the click isn't the container... // ... nor a descendant of the container
-    if ((sideNav.hasClass('flex-nav-is-open')) && (body.css("font-size") <= "26px") && (!sideNav.is(e.target) && (sideNav.has(e.target).length === 0))) 
+    if ((sideNav.hasClass('side-nav-is-open')) && (body.css("font-size") <= "26px") && (!sideNav.is(e.target) && (sideNav.has(e.target).length === 0))) 
     {
-        sideNav.removeClass('flex-nav-is-open');
+        sideNav.removeClass('side-nav-is-open');
         sideNavCloseBtn.hide();
         sideNavBtn.show();
     }
@@ -210,15 +239,15 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
       if(Math.abs(lastScrollTop - st) <= delta) {
           return;
        }
-      // If they scrolled down and are past the navbar, add class .nav-up.
+      // If they scrolled down and are past the navbar, add class .is-up.
       // This is necessary so you never see what is "behind" the navbar.
       if (st > lastScrollTop && st > navbarHeight){
           // Scroll Down
-          headerNav.removeClass('flex-header-banner-fixed').addClass('nav-up');
+          headerNav.removeClass('black-bg').addClass('is-up');
       } else {
           // Scroll Up
           if(st + $(window).height() < $(document).height()) {
-              headerNav.removeClass('nav-up').addClass('flex-header-banner-fixed');
+              headerNav.removeClass('is-up').addClass('black-bg');
 
           }
       }
@@ -252,7 +281,7 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
 
     sideNavBtn.css("visibility", "hidden");
     sideNavCloseBtn.show();
-    sideNav.addClass('flex-nav-is-open');
+    sideNav.addClass('side-nav-is-open');
     return false;
  });
 
@@ -260,11 +289,11 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
 
     sideNavCloseBtn.hide();
     sideNavBtn.css("visibility", "visible");
-    sideNav.removeClass('flex-nav-is-open');
+    sideNav.removeClass('side-nav-is-open');
     return false;
  });
 
- if (sideNav.hasClass('flex-nav-is-open')) {
+ if (sideNav.hasClass('side-nav-is-open')) {
     sideNavBtn.hide();
  } 
 
@@ -273,17 +302,30 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
  headerNavBtn.click(function(){
 
     headerList.css("visibility", "visible");
-    headNavCloseBtn.css("visibility", "visible");
+   
     headerNavBtn.css("visibility", "hidden");
+     headerNavCloseBtn.css("visibility", "visible");
     return false;
   });
 
- headNavCloseBtn.click(function(){
+ headerNavCloseBtn.click(function(){
 
     headerList.css("visibility", "hidden");
-    headerNavBtn.css("visibility", "visible");
-    headNavCloseBtn.css("visibility", "hidden");
+   
+    headerNavCloseBtn.css("visibility", "hidden");
+     headerNavBtn.css("visibility", "visible");
     return false;
+  });
+
+ // ------------------ Cis Form Submit Function
+
+ submitBtn.click(function(){
+      form.submit();
+      localStorage.setItem('cisInput', cisInput);
+
+      var retrievedObject = localStorage.getItam('cisInput');
+      console.log(cisInput);
+
   });
 
 
@@ -367,12 +409,16 @@ function nextVideo() {
   function checkSize() {
 
     if (body.css("font-size") > "26px") {
-      sideNav.addClass("flex-nav-is-open");
+      sideNav.addClass("side-nav-is-open");
       sideNav.addClass("desktop");
     } if (body.css("font-size") < "26px") {
-      sideNav.removeClass("flex-nav-is-open");
+      sideNav.removeClass("side-nav-is-open");
       sideNav.removeClass("desktop");
     }
+
+    
+
+
   }
 
 // Tweet Highlighted Text  
