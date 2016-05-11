@@ -29,13 +29,18 @@ var contentTop = (($(".reveal-wrapper").offset().top) - 50);
 var articleTop = ($("#slide-1").offset().top);
 var headerNav = $('.banner');
 var headerList = $('.header-nav li');
-var sideNav = $('#sideNav ul');
+var sideNav = $('#side-nav ul');
 var overlay = $('.overlay');
 var swipeIcon = $('#swipe');
-var form = $("cis-form");
+var form = $("#cis-form");
 var videoPlayer = $("#video-slide1")[0];
 var logo = $('#logo');
 var stamp = $('#stamp');
+var quoteBefore = $('#quotes-placeholder');
+var quoteAfter = $('#quotes-container');
+var quoteResult = $('#quotes-result');
+var textBox = $('.text');
+
 
 // Buttons
 
@@ -45,8 +50,10 @@ var dataBtn = $('.data-link');
 var dataCloseBtn = $('.close-btn');
 var sideNavBtn = $('.smartphone-menu-trigger');
 var sideNavCloseBtn = $('.smartphone-menu-trigger-close');
-var submitBtn = $("cis-submit");
+var submitBtn = $("#cis-submit");
 var videoBtn = $('.videoBtn-1');
+var textBtn = $('.btn');
+var cisInput = $('#definition');
 
 // ---------------- Logic Variables
 
@@ -68,7 +75,7 @@ var mouseY;
 
 // Rotating/Swipe Quotes
 var currentTerm;
-var cisInput;
+
 var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch;
 
 // ------------------------------------------------------------------------------------------
@@ -265,6 +272,8 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
     window.scrollTo(0,0);
     overlay.addClass('is-open');
     headerNav.css("visibility", "hidden");
+    textBox.css("visibility", "hidden");
+    textBtn.css("visibility", "hidden");
     return false;
  });
 
@@ -320,11 +329,18 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
  // ------------------ Cis Form Submit Function
 
  submitBtn.click(function(){
-      form.submit();
-      localStorage.setItem('cisInput', cisInput);
 
-      var retrievedObject = localStorage.getItam('cisInput');
-      console.log(cisInput);
+      var inputText = cisInput.val();
+      console.log(inputText);
+      localStorage.setItem('definition', inputText);
+
+      var retrievedObject = localStorage.getItem('definition');
+      console.log(retrievedObject);
+      quoteBefore.hide();
+      form.css("display", "none");
+     quoteResult.text(retrievedObject);
+      quoteAfter.show();
+      return false;
 
   });
 
@@ -408,12 +424,21 @@ function nextVideo() {
 
   function checkSize() {
 
-    if (body.css("font-size") > "26px") {
+    if (body.css("font-size") > "23px") {
       sideNav.addClass("side-nav-is-open");
       sideNav.addClass("desktop");
-    } if (body.css("font-size") < "26px") {
+    } if (body.css("font-size") < "23px") {
       sideNav.removeClass("side-nav-is-open");
       sideNav.removeClass("desktop");
+    }
+
+    if (sideNav.hasClass("desktop")) {
+      sideNavBtn.css("visibility", "hidden")
+    }
+
+    if (body.css("font-size") < "21px") {
+      headerList.css("visibility", "hidden");
+      headerNavBtn.css("visibility", "visible").css("display", "block");
     }
 
     

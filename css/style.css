@@ -11,6 +11,17 @@
 /* ------------------- BASE ------------------- */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
 
+/* Colours 
+
+Offwhite - #F0F1F5
+Orange - #F9AE74
+Yellow - #FFF457
+Greem - #66CC99
+Blue - #44BBFF
+Red - #FC575E
+Navy - #112233
+
+
 /* ------------------- Html & Body ------------------- */
 
 
@@ -28,16 +39,8 @@ a {text-decoration: none; color: #342E37;}
 
 @font-face {
   font-family: Didot;
-  src: url('assets/fonts/Didot.ttc');
-  src: local('assets/fonts/Didot.ttc'), url('../assets/fonts/Didot.ttc') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Open Sans';
-  src: url('assets/fonts/Didot.ttc');
-  src: local('assets/fonts/'Open Sans'_reg.otf'), url('../assets/fonts/'Open Sans'_reg.otf') format('opentype');
+  src: url('../assets/fonts/Didot.ttc');
+  src: local('../assets/fonts/Didot.ttc'), url('../assets/fonts/Didot.ttc') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -59,9 +62,9 @@ h1 {
 
 h2 {
 	font-family: Didot;
-	color: white;
+	color: black;
 	text-align: center;
-	font-size: 2.25em;
+	font-size: 2.75em;
 	line-height: 1.26;
 }
 
@@ -97,7 +100,7 @@ h5 {
 /* Sources & Footnotes */
 
 h6 {
-	color: white;
+	color: #F0F1F5;
 	text-align: right;
 	font-family: 'Open Sans', 'Open Sans', sans-serif;
 
@@ -137,10 +140,10 @@ header {
 
 
 .reveal-wrapper {	
-	padding-bottom: -4rem;
-	z-index: 50;
-	margin-top: 10vh;
+	padding-bottom: -3rem;
+	z-index: 97;
 	overflow: hidden;
+	margin-top: -3rem;
 
 }
 
@@ -172,7 +175,10 @@ header {
 	z-index: 5;
 	line-height: 0.5rem;
 	display: none;
-	margin-left: 1rem;
+	margin-left: 11rem;
+	transform: scale(2);
+	color: white; 
+	position: relative;
 }
 
 
@@ -189,10 +195,10 @@ header {
 #logo h5 {
 	color: #FCFCFC;
 	font-family: Didot;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	padding-left: 1rem;
 	color: #ECF0F1;
-	letter-spacing: 0.7rem;
+	margin: 0;
 }
 
 /* ---------- HEADER NAVIGATION ------------------- */
@@ -207,43 +213,45 @@ header {
 .header-nav li {
 	display: inline-block;
 	list-style: none;
-	padding: 3rem 0rem;
+	padding: 1rem 0rem;
 	margin: 0;
 }
 
 .header-nav a {
   color: #FCFCFC;
-  font-size: 1.2rem;
+  font-size: 1rem;
   z-index: 6;
   transition: 0.4s;
   text-decoration: none;
-  	padding: 3rem 3rem;
+  	padding: 1rem 2rem;
   margin: 0;
 }
 
 .header-nav li a:hover {
-   background-color: #ffffff;
+   background-color: #F0F1F5;
   color: #EEA200;
-  padding: 3rem 3rem;
+  padding: 1.4rem 2rem;
 }
 
 /* ------ SIDEBAR NAVIGATION ------------------- */
 
 
 #side-nav {
-	z-index: 6;
+	z-index: 98;
 	-webkit-transition-duration: 0.3s;
   -moz-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
+  margin-bottom: 3rem;
 }
 
-#side-nav ul {
+.side-nav-list {
+
 	position: fixed;
 	top: 0;
-	z-index: 6;
+	z-index: 99;
 	left: -500rem;
-	background-color: rgba(239,239,239,0.9);
+	background-color: rgba(240, 241, 245, 0.9);
 	height: 100%;
 		margin-top: 0;
 	padding: 0;
@@ -265,9 +273,10 @@ header {
 }
 
 #side-nav li {
-	padding: 3rem;
+	padding: 2rem 1.5rem;
 	margin: 0;
 	text-decoration: none;
+	font-size: 0.9rem;
 	z-index: 6;
 
 }
@@ -312,8 +321,10 @@ header {
 }
 
 .text p {
-	color: white;
+	color: #F0F1F5;
 	text-align: center;
+	min-width: 25rem;
+	text-indent: 0;
 }
 
 
@@ -326,6 +337,13 @@ header {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	background-color: #F0F1F5;
+	z-index: 1;
+	
+}
+
+#slide-1 h1 {
+	margin-top: 15vh;
 	
 }
 
@@ -336,9 +354,14 @@ header {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	z-index: 1;
+	min-height: 40rem;
+	background-color: #66CC99;
+}
 
-	min-height: 80vh;
-	background-color: #FBAE17;
+#slide-2 h6 {
+color: black;
+padding: 3rem 2rem;
 }
 
 #slide-3 {
@@ -348,6 +371,7 @@ header {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	background-color: #F0F1F5;
 }
 
 #slide-4 {
@@ -357,9 +381,9 @@ header {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-
+	z-index: 1;
 	min-height: 50vh;
-	background-color: #7F47DD;
+	background-color: #f8d902;
 
 }
 
@@ -370,7 +394,7 @@ header {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-
+	z-index: 1;
 	background: #EFEFEF;
 
 }
@@ -378,7 +402,6 @@ header {
 #slide-6 {	
 	position: relative;
 	width: 100%;
-
 	min-height: 40vh;
 	background: cover;
 
@@ -391,8 +414,14 @@ header {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	background-color: #F0F1F5;
+	z-index: 1; 
+	margin-top: 10rem;
+}
 
-	margin-top: 80vh;
+#slide-7 .video-frame{
+	
+	margin-top: 10rem;
 }
 
 #slide-8 {
@@ -403,8 +432,8 @@ header {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-
-	background-color: #29ABE2;
+	z-index: 1;
+	background-color: #44BBFF;
 	height: 60vh;
 
 }
@@ -417,8 +446,8 @@ header {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-
-	margin-top: 10rem;
+	background-color: #F0F1F5;
+	z-index: 1;
 }
 
 #slide-10 {
@@ -429,9 +458,9 @@ header {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-
+	z-index: 1;
 	height: 60vh;
-	background-color: pink;
+	background-color: #FC575E;
 
 }
 
@@ -456,7 +485,7 @@ header {
 /* Rotated Colour Boxes */
 
 #yellow-box {
-	background-color: #FBAE17;
+	background-color: #66CC99;
 	height: 50vh;
 	width: 120%;
 	 transform: rotate(-10deg);
@@ -468,10 +497,10 @@ header {
 }
 
 #purple-box {
-	background-color: #7F47DD;
+	background-color: #f8d902;
 	height: 50vh;
 	 transform: rotate(-10deg);
-	 z-index: -1;
+	 z-index: 0;
 	 position: absolute;
 	 left: 0;
 	 right: 0;
@@ -480,7 +509,7 @@ header {
 }
 
 #blue-box {
-	background-color: #29ABE2;
+	background-color: #44BBFF;
 	height: 50vh;
 	 transform: rotate(-10deg);
 	 z-index: -1;
@@ -492,7 +521,7 @@ header {
 }
 
 #pink-box {
-	background-color: pink;
+	background-color: #FC575E;
 	height: 50vh;
 	 transform: rotate(-10deg);
 	 z-index: -1;
@@ -502,6 +531,23 @@ header {
 	 margin-top: -20vh;
 	 	width: 120%;
 }
+
+#quotes-container {
+	padding: 5rem 20rem;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+	min-width: 80%;
+	display: none;
+}
+
+#quotes-result {
+	font-family: Didot;
+	border-bottom: 1px solid black;
+	font-size: 2.5em;
+	max-width: 30rem
+margin-top: 2rem;}
 
 #slide-1 .video-frame, #slide-1 .video-buttons, #slide-3 .video-frame,#slide-3 .video-buttons, #slide-7 .video-frame,#slide-7 .video-buttons, #slide-9 .video-frame,#slide-9 .video-buttons{
 	width: 75%;
@@ -514,12 +560,17 @@ header {
 	background: #303333;
 	z-index: -2;
 	position: relative;
-	padding: 4rem;
+	padding: 3rem;
+
+
 }
 
 .flex-footer ul {
 	position: fixed;
 	bottom: 0;
+	font-size: 0.8rem;
+	text-align: left;
+	margin: 0;
 }
 
 .footer-credits {
@@ -531,14 +582,21 @@ header {
 	z-index: -5;
 	padding: 2rem;
 	text-align: right;
+	display: flex;
+	flex-direction: column;
+	}
+
+.footer-credits span {
+	font-size: 0.7rem;
+	margin: 0;
+	
 }
 
 .footer-social ul {
-	visibility: hidden;
 	padding: 1rem;
-	left: 4rem;
+	left: 6rem;
 	list-style: none;
-	z-index: -5;
+	z-index: -1;
 }
 
 .footer-social a {
@@ -574,9 +632,11 @@ header {
 	z-index: 99;
   transform: translate(0px, -100px);
   transition: all 500ms cubic-bezier(0.25, 0.35, 0, 1.74);
-  max-width: 600px;
-  background: white;
-  padding: 30px;
+  max-width: 50rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background: #F0F1F5;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
   position: relative; }
   .modal .close-btn {
@@ -595,8 +655,16 @@ header {
 
     .modal .data-box .lead {
       color: black;
-      font-size: 30px;
+      font-weight: 700;
+      font-size: 1rem;
       line-height: 1.3; }
+
+      .modal p {
+      color: black;
+      font-size: 0.7rem;
+      line-height: 1.3; 
+      width: 80%;
+      padding: 1rem;}
   
 
 
@@ -608,18 +676,19 @@ header {
   position:fixed;
   top: 0;
   right: 0;
-  margin: 1rem 2rem;
+  margin: 0.5rem 1.5rem;
   background: url(../assets/img/menu-white.svg) no-repeat;
   background-size: cover;
-  height: 5rem;
-  width: 5rem;
+  height: 3rem;
+  width: 3rem;
   z-index: 99;
 }
 
-.nav-mobile svg {
+.nav-mobile svg{
 	width: 100%;
 	height: 100%;
 }
+
 
 .nav-mobile-close {
 	visibility: hidden;
@@ -627,7 +696,7 @@ header {
   position:fixed;
   top: 0;
   right: 0;
-  margin: 3rem 2rem;
+  margin: 1.5rem 1.5rem;
   background: url(../assets/img/close-white.svg) no-repeat;
   background-size: cover;
   height: 1rem;
@@ -640,8 +709,8 @@ header {
   cursor: pointer;
   background: url(../assets/img/bars-white.svg) no-repeat;
   background-size: cover;
-  height: 5rem;
-  width: 5rem;
+  height: 4rem;
+  width: 4rem;
   transform: scale(0.5);
   margin-left: 1rem;
 }
@@ -707,12 +776,12 @@ header {
 .btn a:hover { background: rgba(0, 0, 0, 0.5); }
 
 .videoBtn-1 {
-	border: 0.2rem white solid;
+	border: 0.2rem #F0F1F5 solid;
 	font-family: 'Open Sans', sans-serif;
 	background: transparent;
 	margin-top: 1.5rem;
 	padding: 1rem 1.6rem;
-	color: white;
+	color: #F0F1F5;
 	font-size: 1rem;
 	line-height: 1rem;
 }
@@ -728,6 +797,7 @@ header {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
+	z-index: 2;
 }
 
 #tweet-button {
@@ -759,12 +829,12 @@ header {
 	padding: 1rem 2rem;
 	margin: 1rem;
 	margin-bottom: 5rem;
-	color: white;
+	color: #F0F1F5;
 	text-transform: uppercase;
 	font-size: 2rem;
 	font-family: 'Open Sans';
 	border: solid 0.1rem black;
-	background-color: pink;
+	background-color: #FC575E;
 }
 
 #swipe {
@@ -777,9 +847,8 @@ header {
 /* ------------------- Forms ------------------- */
 
 #cis-form {
-    margin: 1rem;
-    padding: 5rem;
-    min-width: 100%;
+    padding: 3rem;
+    min-width: 60%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -787,9 +856,8 @@ header {
 }
 
 #cis-form input[type="text"]{
-    width: 100%;
+    min-width: 100%;
     padding: 1rem 3rem;
-    margin: 1rem;
     border: 1px solid #e5e5e5;
     font-size: 1.3rem;
 }
@@ -806,12 +874,11 @@ header {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff5bb0), color-stop(1, #ef027d) );
     background:-moz-linear-gradient( center top, #ff5bb0 5%, #ef027d 100% );
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bb0', endColorstr='#ef027d');
-    background-color:#ff5bb0;
     border-radius:9px;
     -webkit-border-radius:9px;
     -moz-border-border-radius:9px;
     border:1px solid #ee1eb5;
-    color:#ffffff;
+    color:#F0F1F5;
     font-family:Arial;
     font-size:15px;
     font-weight:bold;
@@ -822,7 +889,7 @@ header {
     text-decoration:none;
     text-shadow:1px 1px 0px #c70067;
     position: relative;
-    margin-left: 10rem;
+    margin-left: 2rem;
   
 }
 #cis-form .button:hover {
@@ -909,7 +976,7 @@ header {
 
 #chart-3 {
   font: 1rem ''Open Sans'';
-  padding: 7rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -970,7 +1037,7 @@ stroke-width: 2;
 }
 
 #chart-4 rect.disabled, #chart-5 rect.disabled {                                           
-fill: transparent !important;                               
+fill: #F0F1F5 !important;                               
 }           
        
 #chart-5 {
@@ -1001,11 +1068,32 @@ fill: transparent !important;
   display: none;
 }
 
-#chart-6, #chart-7 {
-	padding: 4rem;
+#chart-6 {
 	display: flex;
 	flex-direction: column;
+	text-align: center;
+	justify-content: center;
 	font-size: 1rem;
+}
+
+#chart-6 span {
+	order: 1;
+	text-align: right;
+	font-size: 0.9rem;
+	padding: 2rem;
+	margin-left: 20rem;
+}
+
+#chart-7 {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+	font-size: 1rem;
+}
+
+#chart-6 svg, #chart-7 svg {
+margin: 0 auto;
 }
 
 #chart-7 span {
@@ -1017,17 +1105,7 @@ fill: transparent !important;
 
 }
 
-#chart-6 {
-	order: -1;
-}
 
-#chart-6 span {
-	order: 1;
-	text-align: right;
-	font-size: 0.9rem;
-	padding: 2rem;
-	margin-left: 20rem;
-}
 
 #chart-6 .axis path, #chart-7 .axis path {
   fill: none;
@@ -1072,10 +1150,9 @@ fill: transparent !important;
 .desktop {
 	position: absolute;
 	top: 100vh;
-
 	justify-content: flex-start;
 	padding-top: 5rem;
-	background-color: white;
+	background-color: #F0F1F5;
 	opacity: 0;
 	-webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.0);
 	-moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.0);
@@ -1091,7 +1168,7 @@ fill: transparent !important;
 }
 
 #logo h5:hover {
-  color: white;
+  color: #F0F1F5;
   animation: shake .5s ease-in-out;
 }
 @keyframes shake {
@@ -1126,141 +1203,74 @@ fill: transparent !important;
 
 /* ------------------- Media Queries --------------------------- */
 
-
-/* 1800px -  Laptops, Wide Screens Large Devices,  */
-	@media only screen and (min-width: 1800px) {
-    	html {font-size: 24px}
-    	.flex-content {padding: 0rem 20rem; }
+	 @media only screen and (min-width : 2000px) {
+    	html  {font-size: 24px}
+    	h1 {width: 80%}
     }
+
+    @media only screen and (max-width : 1650px) {
+    	html  {font-size: 23px}
+    }
+	
+
 
 /* 1400px -  Laptops, Medium Devices, */
     @media only screen and (max-width : 1400px) {
-
     	html  {font-size: 22px}
     }
 
 /* 1400px - Laptops,  Medium Devices*/    
 
     @media only screen and (max-width : 1200px) {
-
 	    	html  {font-size: 20px}
 
-    	.header-nav li a {font-size: 1.2rem; margin: 1rem; padding: 1rem;}
+    	.header-nav li a {font-size: 1rem; margin: 1rem 0rem; padding: 1rem;}
+    	.header-nav li a:hover {padding: 1.5rem 1rem; margin: 0;}
+    	p {text-indent: 0;}
     }
 
     /* iPhone */
     @media only screen and (max-width : 992px) {
-    	html  {font-size: 16rem}
-    	.nav-mobile {display: block;}
-        .header-nav li {visibility: hidden; padding: 3rem 0rem;}
-        .header-nav li a {padding: 0rem 0rem; margin: 0rem 2rem;}
-  		.header-nav {visibility: hidden; padding-right: 7rem; 	display: flex;
-    	flex-wrap: nowrap;}
-  		.header-nav li a:hover {
-		  background-color: #ffffff;
-		  color: #EEA200;
-		  padding: 0rem 0rem;
-			}
+    	html  {font-size: 16px}
 
-		.header-nav li:hover {
-		  background-color: #ffffff;
-		  color: #EEA200;
-			}
+		#logo {display: none;}
+		#stamp {display: block; flex-grow: 0; margin-left: 2rem}  
+		.header-nav li a {font-size: 1rem; padding: 0rem 1rem;line-height: 1rem;}
+		.header-nav li a:hover {font-size: 1rem; padding: 1.5rem 1rem;line-height: 1rem;}
+		.header-nav {	
+			margin-right: 1rem;
+			padding: 0rem 1rem;
+			line-height: 1rem;
+			text-align: right;
+			flex: 1;
+		}
+		.btn a {padding: 0.8rem 0.8rem;}
+		.text {top: 60%;}
+		.btn {top: 70%;}
+		h1, h2, h3, h4, h5, h6, p, ul, ol {
+		  margin-top: 0;
+		  margin-bottom: 1rem;
+		}
+		h1 {max-width: 40rem;}
+		p {padding: 0 15rem; text-indent: 0rem;}
+		#slide-1 .video-frame, #slide-1 .video-buttons, #slide-3 .video-frame,#slide-3 .video-buttons, #slide-7 .video-frame,#slide-7 .video-buttons, #slide-9 .video-frame,#slide-9 .video-buttons {
+		width: 60%;
+		}
+		#cis-form {
+			min-width: 10rem;
+		}
+		#quotes-container {
+			min-width: 50%;
+		}
+		#chart-1, #chart-2, #chart-3, #chart-4, #chart-5, #chart-6 {
+			padding: 0rem 10rem;
 
-#logo {display: none;}
-		#stamp {display: block;}  
-	
+		}
+
     }
-
-    /* iPhone */
-    @media only screen and (max-width : 790px) {
-    	html  {font-size: 15rem}
-
-    	#logo {display: none;}
-		#stamp {display: block;}    	
-    	.btn {width: 100%;}
-		.nav-mobile {transform: scale(0.7);}
-
-		.header-nav{
-    	width: 100%;
-    	display: flex;
-
-    	}
-
-		.header-nav li a {
-		display: block;
-		padding: 0rem 0rem;
-		font-size: 1rem;}
-    }
-
-    @media (max-width: 500px) {
-  html {
-    font-size: 14px;
-  }
-}
-
-h1, h2, h3, h4, h5, h6, p, ul, ol {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 0.5rem;
-  line-height: 1.1;
-}
    
     /* 480px, iPhone */ 
-    @media only screen and (max-width : 480px) {
-    	html  {font-size: 12px}
-#logo {display: none;}
-		#stamp {display: block;}  
-    
-    	.btn a {font-size: 1rem;}
 
-    	.header-nav{
-    	margin: 0 auto;
-    	display: flex;
-    	flex-direction: row;
-    	width: 100%;
-    	justify-content: center;
-    	align-items: center;
-
-    	}
-
-
-    
-
-    	.header-nav li {
-		background: rgba(0, 0, 0, 0.8);
-			padding: 3rem 1rem;
-			margin: 0;
-			width: 100%;
-
-
-
-    	}
-
-    	.header-nav li a {
-    		padding: 0;
-			margin: 0 auto;
-
-
-
-			}
-
-    	.header-nav li a:hover {
-		  background-color: #ffffff;
-		  color: #EEA200;
-			}
-
-		.header-nav li:hover {
-		  background-color: #ffffff;
-		  color: #EEA200;
-			}
-
-
-
-    }
 
 
     
