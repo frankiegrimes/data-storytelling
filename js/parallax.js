@@ -41,7 +41,7 @@ var quoteAfter = $('#quotes-container');
 var quoteResult = $('#quotes-result');
 var textBox = $('.text');
 
-
+var url =  window.location.href;
 // Buttons
 
 var headerNavBtn = $('.nav-mobile');
@@ -88,7 +88,7 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
     // DOM IS READY
   
     // Run media query on page load
-
+    console.log(url);
     checkSize();
 
     // and update if window is resized
@@ -376,7 +376,7 @@ function nextVideo() {
 
  function parseTxt() {
 
-      return $.get("../assets/data/cisgender-text.txt", function() {});
+      return $.get("assets/data/cisgender-text.txt", function() {});
   }
 
   // Rotating Survey Quotes 
@@ -433,7 +433,7 @@ function nextVideo() {
     }
 
     if (sideNav.hasClass("desktop")) {
-      sideNavBtn.css("visibility", "hidden")
+      sideNavBtn.css("visibility", "hidden");
     }
 
     if (body.css("font-size") < "21px") {

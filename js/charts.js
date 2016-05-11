@@ -57,7 +57,7 @@ function chart1() {
 
 	// Link CSV
 
-	d3.csv("../assets/data/cisgender-age.csv", function(error, data) {
+	d3.csv("assets/data/cisgender-age.csv", function(error, data) {
 	  if (error) {throw error;}
 
 	  // Filter data for age keys (that aren't the answer key) and assign to variable
@@ -258,7 +258,7 @@ function chart2() {
 
 	// Link CSV
 
-	d3.csv("../assets/data/cisgender-int.csv", function(error, data) {
+	d3.csv("assets/data/cisgender-int.csv", function(error, data) {
 	  if (error) {throw error;}
 
 	  // Filter data for age keys (that aren't the answer key) and assign to variable
@@ -421,7 +421,7 @@ function chart3() {
 
 	// Link CSV
 
-	d3.csv("../assets/data/trans-friend-age.csv", function(error, data) {
+	d3.csv("assets/data/trans-friend-age.csv", function(error, data) {
 	  if (error) {throw error;}
 
 	  // Filter data for age keys (that aren't the answer key) and assign to variable
@@ -862,7 +862,7 @@ var svg = d3.select("#chart-6").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("../assets/data/organisations-age.csv", function(error, data) {
+d3.csv("assets/data/organisations-age.csv", function(error, data) {
   if (error) { throw error; }
 
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "organisation"; }));
@@ -965,7 +965,7 @@ var svg = d3.select("#chart-7").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("../assets/data/choice-age.csv", function(error, data) {
+d3.csv("assets/data/choice-age.csv", function(error, data) {
   if (error) { throw error; }
 
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "answer"; }));

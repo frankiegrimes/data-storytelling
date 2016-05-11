@@ -39,8 +39,8 @@ a {text-decoration: none; color: #342E37;}
 
 @font-face {
   font-family: Didot;
-  src: url('../assets/fonts/Didot.ttc');
-  src: local('../assets/fonts/Didot.ttc'), url('../assets/fonts/Didot.ttc') format('truetype');
+  src: url('assets/fonts/Didot.ttc');
+  src: local('assets/fonts/Didot.ttc'), url('assets/fonts/Didot.ttc') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -707,7 +707,7 @@ margin-top: 2rem;}
 .smartphone-menu-trigger {
 
   cursor: pointer;
-  background: url(../assets/img/bars-white.svg) no-repeat;
+  background: url(assets/img/bars-white.svg) no-repeat;
   background-size: cover;
   height: 4rem;
   width: 4rem;
