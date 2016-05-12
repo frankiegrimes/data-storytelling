@@ -27,6 +27,8 @@ Navy - #112233
 
 html {  
   font-size: 24px;
+  height: 100%;
+  width: 100%;
   font-weight: 100;
   line-height: 1.5;}
 
@@ -39,7 +41,7 @@ a {text-decoration: none; color: #342E37;}
 
 @font-face {
   font-family: Didot;
-  src: url('assets/fonts/Didot.ttc');
+  src: url('../assets/fonts/Didot.ttc');
   src: local('../assets/fonts/Didot.ttc'), format('truetype');
   font-weight: normal;
   font-style: normal;
@@ -129,7 +131,7 @@ header {
 .banner {
 	display: flex;
 	position: fixed;
-	width: 100vw;
+	width: 100%;
 	z-index: 99;
 	transition: 1s ease-in-out;
 	align-items: center;
@@ -145,6 +147,7 @@ header {
 	position: relative;
 	overflow: hidden;
 	margin-top: -3rem;
+	transform:translateZ(1px);
 
 }
 
@@ -242,6 +245,7 @@ header {
 
 #side-nav {
 	z-index: 98;
+	position: relative;
 	-webkit-transition-duration: 0.3s;
   -moz-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
@@ -294,7 +298,7 @@ header {
 }
 
 .landing {
-	  width: 100vw;
+	  width: 100%;
   height: 100vh;
   position: absolute;
     object-fit : cover;
@@ -399,6 +403,7 @@ padding: 3rem 2rem;
 	align-items: center;
 	justify-content: center;
 	z-index: 1;
+	min-height: 50vh;
 	background: #EFEFEF;
 
 }
@@ -567,6 +572,7 @@ margin-top: 2rem;
 	z-index: -100;
 	position: relative;
 	padding: 3rem;
+	transform:translateZ(-1px);
 
 
 }
@@ -587,17 +593,15 @@ margin-top: 2rem;
 	bottom: 0;
 	z-index: -50;
 	padding-bottom: 2rem;
-	text-align: right;
 	display: flex;
 	flex-direction: column;
-	-webkit-transform: translate3d(0,0,0);
+	text-align: right;
 	}
 
 .footer-credits span {
 	font-size: 0.7rem;
 	margin: 0;
 	z-index: -50;
-	position: relative;
 	
 }
 
@@ -992,7 +996,6 @@ margin-top: 2rem;
   flex-direction: column;
   position: relative;
   width: 960px; 
-  height: 100%;
   order: -1;
 }
 
@@ -1011,7 +1014,6 @@ margin-top: 2rem;
 	align-items: center;
 	position: relative;
 	margin: 0 auto;
-	height: 100%;
 }
 
 
@@ -1029,13 +1031,13 @@ margin-top: 2rem;
         box-shadow: 0 0 5px #999999;
         color: #333;
         display: none;
-        font-size: 12px;
-        left: 130px;
-        padding: 10px;
+        font-size: 0.5rem;
+        left: 20rem;
+        padding: 0.5rem;
         position: absolute;
         text-align: center;
-        top: 95px;
-        width: 80px;
+        top: 4rem;
+        width: 3rem;
         z-index: 10;
 }
 #chart-4 .legend, #chart-5 .legend {
@@ -1075,7 +1077,7 @@ fill: #F0F1F5 !important;
   fill: #4682b4;
 }
 
-#chart-5 .x.axis path {
+#chart-5 .x.axis path, #chart-7 .x.axis path {
   display: none;
 }
 
@@ -1116,12 +1118,68 @@ margin: 0 auto;
 
 }
 
-
-
 #chart-6 .axis path, #chart-7 .axis path {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
+}
+
+#chart-8 .axis path, #chart-8 .axis line  {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+
+#chart-8 .x.axis path {
+  display: none;
+}
+
+#chart-8 .x.axis text {
+	font-size: 0.5rem;
+}
+
+#chart-8 .axis text {
+	font-size: 0.5rem;
+}
+
+
+
+#chart-8 .tooltip{
+  background: #eee;
+  box-shadow: 0 0 5px #999999;
+  color: #333;
+  display: none;
+  font-size: 12px;
+  padding: 10px;
+  text-align: center;
+  width: 80px;
+  z-index: 10;
+  border-radius: 5rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+}
+
+#chart-8 {
+  font: 0.5rem ''Open Sans'';
+  padding: 0rem 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  max-width: 50%;
+  order: -1;
+}
+
+
+#chart-8 span {
+	order: 1;
+	text-align: right;
+	font-size: 0.7rem;
+	padding: 2rem;
 }
 
 /* --------------------------------------------------------------------------------------------------------------------------------- */
@@ -1175,8 +1233,21 @@ margin: 0 auto;
 	top: 0;
 	opacity: 0.9;
 
-
 }
+
+
+#mobile-fallback {
+  background-image: url(../assets/img/jenner.png); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  display: none;
+  /* Preserve aspet ratio */
+  min-height: 100%;
+  min-width: 100%;
+}
+
 
 #logo h5:hover {
   color: #F0F1F5;
@@ -1239,7 +1310,6 @@ margin: 0 auto;
     	.header-nav li a:hover {padding: 1.5rem 1rem; margin: 0;}
     	p {text-indent: 0;}
     }
-
     /* iPhone */
     @media only screen and (max-width : 992px) {
     	html  {font-size: 16px}
@@ -1261,8 +1331,9 @@ margin: 0 auto;
 		h1, h2, h3, h4, h5, h6, p, ul, ol {
 		  margin-top: 0;
 		  margin-bottom: 1rem;
+		  padding: 1rem 10rem;
 		}
-		h1 {max-width: 40rem;}
+		h1 {max-width: 40rem; margin-top: 2rem}
 		p {padding: 0 15rem; text-indent: 0rem;}
 		#slide-1 .video-frame, #slide-1 .video-buttons, #slide-3 .video-frame,#slide-3 .video-buttons, #slide-7 .video-frame,#slide-7 .video-buttons, #slide-9 .video-frame,#slide-9 .video-buttons {
 		width: 60%;
@@ -1273,15 +1344,47 @@ margin: 0 auto;
 		#quotes-container {
 			min-width: 50%;
 		}
-		#chart-1, #chart-2, #chart-3, #chart-4, #chart-5, #chart-6 {
-			padding: 0rem 10rem;
+		#chart-1, #chart-2, #chart-3, #chart-4, #chart-5, #chart-6, #chart-8 {
+			transform: scale(0.8);
 
 		}
 
     }
+
+    @media only screen and (max-width: 750px) {
+    	h1, h2, h3, h4, h5, h6, p, ul, ol {
+		  margin-top: 0;
+		  margin-bottom: 1rem;
+		  padding: 1rem 20rem;
+		}
+		h1 {padding-top: 3rem;}
+		.btn {width: 100%;}
+		body {
+			overflow-x: hidden;
+		}
+		h3 {max-width: 50vw; padding-right: 5rem; padding-left: 5rem;
+		}
+		#slide-1 .video-frame, #slide-1 .video-buttons, #slide-3 .video-frame,#slide-3 .video-buttons, #slide-7 .video-frame,#slide-7 .video-buttons, #slide-9 .video-frame,#slide-9 .video-buttons {
+		width: 50%;
+		}
+		h2 {
+			padding: 5rem 0rem;
+			margin: 0;
+		}
+		#chart-1, #chart-2, #chart-3, #chart-4, #chart-5, #chart-6, #chart-8 {
+			transform: scale(0.7);
+
+		}
+    }
+
+
    
     /* 480px, iPhone */ 
-
+@media only screen and (max-width: 670px) {
+    	#mobile-fallback {
+    		background-image: url(../assets/img/jenner-small.jpg);
+    	}
+    }
 
 
     

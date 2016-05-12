@@ -40,6 +40,8 @@ var quoteBefore = $('#quotes-placeholder');
 var quoteAfter = $('#quotes-container');
 var quoteResult = $('#quotes-result');
 var textBox = $('.text');
+var mobileImg1 = $('#mobile-fallback');
+var landingVideo = $('.landing');
 
 var url =  window.location.href;
 // Buttons
@@ -100,6 +102,8 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
     if (hasTouch) {
       swipeIcon.css("display", "block");
       swipeTerm();
+      mobileImg1.css("display", "block");
+      landingVideo.css("display", "none");
     } else {
     rotateTerm();
     }

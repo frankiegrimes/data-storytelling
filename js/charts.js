@@ -746,6 +746,7 @@ var path = graph4.selectAll('path')
   })
   .each(function(d) { this._current = d; });
 
+
 path.on('mouseover', function(d) {
   var total = d3.sum(dataset.map(function(d) {
     return (d.enabled) ? d.count : 0;
@@ -820,8 +821,6 @@ legend.append('rect')
       .attr('x', legendRectSize + legendSpacing)
       .attr('y', legendRectSize - legendSpacing)
       .text(function(d) { return d; });
-
-
 
 }
 
@@ -938,7 +937,7 @@ chart6();
 function chart7() {
 
 var margin = {top: 30, right: 30, bottom: 40, left: 50},
-    width = 960 - margin.left - margin.right,
+    width = 660 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
@@ -1034,3 +1033,168 @@ d3.csv("assets/data/choice-age.csv", function(error, data) {
 }
 
 chart7();
+
+function chart8() {
+
+// Chart 3 - Grouped Bar Chart - Do you know anyone who is trans? (Age Groups)
+
+
+
+	// Margin, width & height
+
+	var margin = {top: 20, right: 40, bottom: 30, left: 40};
+    var width = 1200;
+    var height = width / 2 - margin.top - margin.bottom;
+
+    // Scales
+    	// X Axis - Yes/No
+	var x0 = d3.scale.ordinal()
+	    .rangeRoundBands([0, width], 0.1);
+
+		// Age Names & Age Groups    
+	var x1 = d3.scale.ordinal();
+
+	var y = d3.scale.linear()
+	    .range([height, 0]);
+
+	// Colour
+
+	    // 18-24: #4db8ff
+		// 25-34: 0099ff
+		// 35-54: #006bb3
+
+	var color = d3.scale.ordinal()
+	    .range(["#FC575E", "44BBFF", "#006bb3"]);
+
+	 // Axes
+
+	var xAxis = d3.svg.axis()
+	    .scale(x0)
+	    .orient("bottom");
+
+	var yAxis = d3.svg.axis()
+	    .scale(y)
+	    .orient("left");
+
+	// Canvas Element
+
+	var svg = d3.select("#chart-8").append("svg")
+	    .attr("width", width + margin.left + margin.right)
+	    .attr("height", height + margin.top + margin.bottom)
+	    .append("g")
+	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	// Tooltips
+
+	var tooltip = d3.select("#chart-8")          
+  		.append('div')                            
+  		.attr('class', 'tooltip');                            
+
+	tooltip.append('div')                     
+  		.attr('class', 'value');                           
+
+	// Link CSV
+
+	d3.csv("assets/data/trans-term.csv", function(error, data) {
+	  if (error) {throw error;}
+
+	  // Filter data for age keys (that aren't the answer key) and assign to variable
+
+	  var ageNames = d3.keys(data[0]).filter(function(key) { return key !== "Answer"; });
+
+	  data.forEach(function(d) {
+	    d.ages = ageNames.map(function(name) { return {name: name, value: +d[name]}; });
+	  });
+
+	  // Map data to domain
+
+	  x0.domain(data.map(function(d) { return d.Answer; }));
+	  x1.domain(ageNames).rangeRoundBands([0, x0.rangeBand()]);
+	  y.domain([0, d3.max(data, function(d) { return d3.max(d.ages, function(d) { return d.value; }); })]);
+
+	  // Add x axis
+
+	  svg.append("g")
+	      .attr("class", "x axis")
+	      .attr("transform", "translate(0," + height + ")")
+	      .call(xAxis);
+
+	  // Add y axis
+
+	  svg.append("g")
+	      .attr("class", "y axis")
+	      .call(yAxis)
+	      .append("text")
+	      .attr("transform", "rotate(-90)")
+	      .attr("y", 6)
+	      .attr("dy", ".71em")
+	      .style("text-anchor", "end")
+	      .text("Percentage");
+
+	  // Create placeholders for bars
+
+	  var answer = svg.selectAll(".answer")
+	      .data(data)
+	      .enter().append("g")
+	      .attr("class", "answer")
+	      .attr("transform", function(d) { return "translate(" + x0(d.Answer) + ",0)"; });
+
+	  // Add bars
+
+	  var bars = answer.selectAll("rect")
+	      .data(function(d) { return d.ages; })
+	      .enter().append("rect")
+	      .attr("class", "rectangle")
+	      .attr("width", x1.rangeBand())
+	      .attr("x", function(d) { return x1(d.name); })
+	      .attr("y", function(d) { return y(d.value); })
+	      .attr("height", function(d) { return height - y(d.value); })
+	      .style("fill", function(d) { return color(d.name); });
+
+	  // Create Legend
+
+	  var legend = svg.selectAll(".legend")
+	      .data(ageNames.slice().reverse())
+	      .enter().append("g")
+	      .attr("class", "legend")
+	      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+	  legend.append("rect")
+	      .attr("x", width - 18)
+	      .attr("width", 18)
+	      .attr("height", 18)
+	      .style("fill", color);
+
+	  legend.append("text")
+	      .attr("x", width - 24)
+	      .attr("y", 9)
+	      .attr("dy", ".35em")
+	      .style("text-anchor", "end")
+	      .text(function(d) { return d; });
+
+
+	   // Tooltips
+
+	   bars.on('mouseover', function(d) {
+		  tooltip.select('.value').html(d.value+"%");  
+		  tooltip.style('display', 'block');
+		});
+
+	   bars.on('mouseout', function() {
+		  tooltip.style('display', 'none');
+		});
+
+	   bars.on('mousemove', function() {
+		  tooltip.style('top', (d3.event.layerY + 10) + 'px')
+		    .style('left', (d3.event.layerX + 10) + 'px');
+		});
+
+	   // Update Data
+
+	   
+
+	}); // End of CSV callback
+
+}
+
+chart8();
