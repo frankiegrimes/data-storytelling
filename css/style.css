@@ -49,7 +49,7 @@ a {
 @font-face {
   font-family: Didot;
   src: url("assets/fonts/Didot.ttc");
-  src: local("assets/fonts/Didot.ttc"), url("assets/fonts/Didot.ttc") format("truetype");
+  src: local("../assets/fonts/Didot.ttc"), format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -142,7 +142,8 @@ header {
 
 .reveal-wrapper {
   padding-bottom: -3rem;
-  z-index: 97;
+  z-index: 1;
+  position: relative;
   overflow: hidden;
   margin-top: -3rem;
 }
@@ -170,12 +171,15 @@ header {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  z-index: 1;
+  position: relative;
 }
 
 .video-frame {
   margin: 0 auto;
   width: 100%;
   z-index: 4;
+  position: relative;
   box-shadow: 0px -1px 58px -6px rgba(0, 0, 0, 0.77);
 }
 
@@ -207,8 +211,8 @@ header {
       -ms-flex-item-align: left;
           align-self: left;
   z-index: 5;
-  line-height: 0.5rem;
   margin-left: 1rem;
+  height: 2rem;
 }
 
 #logo h5 {
@@ -617,6 +621,7 @@ header {
 #purple-box {
   background-color: #f8d902;
   height: 50vh;
+  z-index: -5;
   -webkit-transform: rotate(-10deg);
           transform: rotate(-10deg);
   z-index: 0;
@@ -692,7 +697,7 @@ header {
       -ms-flex: none;
           flex: none;
   background: #303333;
-  z-index: -2;
+  z-index: -100;
   position: relative;
   padding: 3rem;
 }
@@ -711,8 +716,8 @@ header {
   right: 5rem;
   position: fixed;
   bottom: 0;
-  z-index: -5;
-  padding: 2rem;
+  z-index: -50;
+  padding-bottom: 2rem;
   text-align: right;
   display: -webkit-box;
   display: -webkit-flex;
@@ -723,18 +728,22 @@ header {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 .footer-credits span {
   font-size: 0.7rem;
   margin: 0;
+  z-index: -50;
+  position: relative;
 }
 
 .footer-social ul {
-  padding: 1rem;
+  position: relative;
+  padding-bottom: 1rem;
   left: 6rem;
   list-style: none;
-  z-index: -1;
+  z-index: -60;
 }
 
 .footer-social a {
@@ -873,7 +882,7 @@ header {
 
 .smartphone-menu-trigger {
   cursor: pointer;
-  background: url(assets/img/bars-white.svg) no-repeat;
+  background: url(../assets/img/bars-white.svg) no-repeat;
   background-size: cover;
   height: 4rem;
   width: 4rem;
@@ -1140,7 +1149,7 @@ header {
 }
 
 #chart-1 .bar, #chart-3 .bar {
-  fill: steelblue;
+  fill: #4682b4;
 }
 
 #chart-1 .x.axis path, #chart-3 .x.axis path {
@@ -1288,7 +1297,7 @@ header {
 }
 
 #chart-5 .bar {
-  fill: steelblue;
+  fill: #4682b4;
 }
 
 #chart-5 .x.axis path {
@@ -1371,7 +1380,7 @@ header {
 }
 
 #side-nav li a:hover {
-  color: #steelblue;
+  color: #4682b4;
 }
 
 .side-nav-is-open {
