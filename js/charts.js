@@ -681,15 +681,28 @@ function chart4() {
 
 
 
-var dataset = [
-  { label: 'Newspapers', count: 77 }, 
-  { label: 'Television', count: 140 },
-  { label: 'Magazines', count: 71 },
-  { label: 'Film', count: 114 },
-  { label: 'Books', count: 38 },
-  { label: 'Radio', count: 38 },
-  { label: 'Internet', count: 136 }
+var nativeDataset = [
+  { label: 'Newspapers', count: 37 }, 
+  { label: 'Television', count: 77 },
+  { label: 'Magazines', count: 43 },
+  { label: 'Film', count: 68 },
+  { label: 'Books', count: 24 },
+  { label: 'Radio', count: 16 },
+  { label: 'Internet', count: 86 },
+  { label: 'Unsure', count: 15}
 ];
+
+var immigrantDataset = [
+  { label: 'Newspapers', count: 40 }, 
+  { label: 'Television', count: 63 },
+  { label: 'Magazines', count: 28 },
+  { label: 'Film', count: 114 },
+  { label: 'Books', count: 14 },
+  { label: 'Radio', count: 22 },
+  { label: 'Internet', count: 50 }
+];
+
+var dataset = nativeDataset;
 
 var width = 700;
 var height = width;
@@ -731,11 +744,6 @@ var tooltip = d3.select('#chart-4')            // NEW
     .attr('class', 'percent');                 // NEW
 
 
-dataset.forEach(function(d) {
-            d.count = +d.count;
-            d.enabled = true;                                         // NEW
-          });
-
 var path = graph4.selectAll('path')
   .data(pie(dataset))
   .enter()
@@ -749,7 +757,7 @@ var path = graph4.selectAll('path')
 
 path.on('mouseover', function(d) {
   var total = d3.sum(dataset.map(function(d) {
-    return (d.enabled) ? d.count : 0;
+    return d.count;
   }));
   var percent = Math.round(1000 * d.data.count / total) / 10;
   tooltip.select('.label').html(d.data.label);
@@ -826,7 +834,162 @@ legend.append('rect')
 
 chart4();
 
+function chart14() {
 
+
+
+var nativeDataset = [
+  { label: 'Newspapers', count: 37 }, 
+  { label: 'Television', count: 77 },
+  { label: 'Magazines', count: 43 },
+  { label: 'Film', count: 68 },
+  { label: 'Books', count: 24 },
+  { label: 'Radio', count: 16 },
+  { label: 'Internet', count: 86 },
+  { label: 'Unsure', count: 15}
+];
+
+var immigrantDataset = [
+  { label: 'Newspapers', count: 40 }, 
+  { label: 'Television', count: 63 },
+  { label: 'Magazines', count: 28 },
+  { label: 'Film', count: 114 },
+  { label: 'Books', count: 14 },
+  { label: 'Radio', count: 22 },
+  { label: 'Internet', count: 50 }
+];
+
+var dataset = immigrantDataset;
+
+var width = 700;
+var height = width;
+
+var radius = Math.min(width, height) / 2; 
+var donutWidth = width / 5;
+var legendRectSize = width / 20;
+var legendSpacing = width / 100;
+
+var color = d3.scale.category20c();
+
+
+var graph4 = d3.select('#chart-4')
+  .append('svg')
+  .attr('width', width)
+  .attr('height', height)
+  .append('g')
+  .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')');
+
+var arc = d3.svg.arc()
+  .innerRadius(radius - donutWidth)
+  .outerRadius(radius);
+
+var pie = d3.layout.pie()
+  .value(function(d) { return d.count; })
+  .sort(null);
+
+var tooltip = d3.select('#chart-4')            // NEW 
+  .append('div')                             // NEW
+  .attr('class', 'tooltip');                 // NEW
+
+  tooltip.append('div')                        // NEW
+    .attr('class', 'label');                   // NEW
+
+  tooltip.append('div')                        // NEW
+    .attr('class', 'count');                   // NEW
+
+  tooltip.append('div')                        // NEW
+    .attr('class', 'percent');                 // NEW
+
+
+var path = graph4.selectAll('path')
+  .data(pie(dataset))
+  .enter()
+  .append('path')
+  .attr('d', arc)
+  .attr('fill', function(d, i) { 
+    return color(d.data.label);
+  })
+  .each(function(d) { this._current = d; });
+
+
+path.on('mouseover', function(d) {
+  var total = d3.sum(dataset.map(function(d) {
+    return d.count;
+  }));
+  var percent = Math.round(1000 * d.data.count / total) / 10;
+  tooltip.select('.label').html(d.data.label);
+  tooltip.select('.count').html(d.data.count); 
+  tooltip.select('.percent').html(percent + '%'); 
+  tooltip.style('display', 'block');
+});
+
+path.on('mouseout', function(d) {
+  tooltip.style('display', 'none');
+});
+
+var legend = graph4.selectAll('.legend')
+  .data(color.domain())
+  .enter()
+  .append('g')
+  .attr('class', 'legend')
+  .attr('transform', function(d, i) {
+    var height = legendRectSize + legendSpacing;
+    var offset =  height * color.domain().length / 2;
+    var horz = -2 * legendRectSize;
+    var vert = i * height - offset;
+    return 'translate(' + horz + ',' + vert + ')';
+  });
+
+legend.append('rect')
+  .attr('width', legendRectSize)
+  .attr('height', legendRectSize)
+  .style('fill', color)
+  .style('stroke', color)
+  .on('click', function(label) {
+    var rect = d3.select(this);
+    var enabled = true;
+    var totalEnabled = d3.sum(dataset.map(function(d) {
+      return (d.enabled) ? 1 : 0;
+    }));
+  
+    if (rect.attr('class') === 'disabled') {                // NEW
+                    rect.attr('class', '');                               // NEW
+    } else {                                                // NEW
+      if (totalEnabled < 2) {
+      return;         
+      }                // NEW
+      rect.attr('class', 'disabled');                       // NEW
+      enabled = false;                                      // NEW
+    }                                                       // NEW
+
+    pie.value(function(d) {                                 // NEW
+      if (d.label === label) {
+      d.enabled = enabled;           // NEW
+      return (d.enabled) ? d.count : 0;   
+      }                  // NEW
+    });                                                     // NEW
+
+    path = path.data(pie(dataset));                         // NEW
+
+    path.transition()                                       // NEW
+      .duration(750)                                        // NEW
+      .attrTween('d', function(d) {                         // NEW
+        var interpolate = d3.interpolate(this._current, d); // NEW
+        this._current = interpolate(0);                     // NEW
+        return function(t) {                                // NEW
+          return arc(interpolate(t));                       // NEW
+        };                                                  // NEW
+      });                                                   // NEW
+  });                     
+
+    legend.append('text')
+      .attr('x', legendRectSize + legendSpacing)
+      .attr('y', legendRectSize - legendSpacing)
+      .text(function(d) { return d; });
+
+}
+
+chart14();
 
 //-------------- Chart 6 - Stacked Bar Chart - Do you know any of these organisations? -----------------
 
