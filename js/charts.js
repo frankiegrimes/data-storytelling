@@ -26,7 +26,7 @@ function chart1() {
 		// 35-54: #006bb3
 
 	var color = d3.scale.ordinal()
-	    .range(["#4db8ff", "0099ff", "#006bb3"]);
+	    .range(["#FC575E", "#44BBFF", "#66CC99"]);
 
 	 // Axes
 
@@ -57,7 +57,7 @@ function chart1() {
 
 	// Link CSV
 
-	d3.csv("assets/data/cisgender-age.csv", function(error, data) {
+	d3.csv("assets/data/cisgender-int.csv", function(error, data) {
 	  if (error) {throw error;}
 
 	  // Filter data for age keys (that aren't the answer key) and assign to variable
@@ -195,7 +195,10 @@ function chart1() {
 
 }
 
-chart1();
+
+	chart1();
+
+
 
 function chart2() {
 
@@ -241,7 +244,7 @@ function chart2() {
 
 	// Canvas Element
 
-	var svg = d3.select("#chart-1").append("svg")
+	var svg = d3.select("#chart-15").append("svg")
 	    .attr("width", width + margin.left + margin.right)
 	    .attr("height", height + margin.top + margin.bottom)
 	    .append("g")
@@ -390,7 +393,7 @@ function chart3() {
 		// 35-54: #006bb3
 
 	var color = d3.scale.ordinal()
-	    .range(["#4db8ff", "0099ff", "#006bb3"]);
+	    .range(["#FC575E", "#44BBFF", "#66CC99"]);
 
 	 // Axes
 
@@ -421,7 +424,7 @@ function chart3() {
 
 	// Link CSV
 
-	d3.csv("assets/data/trans-friend-age.csv", function(error, data) {
+	d3.csv("assets/data/trans-friend-int.csv", function(error, data) {
 	  if (error) {throw error;}
 
 	  // Filter data for age keys (that aren't the answer key) and assign to variable
@@ -626,43 +629,7 @@ legend.append('rect')
   .attr('width', legendRectSize)
   .attr('height', legendRectSize)
   .style('fill', color)
-  .style('stroke', color)
-  .on('click', function(label) {
-    var rect = d3.select(this);
-    var enabled = true;
-    var totalEnabled = d3.sum(dataset.map(function(d) {
-      return (d.enabled) ? 1 : 0;
-    }));
-  
-    if (rect.attr('class') === 'disabled') {                // NEW
-                    rect.attr('class', '');                               // NEW
-    } else {                                                // NEW
-      if (totalEnabled < 2) {
-      return;         
-      }                // NEW
-      rect.attr('class', 'disabled');                       // NEW
-      enabled = false;                                      // NEW
-    }                                                       // NEW
-
-    pie.value(function(d) {                                 // NEW
-      if (d.label === label) {
-      d.enabled = enabled;           // NEW
-      return (d.enabled) ? d.count : 0;   
-      }                  // NEW
-    });                                                     // NEW
-
-    path = path.data(pie(dataset));                         // NEW
-
-    path.transition()                                       // NEW
-      .duration(750)                                        // NEW
-      .attrTween('d', function(d) {                         // NEW
-        var interpolate = d3.interpolate(this._current, d); // NEW
-        this._current = interpolate(0);                     // NEW
-        return function(t) {                                // NEW
-          return arc(interpolate(t));                       // NEW
-        };                                                  // NEW
-      });                                                   // NEW
-  });                     
+  .style('stroke', color);
 
     legend.append('text')
       .attr('x', legendRectSize + legendSpacing)
@@ -787,43 +754,7 @@ legend.append('rect')
   .attr('width', legendRectSize)
   .attr('height', legendRectSize)
   .style('fill', color)
-  .style('stroke', color)
-  .on('click', function(label) {
-    var rect = d3.select(this);
-    var enabled = true;
-    var totalEnabled = d3.sum(dataset.map(function(d) {
-      return (d.enabled) ? 1 : 0;
-    }));
-  
-    if (rect.attr('class') === 'disabled') {                // NEW
-                    rect.attr('class', '');                               // NEW
-    } else {                                                // NEW
-      if (totalEnabled < 2) {
-      return;         
-      }                // NEW
-      rect.attr('class', 'disabled');                       // NEW
-      enabled = false;                                      // NEW
-    }                                                       // NEW
-
-    pie.value(function(d) {                                 // NEW
-      if (d.label === label) {
-      d.enabled = enabled;           // NEW
-      return (d.enabled) ? d.count : 0;   
-      }                  // NEW
-    });                                                     // NEW
-
-    path = path.data(pie(dataset));                         // NEW
-
-    path.transition()                                       // NEW
-      .duration(750)                                        // NEW
-      .attrTween('d', function(d) {                         // NEW
-        var interpolate = d3.interpolate(this._current, d); // NEW
-        this._current = interpolate(0);                     // NEW
-        return function(t) {                                // NEW
-          return arc(interpolate(t));                       // NEW
-        };                                                  // NEW
-      });                                                   // NEW
-  });                     
+  .style('stroke', color);                     
 
     legend.append('text')
       .attr('x', legendRectSize + legendSpacing)
@@ -1007,7 +938,7 @@ var y = d3.scale.linear()
     .rangeRound([height, 0]);
 
 var color = d3.scale.ordinal()
-    .range(["#4db8ff", "0099ff", "#006bb3"]);
+    .range(["#FC575E", "#44BBFF", "#66CC99"]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -1024,7 +955,7 @@ var svg = d3.select("#chart-6").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("assets/data/organisations-age.csv", function(error, data) {
+d3.csv("assets/data/organisations-int.csv", function(error, data) {
   if (error) { throw error; }
 
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "organisation"; }));
@@ -1110,7 +1041,7 @@ var y = d3.scale.linear()
     .rangeRound([height, 0]);
 
 var color = d3.scale.ordinal()
-    .range(["#4db8ff", "0099ff", "#006bb3"]);
+    .range(["#FC575E", "#44BBFF", "#66CC99"]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -1127,7 +1058,7 @@ var svg = d3.select("#chart-7").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("assets/data/choice-age.csv", function(error, data) {
+d3.csv("assets/data/choice-int.csv", function(error, data) {
   if (error) { throw error; }
 
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "answer"; }));
@@ -1227,7 +1158,7 @@ function chart8() {
 		// 35-54: #006bb3
 
 	var color = d3.scale.ordinal()
-	    .range(["#FC575E", "44BBFF", "#006bb3"]);
+	    .range(["#FC575E", "#44BBFF", "#66CC99"]);
 
 	 // Axes
 

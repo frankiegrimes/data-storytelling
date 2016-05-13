@@ -80,6 +80,8 @@ var currentTerm;
 
 var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch;
 
+
+
 // ------------------------------------------------------------------------------------------
 // ------------------------------ WINDOW FUNCTIONS ------------------------------------------
 // ------------------------------------------------------------------------------------------
@@ -88,9 +90,10 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
 
   $(document).ready(function() {
     // DOM IS READY
-  
+
+    // Only load JQuery Mobile for mobile devices
+
     // Run media query on page load
-    console.log(url);
     checkSize();
 
     // and update if window is resized
@@ -218,7 +221,7 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
     if (getSelectionText() !== "") {
        mouseX = e.pageX; 
       mouseY = e.pageY;
-      $('#tweet-button').css({'top':mouseY-150, 'left':mouseX}).fadeIn('slow');
+      $('#tweet-button').css({'top':mouseY-1400, 'left':mouseX}).fadeIn('slow');
     }
   });
 
