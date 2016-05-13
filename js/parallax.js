@@ -208,7 +208,7 @@ var hasTouch = ('ontouchstart' in window) || window.DocumentTouch && document in
     {
         sideNav.removeClass('side-nav-is-open');
         sideNavCloseBtn.hide();
-        sideNavBtn.show();
+        sideNavBtn.css("visibility", "visible");
     }
   });
 
